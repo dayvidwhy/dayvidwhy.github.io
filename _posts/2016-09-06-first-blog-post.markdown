@@ -2,9 +2,9 @@
 layout: post
 title:  "Better Make A Blog"
 date:   2016-09-06 11:53:28 +1000
-categories: jekyll update
+categories: blog
 ---
-It seems like something that everyone seems to need online these days and that's something to start venting thoughts and various thoughts had or ideas you'd like to share.
+It seems like something that everyosne seems to need online these days and that's something to start venting thoughts and various thoughts had or ideas you'd like to share.
 
 I've been studying programming for 4 years now having started early on with the python course CSSE1001 at UQ and have been going strong since.
 
