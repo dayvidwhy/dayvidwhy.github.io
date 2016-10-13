@@ -1,15 +1,13 @@
 ---
 layout: page
-title: About
+title: Who Is David?
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I finished a degree in Civil Engineering in 2013 and went back to University in 2014 after I realised that the software industry was the way of the future.  I'm looking to finish up a Bachelors of Information Technology as soon as possible so I can move into the professional workforce developing high impact websites for the modern web.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+I can normally be found behind a computer screen moving some margins or uploading some website and consider myself highly capable of producing responsive web solutions.  I am experienced in using the Linux, Apache2, MySQL and PHP server stack to deliver high performance online solutions and I am available for small website designs or technical support.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Other skills include Python, Java, C, JSON, command-line tools.
+
+See [my portfolio](https://davidyoung.tech) for more about me.

@@ -37,3 +37,26 @@ $on-laptop:        800px;
 
 // Import partials from the `minima` theme.
 @import "minima";
+
+.site-title, .site-title:visited {
+    color: #FFF;
+    font-weight: 300;
+}
+
+.site-nav .page-link {
+    color: #FFF;
+}
+
+.site-nav {
+    background-color: #359DFF;
+}
+
+.site-nav .menu-icon > svg path {
+    fill: #FFF;
+}
+
+.site-header {
+    border: none;
+    background-color: #359DFF;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
