@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Better Make A Blog"
+title:  "First Blog Post"
 date:   2016-09-06 11:53:28 +1000
 categories: blog
 ---
