@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Using jQuery For Easy Selectors"
+title:  "Easy jQuery Selectors"
 date:   2016-10-06 15:26:00 +1000
 categories: blog
 ---
