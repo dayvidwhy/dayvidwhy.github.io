@@ -6,7 +6,7 @@ categories: blog
 ---
 It seems apt to describe interesting things I've found myself getting up to while learning to code and I would like to share some of said things, most likely to affirm my own understanding, but also because why not.
 
-I've been studying programming for 4 years now having started early on with the python course CSSE1001 at UQ and have been going strong since. Coding wasn't really something I found myself being interested in from a younger age, although I did enjoy messing with config files, I wasn't exactly writing full programs in any well defined language.
+I've been studying programming for 4 years now after having started early on with the python course CSSE1001 at UQ. Coding wasn't really something I found myself being interested in from a younger age, although I did enjoy messing with config files, I wasn't exactly writing full programs in any well defined language.
 
 I hope to post some guides on interesting things I've managed to find over time, probably starting with some javascript and the slack bot hubot. After starting to tutor a course this semester I think I've gained a better understanding of some fundamental things I wish I had known earlier. Hopefully sharing those here helps some people.
 
