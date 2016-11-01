@@ -38,6 +38,7 @@ $on-laptop:        800px;
 // Import partials from the `minima` theme.
 @import "minima";
 
+/* Some extra styles by David */
 .site-title, .site-title:visited {
     color: #FFF;
     font-weight: 300;
@@ -59,4 +60,9 @@ $on-laptop:        800px;
     border: none;
     background-color: #359DFF;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 0;
 }
