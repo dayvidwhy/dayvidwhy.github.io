@@ -4,7 +4,7 @@ title:  "Easy jQuery Selectors"
 date:   2016-10-06 15:26:00 +1000
 categories: blog
 ---
-The popular web plugin [jQuery](http://jquery.com) is currently in it's third version and it's still going strong on the internet. Lately it has become less popular as the platform catches up, but some parts of it are still very useful to the novice web developer.
+The popular web plugin jQuery is currently in it's third version and it's still going strong on the internet. Lately it has become less popular as the platform catches up, but some parts of it are still very useful to the novice web developer.
 
 ## jQuery Is Just Bad
 Probably the biggest point you get from a few students that have done some stuff with web development before is that jQuery is bad, [and it sort of is](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007). Many of it's functions have big performance hits that people have come to live with but it is still a very convenient library to use.

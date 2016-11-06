@@ -4,8 +4,8 @@ layout: home
 
 <div class="home">
 
-  <h1 class="page-title">The Blog</h1>
-  <p>This is where I attempt to express thoughts about things I've either been working on or group projects with others.</p>
+  <h1 class="page-title">Posts</h1>
+  <p>This is where I attempt to express thoughts about things I've either been working on or group projects with others. These are my own thoughts and do not reflect any company or person.</p>
 
   <ul class="post-list">
     {% for post in site.posts %}
@@ -14,7 +14,8 @@ layout: home
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
         </h2>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <p>{{ post.excerpt }}</p>
+        {{ post.excerpt }}
+        <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">Read More...</a>
       </li>
     {% endfor %}
   </ul>
