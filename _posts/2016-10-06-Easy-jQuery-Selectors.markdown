@@ -28,7 +28,7 @@ var x = $("tag");
 
 Probably the most interesting part is how we use the same selection statement, `$('thing')` and we can clearly see whether we are selecting an `#id` or a `.class`. 
 
-Of note as well is how easy it is to then iterate over these elements using `$.each()`.
+Of note as well is how easy it is to then iterate over these elements using `$.each()`. 
 
 ## Iterating Over Class Selections
 One thing that bothers me about `getElementByClassName` is how it returns an array and I need to loop over this to do something to each element.
