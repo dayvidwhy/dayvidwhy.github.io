@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html }}">
+  <link rel="shortcut icon" href="images/favicon.ico?" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="David Young" href="http://blog.davidyoung.tech/feed.xml">
+</head>
+<body>
+  {% include header.html %}
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%B %d, %Y' }}</time></p>
+        <div class="post-content" itemprop="articleBody">
+          {{ content }}
+        </div>
+      </article>
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>
