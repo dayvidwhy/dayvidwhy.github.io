@@ -80,6 +80,12 @@ $on-laptop:        768px;
     border-radius: 5px;
 }
 
+@include media-query($on-palm) {
+    .site-nav .menu-icon > svg {
+        width: 18px; height: 15px;
+    }
+}
+
 h2 {
     margin-top: 20px;
     margin-bottom: 0;
