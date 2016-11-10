@@ -191,6 +191,10 @@
         > p {
             font-size: 1.1em;
             color: #515151;
+
+            @include media-query($on-laptop) {
+                font-size: 1em;
+            }
         }
     }
 }
