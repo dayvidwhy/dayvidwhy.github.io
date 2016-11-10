@@ -3,6 +3,7 @@ layout: post
 title:  "Getting Feedback"
 date:   2016-10-17 10:23:10 +1000
 categories: blog
+permalink: getting-feedback
 ---
 Feedback can really suck. That's not even an understatement, it can really stop you in your tracks, making you feel bad about your hard work, but that's a good thing.
 

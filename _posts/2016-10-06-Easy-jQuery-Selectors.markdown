@@ -3,6 +3,7 @@ layout: post
 title:  "Easy jQuery Selectors"
 date:   2016-10-06 15:26:00 +1000
 categories: blog
+permalink: easy-jquery-selectors
 ---
 The popular web plugin jQuery is currently in it's third version and it's still going strong on the internet. Lately it has become less popular as the platform catches up, but some parts of it are still very useful to the novice web developer.
 

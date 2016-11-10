@@ -3,6 +3,7 @@ layout: post
 title:  "Software Process"
 date:   2016-11-2 14:20:00 +1000
 categories: blog
+permalink: software-process
 ---
 Something I've been struggling to understand is why some students dislike courses that attempt to teach the software process. Apparently these are considered a "waste of time". I would like to take a moment to give you reasons as to why this is important learning material.
 
@@ -32,7 +33,7 @@ There are a few courses at university that attempt to teach Agile and the concep
 
 An interesting thing that I learned this semester was how effective it is to work in short 'sprints' to complete tasks. Setting short periods of time to achieve goals results in goals that are much more reasonable and more likely to be completed. It also gives you a chance to finish a piece of content and get feedback from your client right away.
 
-This links [back to another post](http://blog.davidyoung.tech/blog/2016/10/17/Getting-Feedback.html) I made about the importance of feedback. By developing software in this manner you can get this valuable feedback consistently and most effectively communicate your progress to your client.
+This links [back to another post](http://blog.davidyoung.tech/getting-feedback) I made about the importance of feedback. By developing software in this manner you can get this valuable feedback consistently and most effectively communicate your progress to your client.
 
 ## Agile for Students
 I was asked by one of my lecturers towards the end of this semester for feedback on the use of agile for students doing their final build course. While I feel that setting goals for students to achieve is very useful, there is always the risk that students won’t take the process seriously enough.

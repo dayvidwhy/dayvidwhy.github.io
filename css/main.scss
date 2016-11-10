@@ -13,7 +13,7 @@ $base-line-height: 1.5;
 $spacing-unit:     30px;
 
 $text-color:       #111;
-$background-color: #fdfdfd;
+$background-color: #fff;
 $brand-color:      #2ecc71;
 
 $grey-color:       #828282;
@@ -46,6 +46,10 @@ $on-laptop:        768px;
 
 .post-title {
     color: #208e4e;
+}
+
+.page-title {
+    font-size: 1.5em;
 }
 
 .site-nav .page-link {

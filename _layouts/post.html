@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }}</title>
+  <title>David Young - {{ page.title }}</title>
   <meta name="description" content="{{ page.excerpt | strip_html }}">
   <link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css">
@@ -22,6 +22,16 @@
           {{ content }}
         </div>
       </article>
+      {% if page.next != null %}
+      <article itemscope itemtype="http://schema.org/BlogPosting">
+        <a href="{{ page.next.url }}" itemprop="name headline url">Next: {{ page.next.title }}</a>
+      </article>
+      {% endif %}
+      {% if page.previous != null %}
+      <article itemscope itemtype="http://schema.org/BlogPosting">
+        <a href="{{ page.previous.url }}" itemprop="name headline url">Previous: {{ page.previous.title }}</a>
+      </article>
+      {% endif %}
     </div>
   </main>
   {% include footer.html %}

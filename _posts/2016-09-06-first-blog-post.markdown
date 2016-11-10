@@ -3,6 +3,7 @@ layout: post
 title:  "First Blog Post"
 date:   2016-09-06 11:53:28 +1000
 categories: blog
+permalink: first-blog-post
 ---
 It seems apt to describe interesting things I've found myself getting up to while learning to code and I would like to share some of said things, most likely to affirm my own understanding, but also because why not.
 
