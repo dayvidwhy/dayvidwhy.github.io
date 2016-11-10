@@ -1,5 +1,5 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+# Main sass file.
 ---
 @charset "utf-8";
 
@@ -15,6 +15,7 @@ $spacing-unit:     30px;
 $text-color:       #111;
 $background-color: #fff;
 $brand-color:      #2ecc71;
+$white:            #fff;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
@@ -26,67 +27,15 @@ $content-width:    768px;
 $on-palm:          600px;
 $on-laptop:        768px;
 
-// Minima also includes a mixin for defining media queries.
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-
-// Import partials from the `minima` theme.
-@import "minima";
-
-/* Some extra styles by David */
-.site-title, .site-title:visited {
-    color: #FFF;
-    font-weight: 300;
-}
-
-.post-title {
-    color: #208e4e;
-}
-
-.page-title {
-    font-size: 1.5em;
-}
-
-.site-nav .page-link {
-    color: #FFF;
-}
-
-.site-nav {
-    background-color: #359DFF;
-}
-
-.site-nav .menu-icon > svg path {
-    fill: #FFF;
-}
-
-.site-header {
-    border: none;
-    background-color: #359DFF;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-
-.menu-icon {
-    padding-top: 0;
-}
-
-.read-more {
-    padding: 5px 10px;
-    background-color: #ecf0f1;
-    border-radius: 5px;
-}
-
-@include media-query($on-palm) {
-    .site-nav .menu-icon > svg {
-        width: 18px; height: 15px;
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
     }
 }
 
-h2 {
-    margin-top: 20px;
-    margin-bottom: 0;
-}
+// Partials from minima theme
+@import
+  "base",
+  "layout",
+  "syntax-highlighting"
+;
