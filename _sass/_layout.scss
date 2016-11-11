@@ -271,4 +271,13 @@
             font-size: 18px;
         }
     }
+
+    blockquote {
+        border-left: 4px solid $light-blue;
+
+        p {
+            font-style: normal;
+            letter-spacing: 0;
+        }
+    }
 }
