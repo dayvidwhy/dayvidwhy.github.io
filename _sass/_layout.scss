@@ -163,8 +163,6 @@
     }
 }
 
-
-
 /**
  * Page content
  */
@@ -191,6 +189,7 @@
         > p {
             font-size: 1.1em;
             color: #515151;
+            font-family: $post-font-family;
 
             @include media-query($on-laptop) {
                 font-size: 1em;
@@ -239,7 +238,7 @@
     p {
         font-size: 1.1em;
         color: #515151;
-
+        font-family: $post-font-family;
         @include media-query($on-laptop) {
             font-size: 1em;
         }
@@ -278,6 +277,7 @@
         p {
             font-style: normal;
             letter-spacing: 0;
+            font-family: $base-font-family;
         }
     }
 }
