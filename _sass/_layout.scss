@@ -189,7 +189,7 @@
         > p {
             font-size: 1.1em;
             color: #515151;
-            font-family: $post-font-family;
+            
 
             @include media-query($on-laptop) {
                 font-size: 1em;
@@ -237,8 +237,9 @@
 
     p {
         font-size: 1.1em;
+        line-height: 27px;
         color: #515151;
-        font-family: $post-font-family;
+        
         @include media-query($on-laptop) {
             font-size: 1em;
         }
