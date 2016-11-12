@@ -4,8 +4,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>David Young - {{ page.title }}</title>
+  <meta name="theme-color" content="#359DFF">
   <meta name="description" content="{{ page.excerpt | strip_html }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="{{ page.url | prepend: site.url }}">
+  <meta name="twitter:title" content="{{ page.title }} - David Young">
+  <meta name="twitter:description" content="{{ page.excerpt | strip_html }}">
+  <meta name="twitter:site" content="@dayvidwhy">
+  <meta name="twitter:creator" content="@dayvidwhy">
+  <title>David Young - {{ page.title }}</title>
   <link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="{{ page.url | prepend: site.url }}">

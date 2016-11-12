@@ -3,7 +3,7 @@
  */
 .site-header {
     min-height: 56px;
-    background-color: #359DFF;
+    background-color: $light-blue;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
     // Positioning context for the mobile navigation icon
@@ -47,7 +47,7 @@
         position: absolute;
         top: 9px;
         right: $spacing-unit / 2;
-        background-color: #359DFF;
+        background-color: $light-blue;
         border: 1px solid $grey-color-light;
         border-radius: 5px;
         text-align: right;
@@ -189,10 +189,12 @@
         > p {
             font-size: 1.1em;
             color: #515151;
+            line-height: 27px;
             
 
-            @include media-query($on-laptop) {
+            @include media-query($on-palm) {
                 font-size: 1em;
+                line-height: 24px;
             }
         }
     }
@@ -240,8 +242,9 @@
         line-height: 27px;
         color: #515151;
         
-        @include media-query($on-laptop) {
+        @include media-query($on-palm) {
             font-size: 1em;
+            line-height: 24px;
         }
     }
 
@@ -249,7 +252,7 @@
         font-size: 32px;
         margin-bottom: 5px;
 
-        @include media-query($on-laptop) {
+        @include media-query($on-palm) {
             font-size: 28px;
         }
     }
@@ -258,7 +261,7 @@
         font-size: 26px;
         margin-bottom: 5px;
 
-        @include media-query($on-laptop) {
+        @include media-query($on-palm) {
             font-size: 22px;
         }
     }
@@ -267,7 +270,7 @@
         font-size: 20px;
         margin-bottom: 5px;
 
-        @include media-query($on-laptop) {
+        @include media-query($on-palm) {
             font-size: 18px;
         }
     }
