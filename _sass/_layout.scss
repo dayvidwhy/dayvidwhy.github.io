@@ -257,10 +257,11 @@
     }
 
     a {
-        color: inherit;
+        color: $dark-green;
         border-bottom: 1.5px solid $dark-green;
 
         &:hover {
+            color: $dark-green;
             text-decoration: none;
             border-bottom: 1.5px solid $light-blue;
         }
@@ -269,7 +270,7 @@
     h2 {
         font-size: 32px;
         margin-bottom: 5px;
-        
+
         @include media-query($on-palm) {
             font-size: 28px;
         }
