@@ -269,8 +269,7 @@
     h2 {
         font-size: 32px;
         margin-bottom: 5px;
-        border-bottom: 1px solid black;
-
+        
         @include media-query($on-palm) {
             font-size: 28px;
         }
