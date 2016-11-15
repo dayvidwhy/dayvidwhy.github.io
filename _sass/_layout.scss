@@ -200,14 +200,6 @@
         }
 
         a {
-            border-left: 4px solid $light-green;
-            padding-left: 15px;
-
-            &:hover {
-                text-decoration: none;
-                border-left-color: #000;
-
-            }
 
             &.read-more {
                 border-left: none;
@@ -243,9 +235,7 @@
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
-    border-left: 4px solid $light-green;
     color: $dark-green;
-    padding-left: 15px;
 
     @include media-query($on-laptop) {
         font-size: 36px;
@@ -308,13 +298,4 @@
         color: $grey;
     }
 
-    blockquote {
-        border-left: 4px solid $light-blue;
-
-        p {
-            font-style: normal;
-            letter-spacing: 0;
-            font-family: $base-font-family;
-        }
-    }
 }
