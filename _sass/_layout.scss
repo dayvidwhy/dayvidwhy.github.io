@@ -4,7 +4,7 @@
 .site-header {
     min-height: 56px;
     background-color: $light-blue;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-bottom: 1px solid rgba(0,0,0,0.15);
 
     // Positioning context for the mobile navigation icon
     position: relative;
@@ -184,17 +184,33 @@
         > h2 {
             margin-top: 20px;
             margin-bottom: 0;
+            
         }
 
         > p {
             font-size: 1.1em;
-            color: #515151;
+            color: $grey;
             line-height: 27px;
             
 
             @include media-query($on-palm) {
                 font-size: 1em;
                 line-height: 24px;
+            }
+        }
+
+        a {
+            border-left: 4px solid $light-green;
+            padding-left: 15px;
+
+            &:hover {
+                text-decoration: none;
+                border-left-color: #000;
+
+            }
+
+            &.read-more {
+                border-left: none;
             }
         }
     }
@@ -227,7 +243,9 @@
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
-    color: #208e4e;
+    border-left: 4px solid $light-green;
+    color: $dark-green;
+    padding-left: 15px;
 
     @include media-query($on-laptop) {
         font-size: 36px;
@@ -240,7 +258,7 @@
     p {
         font-size: 1.1em;
         line-height: 27px;
-        color: #515151;
+        color: $grey;
         
         @include media-query($on-palm) {
             font-size: 1em;
@@ -248,9 +266,20 @@
         }
     }
 
+    a {
+        color: inherit;
+        border-bottom: 1.5px solid $dark-green;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1.5px solid $light-blue;
+        }
+    }
+
     h2 {
         font-size: 32px;
         margin-bottom: 5px;
+        border-bottom: 1px solid black;
 
         @include media-query($on-palm) {
             font-size: 28px;
@@ -273,6 +302,10 @@
         @include media-query($on-palm) {
             font-size: 18px;
         }
+    }
+
+    li {
+        color: $grey;
     }
 
     blockquote {

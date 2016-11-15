@@ -10,6 +10,8 @@ The popular web plugin jQuery is currently in it's third version and it's still 
 ## jQuery Is Just Bad
 Probably the biggest point you get from a few students that have done some stuff with web development before is that jQuery is bad, [and it sort of is](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007). Many of it's functions have big performance hits, but it is still a very convenient library to use.
 
+jQuery is also well known for being old and clunky. It's a large library weighing in at 28kB for the second flavour, and it takes a phones browser about 500ms on average to parse the library. Not the greatest.
+
 ## Just Teach Plain JavaScript
 JavaScript has a range of selectors that fascilitate grabbing elements on the page and then doing things to them, see;
 

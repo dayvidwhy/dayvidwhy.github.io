@@ -66,7 +66,7 @@ I recently jumped on the band wagon for making sure my site is readable to every
 </html>
 ```
 
-This is just so much better than this:
+This is just so much better given the good use of semantic tags breaking up the page into three clear body parts, the header, main and the footer. Which is vastly better for many systems, and for the web. than this;
 
 ```html
 <!-- Not so great semantics -->
