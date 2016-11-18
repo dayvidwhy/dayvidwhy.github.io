@@ -26,7 +26,7 @@ Slack has also been vastly important although the uptake from team members has s
 
 >Why don't we just use Facebook messenger?
 
-..with some just wanting to use Facebook messenger. I insist that Slack is a is much more appropriate environment for working on a professional project for the University. Slack’s ability to easily search for old messages, upload documents, and keep track of them is superior to other messaging platforms.
+..with some just wanting to use Facebook messenger. I insist that Slack is a much more appropriate environment for working on a professional project for the University. Slack’s ability to easily search for old messages, upload documents, and keep track of them is superior to other messaging platforms.
 
 ### Agile Processes
 There are a few courses at university that attempt to teach Agile and the concepts of Scrum to students. After doing courses like CSSE3002, the software process, and DECO3800/3801, final year design and build, I can safely say I am familiar with Agile. They even put marks towards using your Trello board consistently to operate in this manner which really pushes students to come out with these skills.
