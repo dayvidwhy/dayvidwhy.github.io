@@ -26,19 +26,19 @@
     <div class="wrapper">
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%B %d, %Y' }}</time> by <strong itemprop="author">{{ site.title }}</strong></p>
+        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%b %-d, %Y' }}</time> by <strong itemprop="author">{{ site.title }}</strong></p>
         <div class="post-content" itemprop="articleBody">
           {{ content }}
         </div>
       </article>
       {% if page.next != null %}
       <article itemscope itemtype="http://schema.org/BlogPosting">
-        <a href="{{ page.next.url }}" itemprop="name headline url">Next: {{ page.next.title }}</a>
+        <strong>Next: </strong><a href="{{ page.next.url }}" itemprop="name headline url">{{ page.next.title }}</a>
       </article>
       {% endif %}
       {% if page.previous != null %}
       <article itemscope itemtype="http://schema.org/BlogPosting">
-        <a href="{{ page.previous.url }}" itemprop="name headline url">Previous: {{ page.previous.title }}</a>
+        <strong>Previous: </strong><a href="{{ page.previous.url }}" itemprop="name headline url">{{ page.previous.title }}</a>
       </article>
       {% endif %}
     </div>
