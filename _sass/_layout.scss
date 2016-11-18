@@ -180,11 +180,21 @@
     list-style: none;
 
     > li {
-        margin-bottom: $spacing-unit;
+        padding-top: $spacing-unit / 2;
+        padding-bottom: $spacing-unit / 2;
+        border-bottom: 1px solid #f2f0ed;
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
 
         > h2 {
-            margin-top: 20px;
-            margin-bottom: 0;
+            margin: 0;
             
         }
 
@@ -215,6 +225,13 @@
     color: $grey-color;
     display: inline-block;
     margin-bottom: 10px;
+}
+
+.meta-border {
+    display: block;
+    border-bottom: 1px solid #f2f0ed;
+    margin-bottom: $spacing-unit / 2;
+    padding-bottom: $spacing-unit / 2;
 }
 
 .post-link {
@@ -307,5 +324,4 @@
     li {
         color: $grey;
     }
-
 }
