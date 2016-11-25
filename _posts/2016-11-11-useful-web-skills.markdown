@@ -2,7 +2,7 @@
 layout: post
 title:  "Useful Web Skills"
 date:   2016-11-11 14:20:00 +1000
-categories: blog
+categories: blog web semantics
 permalink: useful-web-skills
 ---
 A few people have asked me recently how I've managed to make heads or tails of the current state of the web, and how do you get to a point where this weird online world of development doesn't freak you out too much. Well quite a lot of it still confuses me, but it's definitely become easier. 
@@ -12,13 +12,13 @@ I also feel like I can weigh in on this topic after tutoring this past semester 
 Disclaimer: Some of these things are very obvious to the experienced web developer.
 
 ## Build a Page from Scratch
-If there's one thing that really accelerated my understanding of, and ability to write for the web, was doing everything from scratch. Crazy I know. 
+If there's one thing that really accelerated my understanding of, and ability to write for the web, was doing everything from scratch at least a few times. I reached a point where I became frustrated with how many different frameworks there were and the number of CSS templates out there were immense.
 
-I reached a point where I became frustrated with how many different frameworks there were and the number of CSS templates out there were immense. Looking at you Bootstrap, and I just could not deal with just using these classes. Just add a `form-control` class to that input field and it'll look pretty was not enough for me.
+I had noticed a lot of students would suggest the use of [bootstrap](https://getbootstrap.com/) right away for building pages, only to come to a halt later when some of the classes they used were not working the way they hoped. Often I would ask why they thought this class behaved this way and what CSS rules does it actually apply and they mostly weren't sure. 
 
-I've built a few pages from scratch now and even built my [own grid](http://daygrid.dwy.io) to ensure I understood the concepts. Don't always just assume you know how some piece of CSS works, try out its various attributes or value ranges.
+I still use frameworks from time to time but I always investigate the behaviour of pre-defined classes myself before using them and I even built my [own grid](http://daygrid.dwy.io) to ensure I understood the concepts. Don't always just assume you know how some piece of CSS works, try out its various attributes or value ranges.
 
-## Learn Semantics Now
+## Learning Semantics
 The [semantic web](https://www.w3.org/standards/semanticweb/) is a standard that allows the web to start making a lot more 'sense'. A lot of the data we put into pages has meaning beyond just the text we show. We can give our data more meaning quite easily with the proper syntax. 
 
 The latest thing I've become a fan of is the `itemscope` syntax. You can make links to blog posts much more meaningful like so. Here's a blog link from my [portfolio](https://davidyoung.tech) site.
@@ -66,7 +66,7 @@ I recently jumped on the band wagon for making sure my site is readable to every
 </html>
 ```
 
-This is just so much better given the good use of semantic tags breaking up the page into three clear body parts, the header, main and the footer. Which is vastly better for many systems, and for the web. than this;
+This is much better for screen readers given the good use of semantic tags breaking up the page into three clear body parts, the header, main and the footer. This is vastly better than the following.
 
 ```html
 <!-- Not so great semantics -->
@@ -88,7 +88,9 @@ This is just so much better given the good use of semantic tags breaking up the 
 </html>
 ```
 
-Mostly because the first one is more readable, but also because of the implied aria labels. The `<header>` tag has an implicit `role=banner` associated with it. It's possible to give this back with aria labels but why not just use the proper mark-up in the first place? If you have not done much with aria labels before I highly recommend reading [the spec](https://www.w3.org/TR/wai-aria/) or [looking at Mozilla's guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) on the matter.
+Mostly because the first one is more readable, but also because of the implied aria labels. The `<header>` tag has an implicit `role=banner` associated with it. It's possible to give this back with aria labels but why not just use the proper mark-up in the first place? 
+
+If you have not done much with aria labels before I highly recommend reading [the spec](https://www.w3.org/TR/wai-aria/) or [looking at Mozilla's guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) on the matter.
 
 ## Inspect Everything
 One of the best things you can do while learning is to inspect almost every page you come across. Look inside the head tag, look at the properties they gave their `<p>` tags and look at what classes they used and why. Look at how they lay out their content. 
@@ -97,10 +99,10 @@ Things that usually interest me are:
 
 * Did they use a grid or are they using flexbox?
 * How did they set the background colour of this element, does it cascade down from a higher class for some reason?
-* What's in the `<head>` tag? Which usually leads onto..
+* What's in the `<head>` tag? Which usually leads onto the next point.
 * What framework, if any, are they using?
-* How are they loading their CSS, in a blob or throughout the HTML?
-* Are they using a web-font and how are they loading it?
+* How are they loading their CSS, in a blob or throughout the HTML? Sharding CSS has become the cool new thing lately.
+* Are they using a web-font and how are they loading it? Are they using [modernizr](https://modernizr.com/) or lazy loading it?
 
 Because it's pretty interesting to see how some people make their pages, and sometimes they leave small comment messages for you to see.
 

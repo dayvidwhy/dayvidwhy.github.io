@@ -3,18 +3,18 @@ layout: home
 ---
 
 <div class="home">
-  <h1>David Young's Blog</h1>
+  <h1>Posts</h1>
   <p>This is where I attempt to express thoughts about things I've either been working on or group projects with others. These are my own thoughts and do not reflect any company or person.</p>
   <ul class="post-list">
     {% for post in site.posts %}
-      <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
-        </h2>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} by <strong>{{ site.title }}</strong></span>
-        {{ post.excerpt }}
-        <a href="{{ post.url | prepend: site.baseurl }}">Read More...</a>
-      </li>
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
+      </h2>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} by <strong>{{ site.title }}</strong></span>
+      {{ post.excerpt }}
+      <a href="{{ post.url | prepend: site.baseurl }}">Read More...</a>
+    </li>
     {% endfor %}
   </ul>
 </div>

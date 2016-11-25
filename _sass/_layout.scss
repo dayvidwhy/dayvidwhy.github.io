@@ -4,7 +4,7 @@
 .site-header {
     min-height: 56px;
     background-color: $light-blue;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
     // Positioning context for the mobile navigation icon
     position: relative;
@@ -93,8 +93,6 @@
         }
     }
 }
-
-
 
 /**
  * Site footer
@@ -237,6 +235,15 @@
 .post-link {
     display: block;
     font-size: 30px;
+}
+
+.category-tag {
+    display: inline-block;
+    margin-right: 3px;
+    padding: 5px;
+    color: $white;
+    background-color: $light-green;
+    border-radius: 3px;
 }
 
 /**

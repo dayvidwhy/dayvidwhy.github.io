@@ -31,6 +31,9 @@
           {{ content }}
         </div>
       </article>
+      {% for category in page.categories %}
+      <p class="category-tag">{{ category }}</p>
+      {% endfor %}
       {% if page.next != null %}
       <article itemscope itemtype="http://schema.org/BlogPosting">
         <strong>Next: </strong><a href="{{ page.next.url }}" itemprop="name headline url">{{ page.next.title }}</a>
