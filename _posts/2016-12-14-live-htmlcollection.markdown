@@ -7,7 +7,7 @@ permalink: live-htmlcollection
 ---
 For most of the time I've been writing JavaScript I've had jQuery there to hold me up, providing an assortment of helper functions and methods that I _think_ make life easier. I mean I'm fairly sure they're supposed to, that's what it says in their documentation. I realised I had never really tried to make a proper web application without it, so decided it was about [time to do so](https://dayvidwhy.github.io/local-to-do/).
 
-# Where are you jQuery?
+## Where are you jQuery?
 I decided that a to-do type application that made use of local storage to remember tasks would be a good starting point, it would let me play with a web API and do some UI state management that's incredibly easy to do in jQuery. 
 
 A lot of what this blog post wants to address comes from me trying to be somewhat clever. I have become incredibly used to the typical jQuery style selectors like `$(".class")` and figured how hard could that be to reproduce in a simple function. Behold.
@@ -30,7 +30,7 @@ Seems good right? If we want an ID based element we use `querySelector`, or for 
 
 But it's an array? Arrays have an `indexOf` function? This is when I started thinking I'd lost my touch a bit but after a quick search around I discovered the culprit was that fact that this is _not_ an array, but a [DOMTokenList](https://developer.mozilla.org/en/docs/Web/API/DOMTokenList). So there are some specific methods here for class management, which jQuery handles really well for us with their `.addClass` and `.removeClass` methods, that have fairly strict browser requirements. I started using `.add` and `.remove` and everything worked as expected avoiding `.replace` since chrome does not support it.
 
-# A Live Collection
+## A Live Collection
 My efforts picked up again after this, having felt as if I learned something, so I pressed on. The next issue I encountered was an oddly shrinking array. Having become very used to how jQuery style selectors work, I selected the elements I wanted to hide, those being the ones currently shown, and use `.hide()` on them. Image the following scenario.
 
 ```html
@@ -61,5 +61,5 @@ The thing happening here is that `document.getElementsByClassName` returns an `H
 
 This can be fairly easily remedied by swapping the order of operations, I just found it profoundly odd that a live updating collection of elements is something that people would want. You can also swap the list you get back to a plain array.
 
-# Finally
+## Finally
 This held me up a bit yesterday and I felt as if jQuery has slightly altered my understanding of how selectors work, but it was definitely a useful learning experience and I intend to keep attempting more features without jQuery.
