@@ -12,7 +12,7 @@ I decided that a to-do type application that made use of local storage to rememb
 
 A lot of what this blog post wants to address comes from me trying to be somewhat clever. I have become incredibly used to the typical jQuery style selectors like `$(".class")` and figured how hard could that be to reproduce in a simple function. Behold.
 
-```js
+```javascript
 function $(element) {
     if (element[0] === '#') {
         return document.querySelector(element);
@@ -51,7 +51,7 @@ My efforts picked up again after this, having felt as if I learned something, so
 
 I have a couple of div elements currently showing that I would like to hide, so I attempted the following.
 
-```
+```javascript
 var shown = $(".show");
 for (var i = 0; i < shown.length; i++) {
     shown[i].classList.remove('show');
@@ -73,7 +73,7 @@ This held me up a bit yesterday and I felt as if jQuery has slightly altered my 
 # Update
 I revised my original function to look something like this.
 
-```js
+```javascript
 function $(element) {
     if (element[0] === '#') {
         return document.getElementById(element.slice(1, element.length));
