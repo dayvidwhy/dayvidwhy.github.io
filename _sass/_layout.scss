@@ -234,7 +234,11 @@
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-size: 30px;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .category-tag {
@@ -305,12 +309,21 @@
         }
     }
 
-    h2 {
+    h1 {
         font-size: 32px;
         margin-bottom: 5px;
 
         @include media-query($on-palm) {
             font-size: 28px;
+        }
+    }
+
+    h2 {
+        font-size: 29px;
+        margin-bottom: 5px;
+
+        @include media-query($on-palm) {
+            font-size: 25px;
         }
     }
 

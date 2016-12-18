@@ -7,12 +7,12 @@ permalink: easy-jquery-selectors
 ---
 The popular web plugin [jQuery](https://jquery.com/) is currently in its third version and it's still going strong on the internet. Lately it has become less popular as the web platform catches up, but some parts of it are still very useful to the novice web developer.
 
-## jQuery Is Just Bad
+# jQuery Is Just Bad
 Probably the biggest point you get from a few students that have done some website development before is that jQuery is bad, [and it does have its problems](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007). Many of its functions have big performance hits to do simple things, but it is still a very convenient library to use.
 
 jQuery is well known for being old and clunky with its a large library weighing in at 28kB for the second flavour, and it takes a phones browser about 500ms on average to parse all of the code. Not the greatest.
 
-## Just Teach Plain JavaScript
+# Just Teach Plain JavaScript
 I've been tutoring this past semester at UQ and have come across a few students that have declared war against jQuery. Our main point of pushing jQuery first is usually because we have a high reliance on using an external API in the course, plugging into [trove](http://trove.nla.gov.au/) to display the data in an interesting way.
 
 I'll go into how jQuery deals with API requests in a little bit but first I want to suggest some positives for using jQuery before a lot of plain JavaScript.
@@ -37,7 +37,7 @@ Probably the most interesting part is how we use the same selection statement, `
 
 Of note as well is how easy it is to then iterate over these elements using `$.each()` by simply providing a callback function.
 
-## Iterating Over Class Selections
+# Iterating Over Class Selections
 One thing that bothers me about `getElementByClassName` is how it returns an array and I need to loop over this to do something to each element.
 
 For instance if we grabbed a bunch of navigation elements.
@@ -62,7 +62,7 @@ $(".nav-links").css("color", "red");
 
 I can see that for all things with the class `.nav-links` I am changing their 'color' to red.
 
-## Making API Requests
+# Making API Requests
 Making use of API's in plain JavaScript just isn't fun as well, and trying to diagnose an issue in the depths of this code.
 
 ```js
@@ -88,5 +88,5 @@ This is just too easy for first year students to get their heads around and star
 
 Also specifying the `&callback=?` in the URL we pass to `$.getJSON` seemlessly deals with `JSONP` requests and student's don't have to spend time figuring out how to load JSON as the source of a script tag.
 
-## Finally
+# Finally
 jQuery has its weak points and get's a bad name lately, but its [developer API](http://api.jquery.com/) is the easiest thing to read and introduce student's to. I have found myself, more than a few times, sitting with students while we explore it together. In conclusion, I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.
