@@ -199,7 +199,7 @@
         > p {
             font-size: 1.1em;
             color: $grey;
-            line-height: 27px;
+            line-height: $base-line-height;
             margin-bottom: 10px;
             
 
@@ -289,7 +289,7 @@
 
     p {
         font-size: 1.1em;
-        line-height: 27px;
+        line-height: $base-line-height;
         color: $grey;
         
         @include media-query($on-palm) {
