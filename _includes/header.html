@@ -1,6 +1,6 @@
 <header class="site-header" role="banner">
     <div class="wrapper">
-      <a class="site-title" href="/">David Young</a>
+      <a class="site-title" href="{{ '/' | prepend: site.baseurl }}">David Young</a>
       <nav class="site-nav">
         <a href="#" class="menu-icon">
           <svg viewBox="0 0 18 15">
@@ -10,9 +10,9 @@
           </svg>
         </a>
         <div class="trigger">
-          <a class="page-link" href="/">Home</a>
-          <a class="page-link" href="/about">About</a>
-          <a class="page-link" href="https://davidyoung.tech">Portfolio</a>
+          <a class="page-link" href="{{ '/' | prepend: site.baseurl }}">Posts</a>
+          <a class="page-link" href="{{ '/about' | prepend: site.baseurl }}">About</a>
+          <a class="page-link" href="{{ site.portfolio_url }}">Portfolio</a>
         </div>
       </nav>
     </div>

@@ -1,11 +1,22 @@
+# core settings
 title: David Young
 email: me@davidyoung.tech
+email_address: me@davidyoung.tech
+
+# bio's
 description: > # this means to ignore newlines until "baseurl:"
   David Young is an Information Technology student based in Brisbane, Australia 
   with a keen interest in Website Development and Design majoring in Software 
   Development.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://blog.davidyoung.tech" # the base hostname & protocol for your site
+short_description: "David Young is Web Developer based in Brisbane, Australia with a keen interest in Website Development and Design."
+
+# URLs
+baseurl: "" # subpath, eg /blog
+portfolio_url: https://davidyoung.tech # where my portfolio lives
+url: "https://blog.davidyoung.tech" # base url
+theme_colour: "#359DFF"
+
+# usernames
 twitter_username: dayvidwhy
 github_username:  dayvidwhy
 

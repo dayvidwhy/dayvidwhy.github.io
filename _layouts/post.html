@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#359DFF">
-  <meta name="description" content="{{ page.excerpt | strip_html }}">
+  <meta name="theme-color" content="{{ site.theme_colour }}">
+  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="{{ page.url | prepend: site.url }}">
-  <meta name="twitter:title" content="{{ page.title }} - David Young">
-  <meta name="twitter:description" content="{{ page.excerpt | strip_html }}">
+  <meta name="twitter:url" content="{{ page.url | prepend: site.baseurl |  prepend: site.url }}">
+  <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
+  <meta name="twitter:description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
   <meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
-  <meta name="twitter:site" content="@dayvidwhy">
-  <meta name="twitter:creator" content="@dayvidwhy">
+  <meta name="twitter:site" content="{{ site.twitter_username }}">
+  <meta name="twitter:creator" content="{{ site.twitter_username }}">
   <title>David Young - {{ page.title }}</title>
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <link rel="shortcut icon" href="images/favicon.ico?" type="image/x-icon">
   <link rel="stylesheet" href="css/main.css">
   <link rel="canonical" href="{{ page.url | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="David Young" href="https://blog.davidyoung.tech/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' }}">
 </head>
 <body>
   {% include header.html %}
@@ -36,12 +36,12 @@
       {% endfor %}
       {% if page.next != null %}
       <article itemscope itemtype="http://schema.org/BlogPosting">
-        <strong>Next: </strong><a href="{{ page.next.url }}" itemprop="name headline url">{{ page.next.title }}</a>
+        <strong>Next: </strong><a href="{{ page.next.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.next.title }}</a>
       </article>
       {% endif %}
       {% if page.previous != null %}
       <article itemscope itemtype="http://schema.org/BlogPosting">
-        <strong>Previous: </strong><a href="{{ page.previous.url }}" itemprop="name headline url">{{ page.previous.title }}</a>
+        <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
       </article>
       {% endif %}
     </div>

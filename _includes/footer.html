@@ -1,26 +1,27 @@
 <footer class="site-footer">
   <div class="wrapper">
-    <h2 class="footer-heading">David Young</h2>
+    <h2 class="footer-heading">{{ site.title }}</h2>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li><a href="https://davidyoung.tech">Portfolio</a></li>
-          <li><a href="mailto:me@davidyoung.tech">Email me</a></li>
+          <li><a href="{{ site.portfolio_url }}">Portfolio</a></li>
+          <li><a href="mailto:{{ site.email_address }}">Email me</a></li>
           <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}">Feed</a></li>
         </ul>
       </div>
       <div class="footer-col footer-col-2">
         <ul class="social-media-list">
           <li>
-            <a href="https://github.com/dayvidwhy"><span class="username">My Github</span></a>
+            <a href="https://github.com/{{ site.github_username }}"><span class="username">My Github</span></a>
           </li>
           <li>
-            <a href="https://twitter.com/dayvidwhy"><span class="username">@dayvidwhy</span></a>
+            <a href="https://twitter.com/{{ site.twitter_username }}"><span class="username">@{{ site.twitter_username }}</span></a>
           </li>
         </ul>
       </div>
       <div class="footer-col footer-col-3">
-        <p>David Young is Web Developer based in Brisbane, Australia with a keen interest in Website Development and Design.
+        <p>
+            {{ site.short_description }}
         </p>
       </div>
     </div>
