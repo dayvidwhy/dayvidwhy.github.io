@@ -198,9 +198,9 @@
 
             @include media-query($on-palm) {
                 display: block;
-                width: 30%;
+                width: 40%;
                 margin: auto;
-                margin-bottom: 16px;
+                margin-bottom: 8px;
             }
         }
 
@@ -461,6 +461,7 @@
     h1 {
         font-size: 32px;
         margin-bottom: 5px;
+        line-height: 1.2;
 
         @include media-query($on-palm) {
             font-size: 28px;

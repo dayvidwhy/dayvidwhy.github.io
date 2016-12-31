@@ -5,7 +5,7 @@ date:   2016-12-30 15:21:00 +1000
 categories: blog closure ajax
 permalink: loops-closures-and-ajax
 ---
-Scope in JavaScript is one its more peculiar features that tends to trip up developers as they get started with the language. One issue that came up again and again while I was tutoring last semester was the issue of performing asynchronous callbacks in loops, and why things were acting funny.
+Scope in JavaScript is one of its more peculiar features that tends to trip up developers as they get started with the language. One issue that came up again and again while I was tutoring last semester was the issue of performing asynchronous callbacks in loops, and why things were acting funny.
 
 # Strange syntax
 To be fair, this syntax does come across as strange, and even when I first saw it, I wasn't quite sure how it was solving the problem.
