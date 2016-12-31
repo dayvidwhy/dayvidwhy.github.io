@@ -65,7 +65,7 @@
                 height: 15px;
 
                 path {
-                    fill: $grey;
+                    fill: $dark-green;
                 }
             }
         }
@@ -213,6 +213,42 @@
             &.read-more {
                 border-left: none;
             }
+        }
+    }
+}
+
+.contact {
+    label {
+        margin-top: 16px;
+        display: block;
+        width: 80%;
+        span {
+            font-size: 1.1em;
+        }
+        input[type=text] {
+            width: 100%;
+            display: block;
+            padding: 8px;
+            font-size: 1.1em;
+        }
+        textarea {
+            width: 100%;
+            display: block;
+            padding: 8px;
+            font-size: 1.1em;
+        }
+    }
+    input[type=submit] {
+        margin-top: 16px;
+        color: white;
+        padding: 14px 20px;
+        font-size: 1.3em;
+        border: none;
+        cursor: pointer;
+        -webkit-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+        &:hover {
+            background-color: $dark-green;
         }
     }
 }

@@ -1,6 +1,5 @@
 ---
 layout: home
-title:  "About Me"
 permalink: about
 ---
 # Persona
@@ -32,6 +31,3 @@ If you have any responses to my posts please let me know and I'll be sure to get
 * Python
 * Java
 * C
-
-## Availability
-I am currently available for hire, feel free to view my resume. Please contact me for more information or to have a chat about something you are interested in.
