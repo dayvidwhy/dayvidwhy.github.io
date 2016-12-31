@@ -328,6 +328,7 @@
             padding: 8px;
             font-size: 1.1em;
             box-sizing: border-box;
+            border: 1px solid $grey-color-light;
             -webkit-border-radius: 0px;
         }
 
@@ -338,6 +339,7 @@
             font-size: 1.1em;
             box-sizing: border-box;
             font-family: inherit;
+            border: 1px solid $grey-color-light;
             -webkit-border-radius: 0px;
         }
     }
