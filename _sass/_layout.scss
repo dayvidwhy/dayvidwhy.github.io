@@ -22,6 +22,9 @@
     }
 }
 
+/**
+* Navigation styles
+*/
 .site-nav {
     float: right;
     line-height: 56px;
@@ -172,6 +175,24 @@
     font-size: 20px;
 }
 
+/**
+* Homepage list of posts.
+*/
+.home {
+    h1  {
+        margin: 8px 0;
+        line-height: 1;
+        span {
+            color: $light-green;
+        }
+    }
+    h3 {
+        margin-top: 0px;
+        margin-bottom: 8px;
+        font-size: 1.3em;
+    }
+}
+
 .post-list {
     margin-left: 0;
     list-style: none;
@@ -194,6 +215,18 @@
         > h2 {
             margin: 0 0 4px 0;
             line-height: 1.1;
+
+            .post-link {
+                display: block;
+                font-size: 30px;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    text-decoration: none;
+                }
+                &:visited {
+                    color: $light-green;
+                }
+            }
         }
 
         > p {
@@ -218,34 +251,25 @@
     }
 }
 
-.home {
-    h1  {
-        margin: 8px 0;
-        line-height: 1;
-        span {
-            color: $light-green;
-        }
-    }
-    h3 {
-        margin-top: 0px;
-        margin-bottom: 8px;
-        font-size: 1.3em;
-    }
-}
-
+/**
+* Contact page specific styles
+*/
 .contact {
     label {
         margin-top: 16px;
         display: block;
         width: 80%;
+
         @include media-query($on-palm) {
             width: 100%;
         }
+
         span {
             font-size: 1.1em;
             display: inline-block;
             margin-bottom: 4px;
         }
+
         input[type=text] {
             width: 100%;
             display: block;
@@ -254,6 +278,7 @@
             box-sizing: border-box;
             -webkit-border-radius: 0px;
         }
+
         textarea {
             width: 100%;
             display: block;
@@ -283,6 +308,9 @@
     }
 }
 
+/**
+* Meta under post titles on homepage and post pages.
+*/
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
@@ -297,15 +325,9 @@
     padding-bottom: $spacing-unit / 2;
 }
 
-.post-link {
-    display: block;
-    font-size: 30px;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        text-decoration: none;
-    }
-}
-
+/**
+* Tags used under posts and on projects.
+*/
 .post-footer-tags {
     margin-top: 16px;
 }
@@ -316,10 +338,9 @@
 
 .category-tag {
     display: inline-block;
-    margin-right: 3px;
-    margin-bottom: 0;
+    margin: 8px 4px 0 0;
     padding: 4px 8px;
-    border: 1px solid $dark-green;
+    border: 2px solid $dark-green;
     border-radius: 10px;
     color: $grey;
     background-color: #efefef;
@@ -332,6 +353,7 @@
     margin-bottom: $spacing-unit;
 }
 
+/* Fancy tite above posts */
 .post-title {
     position: relative;
     font-size: 42px;

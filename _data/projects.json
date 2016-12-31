@@ -5,7 +5,7 @@
         "The development began with the client wanting to be able to display extra stock on hand to customers in a way that was better than simply sending photos over their current e-mail system.",
         "Building this site from scratch helped extend my understanding of the basic concepts of the web and was my first venture in setting up virtual hosting."],
         "link": "https://jayoung.com.au",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "PHP", "MySQL", "Apache"]
+        "tech_tags" : ["HTML5", "CSS3", "JS", "PHP", "MySQL", "Apache", "VPS"]
     },
     {
         "title" : "daygrid.css",
@@ -21,7 +21,7 @@
         "I built this application to help demonstrate my understanding of working with API endpoints as this is what is done in the first year course I hoped to tutor."],
         "link" : "https://dayvidwhy.github.io/feeling-stacky/",
         "theme_colour" : "#f4a503",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "jQuery"]
+        "tech_tags" : ["HTML5", "CSS3", "JS", "jQuery", "API"]
     },
     {
         "title" : "RedFetch",
@@ -29,7 +29,7 @@
         "The page makes use of some interesting web technologies such as the fetch api, the flexible box layout and function debouncing to ensure a smooth experience for the user."],
         "link" : "https://dayvidwhy.github.io/redfetch/",
         "theme_colour" : "#c0392b",
-        "tech_tags" : ["HTML5", "CSS3", "JS"]
+        "tech_tags" : ["HTML5", "CSS3", "JS", "API"]
     },
     {
         "title" : "Local To Do",
