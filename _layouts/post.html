@@ -34,16 +34,18 @@
       {% for category in page.categories %}
       <p class="category-tag">{{ category }}</p>
       {% endfor %}
-      {% if page.next != null %}
-      <article itemscope itemtype="http://schema.org/BlogPosting">
-        <strong>Next: </strong><a href="{{ page.next.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.next.title }}</a>
-      </article>
-      {% endif %}
-      {% if page.previous != null %}
-      <article class="post-footer-tags" itemscope itemtype="http://schema.org/BlogPosting">
-        <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
-      </article>
-      {% endif %}
+      <div class="post-footer-tags">
+        {% if page.next != null %}
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+          <strong>Next: </strong><a href="{{ page.next.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.next.title }}</a>
+        </article>
+        {% endif %}
+        {% if page.previous != null %}
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+          <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
+        </article>
+        {% endif %}
+      </div>
     </div>
   </main>
   {% include footer.html %}
