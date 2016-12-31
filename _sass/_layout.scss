@@ -222,6 +222,9 @@
         margin-top: 16px;
         display: block;
         width: 80%;
+        @include media-query($on-palm) {
+            width: 100%;
+        }
         span {
             font-size: 1.1em;
         }
@@ -230,12 +233,14 @@
             display: block;
             padding: 8px;
             font-size: 1.1em;
+            box-sizing: border-box;
         }
         textarea {
             width: 100%;
             display: block;
             padding: 8px;
             font-size: 1.1em;
+            box-sizing: border-box;
         }
     }
     input[type=submit] {

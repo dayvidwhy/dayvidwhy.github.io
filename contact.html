@@ -6,18 +6,18 @@ layout: home
   <p>If you would like to get in touch with me try the form below. I attempt to respond to every message I receive but there may be a short delay if it is during the week.</p>
   <form id="contact_me" method="POST" action="//formspree.io/me@davidyoung.tech">
     <label>
-      <span>Your Name</span>
+      <span>Name</span>
       <input type="text" name="name" placeholder="Enter your name.">
     </label>
     <label>
-      <span>Your Email Address</span>
+      <span>Email Address</span>
       <input type="text" name="email" placeholder="Enter your email address.">
     </label>
     <label>
-      <span>Your Message</span>
+      <span>Message</span>
       <textarea rows="4" placeholder="Enter your message."></textarea>
     </label>
-    <input type="submit" value="Submit">
+    <input id="contact-button" type="submit" value="Submit">
   </form>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -30,13 +30,13 @@ $('#contact_me').submit(function(event) {
         data: $(this).serialize(),
         dataType: 'json',
         beforeSend: function() {
-            $("#contact-button").val('Sending..');
+            $("#contact-button").val('Sending...');
         },
         success: function(data) {
             $("#contact-button").val('Message Sent!');
         },
         error: function(err) {
-            $("#contact-button").val('Make sure you type something!');
+            $("#contact-button").val('Try Again');
             setTimeout(function() {
                 $("#contact-button").val('Submit');
             }, 2000);

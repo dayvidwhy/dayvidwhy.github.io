@@ -16,14 +16,14 @@ I am very interested in web performance on mobile and what it means to make site
 
 I am experienced in using Linux, Apache, MySQL and PHP on the back-end to deliver high performance online solutions.
 
-## Contact
+## Contact me
 If you have any responses to my posts please let me know and I'll be sure to get back to you. I'm very interested in mobile web performance and cross browser solutions.
 
 * [E-Mail](mailto:me@davidyoung.tech)
 * [GitHub](https://github.com/dayvidwhy)
 * [Twitter](twitter.com/dayvidwhy)
 
-## Language
+## Languages
 * HTML5
 * CSS3
 * JavaScript/ES6+
