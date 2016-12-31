@@ -2,9 +2,16 @@
 layout: default
 ---
 <div class="home">
-  <h1>Hi, I'm <span>David</span></h1>
-  <h3>I'm a Web Developer</h3>
-  <p>This is where I attempt to express ideas about things I've either been working on or issues I encounter. You can also view some of my <a href="{{ '/projects' | prepend: site.baseurl }}">projects</a> that I build from time to time. These thoughts are my own.</p>
+  <div class="hero-row">
+    <div class="hero-row-image">
+      <img src="{{ '/images/small.jpg' | prepend: site.baseurl }}">
+    </div>
+    <div class="hero-row-bio">
+      <h1>Hi, I'm <span>David</span></h1>
+      <h3>I'm a Web Developer</h3>
+      <p class="hero-bio">This is where I attempt to express ideas about things I've either been working on or issues I encounter. You can also view some of my <a href="{{ '/projects' | prepend: site.baseurl }}">projects</a> that I build from time to time. These thoughts are my own.</p>
+    </div>
+  </div>
   <ul class="post-list">
     {% for post in site.posts %}
     <li>
