@@ -10,13 +10,13 @@
   <meta name="twitter:url" content="{{ page.url | prepend: site.baseurl |  prepend: site.url }}">
   <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
   <meta name="twitter:description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
-  <meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+  <meta name="twitter:image" content="{{ '/images/small.jpg' | prepend: site.baseurl }}">
   <meta name="twitter:site" content="{{ site.twitter_username }}">
   <meta name="twitter:creator" content="{{ site.twitter_username }}">
   <title>David Young - {{ page.title }}</title>
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-  <link rel="shortcut icon" href="images/favicon.ico?" type="image/x-icon">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="shortcut icon" href="{{ '/images/favicon.ico?' | prepend: site.baseurl }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' }}">
 </head>
@@ -40,7 +40,7 @@
       </article>
       {% endif %}
       {% if page.previous != null %}
-      <article itemscope itemtype="http://schema.org/BlogPosting">
+      <article class="post-footer-tags" itemscope itemtype="http://schema.org/BlogPosting">
         <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
       </article>
       {% endif %}

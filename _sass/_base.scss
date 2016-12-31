@@ -27,7 +27,7 @@ main {
  */
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $text-color;
+    color: $base-text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
@@ -185,6 +185,6 @@ pre {
     vertical-align: middle;
 
     path {
-        fill: $grey-color;
+        fill: $grey;
     }
 }

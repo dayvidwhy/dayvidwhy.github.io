@@ -18,7 +18,7 @@
 
     &,
     &:visited {
-        color: $dark-green;
+        color: $light-green;
     }
 }
 
@@ -65,7 +65,7 @@
                 height: 15px;
 
                 path {
-                    fill: $dark-green;
+                    fill: $light-green;
                 }
             }
         }
@@ -175,6 +175,7 @@
 .post-list {
     margin-left: 0;
     list-style: none;
+    margin-top: 24px;
 
     > li {
         padding-top: $spacing-unit / 2;
@@ -217,6 +218,21 @@
     }
 }
 
+.home {
+    h1  {
+        margin: 8px 0;
+        line-height: 1;
+        span {
+            color: $light-green;
+        }
+    }
+    h3 {
+        margin-top: 0px;
+        margin-bottom: 8px;
+        font-size: 1.3em;
+    }
+}
+
 .contact {
     label {
         margin-top: 16px;
@@ -227,6 +243,8 @@
         }
         span {
             font-size: 1.1em;
+            display: inline-block;
+            margin-bottom: 4px;
         }
         input[type=text] {
             width: 100%;
@@ -234,6 +252,7 @@
             padding: 8px;
             font-size: 1.1em;
             box-sizing: border-box;
+            -webkit-border-radius: 0px;
         }
         textarea {
             width: 100%;
@@ -241,19 +260,25 @@
             padding: 8px;
             font-size: 1.1em;
             box-sizing: border-box;
+            font-family: inherit;
+            -webkit-border-radius: 0px;
         }
     }
     input[type=submit] {
         margin-top: 16px;
-        color: white;
+        color: $grey;
         padding: 14px 20px;
         font-size: 1.3em;
         border: none;
         cursor: pointer;
+        background-color: $light-grey;
         -webkit-transition: all 0.1s ease-in-out;
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px;
         transition: all 0.1s ease-in-out;
         &:hover {
-            background-color: $dark-green;
+            background-color: $light-green;
+            color: $white;
         }
     }
 }
@@ -281,13 +306,22 @@
     }
 }
 
+.post-footer-tags {
+    margin-top: 16px;
+}
+
+.category-tag-list {
+    margin: 8px 0 0 0;
+}
+
 .category-tag {
     display: inline-block;
     margin-right: 3px;
+    margin-bottom: 0;
     padding: 4px 8px;
-    border: 1px solid $light-green;
-    border-radius: 3px;
-    color: #515151;
+    border: 1px solid $dark-green;
+    border-radius: 10px;
+    color: $grey;
     background-color: #efefef;
 }
 
@@ -304,7 +338,7 @@
     letter-spacing: -1px;
     line-height: 1;
     margin-top: 0.5em;
-    color: $dark-green;
+    color: $light-green;
 
     &::before {
         position: absolute;
@@ -313,7 +347,7 @@
         bottom: -0.2em;
         width: 1em;
         margin-bottom: -2px;
-        border-bottom: 4px solid $light-green;
+        border-bottom: 4px solid $dark-green;
     }
 
     @include media-query($on-laptop) {
@@ -340,11 +374,11 @@
     }
 
     a {
-        color: $dark-green;
-        border-bottom: 1.5px solid $dark-green;
+        color: $light-green;
+        border-bottom: 1.5px solid $light-green;
 
         &:hover {
-            color: $dark-green;
+            color: $light-green;
             text-decoration: none;
             border-bottom: 1.5px solid $light-grey;
         }
