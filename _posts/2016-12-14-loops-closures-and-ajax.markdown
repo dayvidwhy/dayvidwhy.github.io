@@ -14,7 +14,7 @@ Let's consider the contrived example below where we have an array of elements, a
 
 ```javascript
 var items = ['cat', 'dog', 'cow', 'rabbit'];
-for (let i = 0; i < 4; i++) {
+for (var i = 0; i < 4; i++) {
     $.get('index.html', function(data) {
         console.log(items[i]); // What is i?
     });
