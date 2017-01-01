@@ -7,7 +7,7 @@ email_address: me@davidyoung.tech
 description: > # this means to ignore newlines until "baseurl:"
   David Young is a Web Developer based in Brisbane, Australia 
   with a keen interest in Website Development and Design trying to make the web faster.
-short_description: "David Young is Web Developer based in Brisbane, Australia with a keen interest in Website Development and Design."
+short_description: "David Young is a Web Developer based in Brisbane, Australia with a keen interest in Website Development and Design."
 
 # URLs
 baseurl: "" # subpath, eg /blog
