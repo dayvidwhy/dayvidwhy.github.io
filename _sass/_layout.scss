@@ -5,8 +5,14 @@
     min-height: 56px;
     background-color: $light-grey;
     padding: 8px 0;
+    border-bottom: 1px solid $grey-color-light;
     // Positioning context for the mobile navigation icon
     position: relative;
+
+    @include media-query($on-palm) {
+        padding: 0;
+    }
+
 }
 
 .site-title {
@@ -53,6 +59,9 @@
         border: 1px solid $grey;
         border-radius: 5px;
         text-align: right;
+        @include media-query($on-palm) {
+            top: 9px;
+        }
 
         .menu-icon {
             display: block;
@@ -169,6 +178,9 @@
  */
 .page-content {
     padding: $spacing-unit 0;
+    @include media-query($on-palm) {
+        padding-top: 24px;
+    }
 }
 
 .page-heading {
@@ -178,7 +190,7 @@
 /**
 * Homepage list of posts.
 */
-.home {
+.default {
     .hero-row {
         width: 100%;
         display: table;
