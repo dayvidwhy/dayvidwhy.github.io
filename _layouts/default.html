@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="{{ site.theme_colour }}">
   <meta name="description" content="{{ site.description }}">
+  <meta name="author" content="{{ site.title }}">
+  <meta name="keywords" content="{{ site.base_keywords }}{% for category in page.categories %}{{ category }}, {% endfor %}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:url" content="{{ site.url }}">
   <meta name="twitter:title" content="David Young - Web Developer living in Brisbane">

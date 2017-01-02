@@ -2,7 +2,7 @@
 layout: post
 title:  "Live HTMLCollection"
 date:   2016-12-14 12:00:15 +1000
-categories: blog html live
+categories: blog html live jQuery
 permalink: live-htmlcollection
 ---
 For most of the time I've been writing JavaScript I've had jQuery there to hold me up, providing an assortment of helper functions and methods that I _think_ make life easier. I mean I'm fairly sure they're supposed to, that's what it says in their documentation. I realised I had never really tried to make a proper web application without it, so decided it was about [time to do so](https://dayvidwhy.github.io/local-to-do/).

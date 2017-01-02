@@ -2,7 +2,7 @@
 layout: post
 title:  "Software Process"
 date:   2016-11-2 14:20:00 +1000
-categories: ['blog', 'software process']
+categories: ['blog', 'software', 'process']
 permalink: software-process
 ---
 Something I've been struggling to understand is why some students dislike courses that attempt to teach the software process. Apparently these are considered a "waste of time". I would like to take a moment to give you reasons as to why this is important learning material.
