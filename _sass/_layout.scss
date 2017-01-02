@@ -338,6 +338,7 @@
             font-size: 1.1em;
             box-sizing: border-box;
             border: 1px solid $grey-color-light;
+            -webkit-appearance: none;
             -webkit-border-radius: 0px;
         }
 
@@ -349,6 +350,7 @@
             box-sizing: border-box;
             font-family: inherit;
             border: 1px solid $grey-color-light;
+            -webkit-appearance: none;
             -webkit-border-radius: 0px;
         }
     }
@@ -379,6 +381,7 @@
     color: $grey-color;
     display: inline-block;
     margin-bottom: 10px;
+    font-weight: 400;
 }
 
 .meta-border {

@@ -10,9 +10,7 @@ layout: default
       <h2>
         <a class="post-link" style="color: {{ project.theme_colour }}" href="{{ project.link }}" target="_blank">{{ project.title | escape }}</a>
       </h2>
-      <div class="post-meta">
-        {{ project.developer }} - <strong>{{ project.meta }}</strong>
-      </div>
+      <span class="post-meta">{{ project.developer }} - {{ project.meta }}</span>
       {% for desc in project.description %}
       <p>
           {{ desc }}
