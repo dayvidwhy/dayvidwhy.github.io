@@ -1,20 +1,20 @@
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo">
   <div class="wrapper">
     <h2 class="footer-heading">{{ site.title }}</h2>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li><a href="mailto:{{ site.email_address }}">Email me</a></li>
-          <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}">Feed</a></li>
+          <li><a href="mailto:{{ site.email_address }}" title="Click to get in contact with me.">Email me</a></li>
+          <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}" title="Keep up to date with my posts with this feed.">Feed</a></li>
         </ul>
       </div>
       <div class="footer-col footer-col-2">
         <ul class="social-media-list">
           <li>
-            <a href="https://github.com/{{ site.github_username }}"><span class="username">My Github</span></a>
+            <a href="https://github.com/{{ site.github_username }}" title="My GitHub account that holds most of my projects that are on display"><span class="username">My Github</span></a>
           </li>
           <li>
-            <a href="https://twitter.com/{{ site.twitter_username }}"><span class="username">@{{ site.twitter_username }}</span></a>
+            <a href="https://twitter.com/{{ site.twitter_username }}" title="A feed of daily information from myself."><span class="username">@{{ site.twitter_username }}</span></a>
           </li>
         </ul>
       </div>

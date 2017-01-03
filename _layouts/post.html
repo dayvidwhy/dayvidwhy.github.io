@@ -24,17 +24,17 @@
 </head>
 <body>
   {% include header.html %}
-  <main class="page-content" aria-label="Content">
+  <main class="page-content" aria-label="Content" role="main">
     <div class="wrapper">
-      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+      <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta meta-border"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%b %-d, %Y' }}</time> by <strong itemprop="author">{{ site.title }}</strong></p>
+        <p class="post-meta meta-border"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%b %-d, %Y' }}</time> by <span itemprop="author">{{ site.title }}</span></p>
         <div class="post-content" itemprop="articleBody">
           {{ content }}
         </div>
       </article>
       {% for category in page.categories %}
-      <p class="category-tag">{{ category }}</p>
+      <p class="category-tag" itemprop="keywords">{{ category }}</p>
       {% endfor %}
       <div class="post-footer-tags">
         {% if page.next != null %}

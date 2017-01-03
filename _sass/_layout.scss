@@ -268,7 +268,7 @@
             padding-bottom: 0;
         }
 
-        > h2 {
+        h2 {
             margin: 0 0 4px 0;
             line-height: 1.1;
 
@@ -285,7 +285,7 @@
             }
         }
 
-        > p {
+        p {
             font-size: 1.1em;
             color: $grey;
             line-height: $base-line-height;
@@ -324,6 +324,10 @@
             font-size: 1.1em;
             display: inline-block;
             margin-bottom: 4px;
+
+            &.require {
+                color: $dark-red;
+            }
         }
 
         input[type=text] {
