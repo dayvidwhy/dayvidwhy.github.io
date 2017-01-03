@@ -12,8 +12,7 @@ base_keywords: "web, developer, blog, web developer, brisbane, australia, david,
 
 # URLs
 baseurl: "" # subpath, eg /blog
-portfolio_url: http://davidyoung.tech # where my portfolio lives
-url: "http://davidyoung.tech" # base url
+url: "https://davidyoung.tech" # base url
 theme_colour: "#F4F2F0"
 
 # usernames
