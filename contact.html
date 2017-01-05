@@ -4,14 +4,14 @@ layout: default
 <div class="contact default">
     <h1>Contact</h1>
     <p>If you would like to get in touch with me I highly recommend <a href="mailto:{{ site.email_address }}">sending me an email</a>, but if you prefer forms try the one below. I attempt to respond to every message I receive but there may be a short delay if it is during the week.</p>
-    <form id="contact_me" method="POST" action="//formspree.io/me@davidyoung.tech">
+    <form id="contact_me" method="POST" action="https://formspree.io/me@davidyoung.tech">
         <label>
             <span>Name</span>
             <input type="text" name="name" placeholder="Enter your name.">
         </label>
         <label>
             <span>Email Address</span>
-            <input type="text" name="email" placeholder="Enter your email address.">
+            <input type="text" name="_replyto" placeholder="Enter your email address.">
         </label>
         <label>
             <span>Message</span>
@@ -23,8 +23,20 @@ layout: default
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 // validate a thing
-function valid(element) {
+function validName(element) {
     if (element.val().length === 0) {
+        element.siblings().after('<span class="require">*</span>');
+        return false;
+    }
+    return true;
+}
+
+// validate a mail
+function validEmail(element) {
+    var email = element.val();
+    var atpos = email.indexOf("@");
+    var dotpos = email.lastIndexOf(".");
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length) {
         element.siblings().after('<span class="require">*</span>');
         return false;
     }
@@ -35,13 +47,22 @@ function valid(element) {
 function formSubmit(event) {
     event.preventDefault();
     $(".require").remove();
-    var name = valid($('input[name=name]'));
-    var email = valid($('input[name=email]'));
-    if (name && email) {
+    var fName = $('input[name=name]');
+    var fEmail = $('input[name=_replyto]');
+    var fMessage = $('textarea');
+
+    var vName = validName(fName);
+    var vEmail = validEmail(fEmail);
+
+    if (vName && vEmail) {
         $.ajax({
-            url: '//formspree.io/me@davidyoung.tech',
+            url: 'https://formspree.io/me@davidyoung.tech',
             method: 'POST',
-            data: $(this).serialize(),
+            data: {
+                name: fName.val(),
+                _replyto: fEmail.val(),
+                message: fMessage.val()
+            },
             dataType: 'json',
             beforeSend: function() {
                 $("#contact-button").val('Sending...');
