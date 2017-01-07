@@ -403,6 +403,16 @@
     margin-top: 16px;
 }
 
+.post-tweet {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    border: 1px solid $grey-color-light;
+    padding: 16px 0;
+    background-color: $light-grey;
+    font-size: 1.1em;
+}
+
 .category-tag-list {
     margin: 8px 0 0 0;
 }
@@ -453,7 +463,7 @@
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $px-spacing-unit * 2;
 
     p {
         font-size: $base-post-font-size;

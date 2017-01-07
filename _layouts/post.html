@@ -47,6 +47,9 @@
           <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
         </article>
         {% endif %}
+        <div class="post-tweet">
+          <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}">Share this post on Twitter</a>
+        </div>
       </div>
     </div>
   </main>
