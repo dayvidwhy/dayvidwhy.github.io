@@ -14,7 +14,7 @@ Let's consider the contrived example below where we have an array of elements, a
 
 ```javascript
 var items = ['cat', 'dog', 'cow', 'rabbit'];
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < items.length; i++) {
     $.get('index.html', function(data) {
         console.log(items[i]); // What is i?
     });
@@ -39,7 +39,7 @@ Closures are an interesting way of forcing variables to take on new scope and en
 
 ```javascript
 var items = ['cat', 'dog', 'cow', 'rabbit'];
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < items.length; i++) {
     $.get('index.html', (function(i) {
         return function(data) {
             console.log(items[i]);
@@ -87,7 +87,7 @@ This can take time to understand and at first can be very frustrating. This is d
 
 ```javascript
 var items = ['cat', 'dog', 'cow', 'rabbit'];
-for (let i = 0; i < 4; i++) { // using let
+for (let i = 0; i < items.length; i++) { // using let
     $.get('index.html', function(data) {
         console.log(items[i]); // works
     });

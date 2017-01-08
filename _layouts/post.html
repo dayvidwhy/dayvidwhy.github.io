@@ -34,9 +34,9 @@
         </div>
       </article>
       {% for category in page.categories %}
-      <p class="category-tag" itemprop="keywords">{{ category }}</p>
+      <span class="category-tag" itemprop="keywords">{{ category }}</span>
       {% endfor %}
-      <div class="post-footer-tags">
+      <div class="post-footer-links">
         {% if page.next != null %}
         <article itemscope itemtype="http://schema.org/BlogPosting">
           <strong>Next: </strong><a href="{{ page.next.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.next.title }}</a>
@@ -47,9 +47,9 @@
           <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
         </article>
         {% endif %}
-        <div class="post-tweet">
-          <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}">Share this post on Twitter</a>
-        </div>
+      </div>
+      <div class="post-tweet">
+        <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}">Share this post on Twitter</a>
       </div>
     </div>
   </main>

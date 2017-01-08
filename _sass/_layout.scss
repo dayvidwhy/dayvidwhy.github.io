@@ -170,7 +170,7 @@
 .page-content {
     padding: $spacing-unit 0;
     @include media-query($on-palm) {
-        padding-top: 24px;
+        padding: $px-spacing-unit * 3 0;
     }
 }
 
@@ -399,7 +399,7 @@
 /**
 * Tags used under posts and on projects.
 */
-.post-footer-tags {
+.post-footer-links {
     margin-top: 16px;
 }
 
@@ -411,6 +411,10 @@
     padding: 16px 0;
     background-color: $light-grey;
     font-size: 1.1em;
+
+    @include media-query($on-palm) {
+        font-size: 1em;
+    }
 }
 
 .category-tag-list {
