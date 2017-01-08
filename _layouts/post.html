@@ -28,7 +28,7 @@
     <div class="wrapper">
       <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta meta-border"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%b %-d, %Y' }}</time> by <span itemprop="author">{{ site.title }}</span></p>
+        <p class="post-meta meta-border"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%B %-d, %Y' }}</time> by <span itemprop="author">{{ site.title }}</span></p>
         <div class="post-content" itemprop="articleBody">
           {{ content }}
         </div>
@@ -49,7 +49,7 @@
         {% endif %}
       </div>
       <div class="post-tweet">
-        <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}">Share this post on Twitter</a>
+        <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
       </div>
     </div>
   </main>

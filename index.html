@@ -4,7 +4,7 @@ layout: default
 <div class="default">
   <div class="hero-row">
     <div class="hero-row-image">
-      <img src="{{ '/images/small.jpg' | prepend: site.baseurl }}">
+      <img src="{{ '/images/small.jpg' | prepend: site.baseurl }}" alt="An image of an android like person from the waist up with sunglasses and a checkered shirt.">
     </div>
     <div class="hero-row-bio">
       <h1>Hi, I'm <span>David</span></h1>
@@ -18,7 +18,7 @@ layout: default
       <h2 itemprop="name">
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title | escape }}</a>
       </h2>
-      <span class="post-meta" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }} by {{ site.title }}</span>
+      <span class="post-meta" itemprop="datePublished">{{ post.date | date: "%B %-d, %Y" }} by {{ site.title }}</span>
       <p itemprop="description">{{ post.excerpt | strip_html }}</p>
       <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">Read More...</a>
     </article>
