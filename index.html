@@ -12,18 +12,16 @@ layout: default
       <p class="hero-bio">I'm a developer with a fascination for the web that can help build your ideas into an online presence.</p>
     </div>
   </div>
-  <ul class="post-list">
+  <div class="post-list">
     {% for post in site.posts %}
-    <li>
-      <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-        <h2 itemprop="name">
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title | escape }}</a>
-        </h2>
-        <span class="post-meta" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }} by {{ site.title }}</span>
-        <p itemprop="description">{{ post.excerpt | strip_html }}</p>
-        <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">Read More...</a>
-      </article>
-    </li>
+    <article class="post-list-content" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+      <h2 itemprop="name">
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title | escape }}</a>
+      </h2>
+      <span class="post-meta" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }} by {{ site.title }}</span>
+      <p itemprop="description">{{ post.excerpt | strip_html }}</p>
+      <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">Read More...</a>
+    </article>
     {% endfor %}
-  </ul>
+  </div>
 </div>

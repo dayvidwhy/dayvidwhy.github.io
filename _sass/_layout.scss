@@ -181,200 +181,196 @@
 /**
 * Homepage list of posts.
 */
-.default {
-    .hero-row {
+.hero-row {
+    width: 100%;
+    display: table;
+
+    @include media-query($on-palm) {
+        display: block;
+    }
+}
+
+.hero-row-image {
+    width: 30%;
+    display: table-cell;
+    vertical-align: middle;
+
+    @include media-query($on-palm) {
+        display: block;
+        width: 25%;
+        margin: auto;
+        margin-bottom: 8px;
+    }
+}
+
+.hero-row-bio {
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    @include media-query($on-palm) {
+        display: block;
         width: 100%;
-        display: table;
+        padding: 0;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.4em;
+        line-height: 1;
+
+        span {
+            color: $light-green;
+        }
 
         @include media-query($on-palm) {
-            display: block;
-        }
-        
-        .hero-row-image {
-            width: 30%;
-            display: table-cell;
-            vertical-align: middle;
-
-            @include media-query($on-palm) {
-                display: block;
-                width: 25%;
-                margin: auto;
-                margin-bottom: 8px;
-            }
-        }
-
-        .hero-row-bio {
-            width: 70%;
-            display: table-cell;
-            vertical-align: middle;
-            padding-left: 16px;
-            box-sizing: border-box;
-
-            @include media-query($on-palm) {
-                display: block;
-                width: 100%;
-                padding: 0;
-            }
-
-            h1 {
-                margin: 0;
-                font-size: 2.4em;
-                line-height: 1;
-
-                span {
-                    color: $light-green;
-                }
-
-                @include media-query($on-palm) {
-                    text-align: center;
-                    font-size: 2.2em;
-                }
-            }
-
-            h3 {
-                margin: 0;
-                font-size: 1.8em;
-                @include media-query($on-palm) {
-                    font-size: 1.5em;
-                    text-align: center;
-                }
-            }
-
-            .hero-bio {
-                margin-bottom: 0;
-                font-size: 1.1em;
-                @include media-query($on-palm) {
-                    font-size: 1em;
-                }
-            }
+            text-align: center;
+            font-size: 2.2em;
         }
     }
-    h1 {
-        margin: 8px 0;
-        line-height: 1;
+
+    h3 {
+        margin: 0;
+        font-size: 1.8em;
+        @include media-query($on-palm) {
+            font-size: 1.5em;
+            text-align: center;
+        }
     }
+}
+
+.hero-bio {
+    margin-bottom: 0;
+    font-size: 1.1em;
+    @include media-query($on-palm) {
+        font-size: 1em;
+    }
+}
+
+.default-title {
+    margin: 8px 0;
+    line-height: 1;
 }
 
 .post-list {
     margin-left: 0;
     list-style: none;
     margin-top: 15px;
+}
 
-    > li {
-        padding-top: $spacing-unit / 2;
-        padding-bottom: $spacing-unit / 2;
-        border-bottom: 1px solid #f2f0ed;
+.post-list-content {
+    padding-top: $spacing-unit / 2;
+    padding-bottom: $spacing-unit / 2;
+    border-bottom: 1px solid #f2f0ed;
 
-        &:first-child {
-            border-top: 1px solid #f2f0ed;
-        }
+    &:first-child {
+        border-top: 1px solid #f2f0ed;
+    }
 
-        &:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 
-        h2 {
-            margin: 0 0 4px 0;
-            line-height: 1.1;
+    h2 {
+        margin: 0 0 4px 0;
+        line-height: 1.1;
 
-            .post-link {
-                display: block;
-                font-size: 30px;
-                transition: all 0.3s ease-in-out;
-                &:hover {
-                    text-decoration: none;
-                }
-                &:visited {
-                    color: $light-green;
-                }
+        .post-link {
+            display: block;
+            font-size: 30px;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                text-decoration: none;
+            }
+            &:visited {
+                color: $light-green;
             }
         }
+    }
 
-        p {
-            font-size: 1.1em;
-            color: $grey;
-            line-height: $base-line-height;
-            margin-bottom: 10px;
-            
+    p {
+        font-size: 1.1em;
+        color: $grey;
+        line-height: $base-line-height;
+        margin-bottom: 10px;
+        
 
-            @include media-query($on-palm) {
-                font-size: 1em;
-                line-height: 24px;
-            }
+        @include media-query($on-palm) {
+            font-size: 1em;
+            line-height: 24px;
         }
+    }
 
-        a {
-
-            &.read-more {
-                border-left: none;
-            }
-        }
+    .read-more {
+        border-left: none;
     }
 }
 
 /**
 * Contact page specific styles
 */
-.contact {
-    label {
-        margin-top: 16px;
-        display: block;
-        width: 80%;
 
-        @include media-query($on-palm) {
-            width: 100%;
-        }
+.require {
+    color: $dark-red;
+}
 
-        span {
-            font-size: 1.1em;
-            display: inline-block;
-            margin-bottom: 4px;
+label {
+    margin-top: 16px;
+    display: block;
+    width: 80%;
 
-            &.require {
-                color: $dark-red;
-            }
-        }
-
-        input[type=text] {
-            width: 100%;
-            display: block;
-            padding: 8px;
-            font-size: 1.1em;
-            box-sizing: border-box;
-            border: 1px solid $grey-color-light;
-            -webkit-appearance: none;
-            -webkit-border-radius: 0px;
-        }
-
-        textarea {
-            width: 100%;
-            display: block;
-            padding: 8px;
-            font-size: 1.1em;
-            box-sizing: border-box;
-            font-family: inherit;
-            border: 1px solid $grey-color-light;
-            -webkit-appearance: none;
-            -webkit-border-radius: 0px;
-        }
+    @include media-query($on-palm) {
+        width: 100%;
     }
-    input[type=submit] {
-        margin-top: 16px;
-        color: $grey;
-        padding: 14px 20px;
-        font-size: 1.3em;
-        border: none;
-        cursor: pointer;
-        background-color: $light-grey;
-        -webkit-transition: all 0.1s ease-in-out;
+
+    span {
+        font-size: 1.1em;
+        display: inline-block;
+        margin-bottom: 4px;
+    }
+
+    input[type=text] {
+        width: 100%;
+        display: block;
+        padding: 8px;
+        font-size: 1.1em;
+        box-sizing: border-box;
+        border: 1px solid $grey-color-light;
         -webkit-appearance: none;
         -webkit-border-radius: 0px;
-        transition: all 0.1s ease-in-out;
-        &:hover {
-            background-color: $light-green;
-            color: $white;
-        }
+    }
+
+    textarea {
+        width: 100%;
+        display: block;
+        padding: 8px;
+        font-size: 1.1em;
+        box-sizing: border-box;
+        font-family: inherit;
+        border: 1px solid $grey-color-light;
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px;
+    }
+}
+
+input[type=submit] {
+    margin-top: 16px;
+    color: $grey;
+    padding: 14px 20px;
+    font-size: 1.3em;
+    border: none;
+    cursor: pointer;
+    background-color: $light-grey;
+    -webkit-transition: all 0.1s ease-in-out;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+        background-color: $light-green;
+        color: $white;
     }
 }
 
@@ -447,7 +443,7 @@
     margin-top: 0.5em;
     color: $light-green;
 
-    &::before {
+    &:before {
         position: absolute;
         content: '';
         left: 0;
