@@ -21,3 +21,5 @@ github_username:  dayvidwhy
 
 # Build settings
 markdown: kramdown
+sass:
+  style: compressed
