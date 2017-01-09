@@ -31,7 +31,8 @@
       var link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = 'https://fonts.googleapis.com/css?family=' + font;
-      document.head.appendChild(link);
+      var anchor = document.head || document.getElementsByTagName('head')[0];
+      anchor.appendChild(link);
   })('Open+Sans');
 </script>
 <script>
