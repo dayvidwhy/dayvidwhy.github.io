@@ -26,9 +26,9 @@ Would you believe that the above example prints out `undefined` four times? Why 
 # How JavaScript is asynchronous
 The issue lies with the fact that we are performing an `XHR` request, which we've abstracted away from ourselves by using jQuery's `$.get`. These requests, if they return, won't execute their function callbacks until the callstack is empty, after our loop is well and truly _over_.
 
-One thing that needs to be understood is that an `XHR` or `$.get` request is asychronous, and most people get that. But what can be confusing is the way the [event loop](https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop) works and how javascript somehow magically managed to do something asychronously, when it's supposedly a single threaded language.
+One thing that needs to be understood is that an `XHR` or `$.get` request is asynchronous, and most people get that. But what can be confusing is the way the [event loop](https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop) works and how javascript somehow magically managed to do something asynchronously, when it's supposedly a single threaded language.
 
-Essentially once the callstack has cleared, that being our loop has ended and fired off all of the requests, our value of `i` is actually 4. We go through the loop performing 4 asychronous requests, and then once `i` becomes 4 we exit the loop. 
+Essentially once the callstack has cleared, that being our loop has ended and fired off all of the requests, our value of `i` is actually 4. We go through the loop performing 4 asynchronous requests, and then once `i` becomes 4 we exit the loop. 
 
 Once the stack is cleared, finished requests are given a chance to execute their callback functions. Since our loop is long finished, `i` is happily holding the value `4` meaning we are trying to look up `items[4]`, which is obviously undefined.
 
