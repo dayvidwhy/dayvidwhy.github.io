@@ -12,7 +12,7 @@ First off, whenever you can, try and learn something from someone else. This mea
 
 I've found that when I talk to new people, I try to be as interested in what they're currently working on as possible, if they're okay with talking about it. I feel as if I have managed to bypass this whole concern over not knowing something, and I'm willing to just sit and listen to all of the pieces of information I would otherwise miss out on.
 
-This has led to a ruby developer explaining the ins and outs of a [C powered web framework](http://kore.io) to me, a python fanatic explaining list comprehension to me, and also absorbing much more information from my tutors. I realised early on while at university that the tutors are smarter than me. Weird thought for some, but pretty obvious once you give them a chance to help you.
+This has led to a ruby developer explaining the ins and outs of a [C powered web framework](https://kore.io/) to me, a python fanatic explaining list comprehension to me, and also absorbing much more information from my tutors. I realised early on while at university that the tutors are smarter than me. Weird thought for some, but pretty obvious once you give them a chance to help you.
 
 # Right Kind Of Answers
 Some people think solutions are answers. They solve the problem but they don't always bridge the gap in your mental model of how things are working. I started noticing this on [FreeCodeCamp's chat rooms](https://gitter.im/FreeCodeCamp/FreeCodeCamp) where some new 'campers' would ask for solutions to the earlier challenges, just to have a fellow 'camper' provide the exact solution to the problem. 

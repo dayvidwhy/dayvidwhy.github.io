@@ -1,0 +1,23 @@
+language 'en_GB'
+ignored %w{
+  jQuery
+  DECO
+  CSS
+  flexbox
+  DOM
+  javascript
+  github
+  API's
+  Trello
+  callstack
+  permalink
+  PHP
+  dev
+  UQ
+  ubuntu
+  HTMLCollection
+  ajax
+  modernizr
+  rescope
+  NodeLists
+}

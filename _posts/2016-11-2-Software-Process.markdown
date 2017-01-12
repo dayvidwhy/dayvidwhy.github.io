@@ -5,7 +5,7 @@ date:   2016-11-2 14:20:00 +1000
 categories: ['blog', 'software', 'process']
 permalink: software-process
 ---
-Something I've been struggling to understand is why some students dislike courses that attempt to teach the software process. Apparently these are considered a "waste of time". I would like to take a moment to give you reasons as to why this is important learning material.
+Something I have been struggling to understand is why some students dislike courses that attempt to teach the software process. Apparently these are considered a "waste of time". I would like to take a moment to give you reasons as to why this is important learning material.
 
 # Working Together
 I have reached the end of my time at university and while I’ve learned so many things, the most important of these is how to work with others to build software. There are a number of courses that teach the basics of languages such as C, Java, Python, JavaScript and other web languages like PHP. I feel like I have come out with a good knowledge of each, but it is important to remember that these languages are really just the _tools_ we use to make great things.
@@ -38,7 +38,7 @@ This links [back to another post](http://blog.davidyoung.tech/getting-feedback) 
 # Agile for Students
 I was asked by one of my lecturers towards the end of this semester for feedback on the use of agile for students doing their final build course. While I feel that setting goals for students to achieve is very useful, there is always the risk that students won’t take the process seriously enough.
 
-If this was a workplace and people had spent a long time trying to get a job here, the process would be taken a lot more seriously, small checkpoints and sprints would be ahered to. However, I'm still happy to have had the learning experience.
+If this was a workplace and people had spent a long time trying to get a job here, the process would be taken a lot more seriously, small checkpoints and sprints would be adhered to. However, I'm still happy to have had the learning experience.
 
 # Finally
 Throughout this semester I have had a lot of chances to work with others to accomplish much larger tasks than I would be able to on my own. I firmly believe that these tools and processes have been the reason my group projects have gone so well.
