@@ -1,4 +1,4 @@
-# [blog.davidyoung.tech](http://blog.davidyoung.tech)
+# [davidyoung.tech](http://davidyoung.tech)
 My personal blog powered by Jekyll.
 
 ## Getting Started
