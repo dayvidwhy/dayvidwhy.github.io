@@ -251,7 +251,7 @@
 /* End hero row */
 
 .default-title {
-    margin: 8px 0;
+    margin: 8px 0 16px 0;
     line-height: 1;
 }
 
@@ -478,13 +478,11 @@ input[type=submit] {
     }
 
     a {
-        color: $light-green;
         border-bottom: 1.5px solid $light-green;
 
         &:hover {
             color: $light-green;
             text-decoration: none;
-            border-bottom: 1.5px solid $light-grey;
         }
     }
 
