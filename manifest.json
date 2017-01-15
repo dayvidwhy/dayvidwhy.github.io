@@ -1,0 +1,13 @@
+{
+  "short_name": "David Young",
+  "name": "David Young - Brisbane Web Developer",
+  "icons": [
+    {
+      "src": "/images/launcher-icon.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone"
+}

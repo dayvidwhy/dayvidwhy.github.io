@@ -5,12 +5,14 @@ date:   2016-10-06 15:26:00 +1000
 categories: blog jQuery
 permalink: easy-jquery-selectors
 ---
-The popular web plugin [jQuery](https://jquery.com/) is currently in its third version and it's still going strong on the internet. Lately it has become less popular as the web platform catches up, but some parts of it are still very useful to the novice web developer.
+The popular web plugin [jQuery](https://jquery.com/) is currently in its third version and is still going strong on the internet. Lately it has become less popular as the web platform catches up and DOM altering methods become more standard across browsers, but some parts of it are still very useful to the novice web developer.
 
 # jQuery Is Just Bad
-Probably the biggest point you get from a few students that have done some website development before is that jQuery is bad, [and it does have its problems](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007). Many of its functions have big performance hits to do simple things, but it is still a very convenient library to use.
+Probably the biggest point you get from a few students that have done some website development before is that jQuery is bad, [and it does have its problems](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007) with performance. Many of its functions have big performance hits to do simple things, but it is still a very convenient library to use.
 
 jQuery is well known for being old and clunky with its a large library weighing in at 28kB for the second flavour, and it takes a phones browser about 500ms on average to parse all of the code. Not the greatest.
+
+What you might not have realised is that jQuery actually offer a [section on their website](https://learn.jquery.com/performance/) about getting the most out of the library. The biggest one is probably actually reading the jQuery source and not treating it like a black box. I watched a [video](https://www.youtube.com/watch?v=i_qE1iAmjFg) by Paul Irish where he actually goes through the code seeing what can be learned. It is about an older version, but the idea is still relevant.
 
 # Just Teach Plain JavaScript
 I've been tutoring this past semester at UQ and have come across a few students that have declared war against jQuery. Our main point of pushing jQuery first is usually because we have a high reliance on using an external API in the course, plugging into [trove](http://trove.nla.gov.au/) to display the data in an interesting way.
@@ -20,22 +22,24 @@ I'll go into how jQuery deals with API requests in a little bit but first I want
 JavaScript has a range of selectors that fascilitate grabbing elements on the page and then doing things to them, as follows.
 
 ```js
-var x = document.getElementsByClassName("CLASS");
-var x = document.getElementsByID("ID");
-var x = document.querySelector("ID");
+var x = document.getElementsByClassName("class");
+var x = document.getElementsByID("id");
+var x = document.querySelector("id");
+var x = document.querySelectorAll("div input"); // all inputs inside a div
 ```
 
-Now while `querySelector` is very easy to use, jQuery style selectors are still substantially easier to understand.
+Now while `querySelector` is very easy to use and it's brother, `querySelectorAll` covers a range of bases with complex selectors, jQuery style selectors are still substantially easier to understand.
+
+We can use fully fledged CSS selectors to grab elements even using pseudo selectors like `:first-child` and `:not`
 
 ```js
 var x = $(".cool-class");
 var x = $("#that-id");
 var x = $("image");
+var x = $(".sections .headings:not(:first-child)");
 ```
 
-Probably the most interesting part is how we use the same selection statement, `$('thing')` and we can clearly see whether we are selecting an `#id` or a `.class` thanks to the inclusion of a `.` or `#`.
-
-Of note as well is how easy it is to then iterate over these elements using `$.each()` by simply providing a callback function.
+Probably the most interesting part is how we use the same selection statement, `$('thing')` and we can clearly see whether we are selecting an `#id` or a `.class` thanks to the inclusion of a `.` or `#`. Of note as well is how easy it is to then iterate over these elements using `$.each()` by simply providing a callback function.
 
 # Iterating Over Class Selections
 One thing that bothers me about `getElementByClassName` is how it returns an array and I need to loop over this to do something to each element.
@@ -89,4 +93,4 @@ This is just too easy for first year students to get their heads around and star
 Also specifying the `&callback=?` in the URL we pass to `$.getJSON` seemlessly deals with `JSONP` requests and student's don't have to spend time figuring out how to load JSON as the source of a script tag.
 
 # Finally
-jQuery has its weak points and get's a bad name lately, but its [developer API](http://api.jquery.com/) is the easiest thing to read and introduce student's to. I have found myself, more than a few times, sitting with students while we explore it together. In conclusion, I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.
+jQuery has its weak points and has become less popular, but its [developer API](http://api.jquery.com/) is the easiest thing to read and introduce student's to. I have found myself, more than a few times, sitting with students while we explore it together. In conclusion, I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.

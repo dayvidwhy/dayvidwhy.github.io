@@ -27,4 +27,5 @@ sass:
   style: compressed
 
 exclude:
-    - sw.js
+    - Gemfile
+    - Gemfile.lock
