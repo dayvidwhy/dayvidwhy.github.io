@@ -477,15 +477,6 @@ input[type=submit] {
         }
     }
 
-    a {
-        border-bottom: 1.5px solid $light-green;
-
-        &:hover {
-            color: $light-green;
-            text-decoration: none;
-        }
-    }
-
     h1 {
         font-size: 32px;
         margin-bottom: 5px;

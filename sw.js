@@ -2,7 +2,7 @@
 layout: null
 ---
 var SITE_NAME = 'davids-site'
-var CACHE_NAME = SITE_NAME + '-4';
+var CACHE_NAME = SITE_NAME + '-5';
 var urlsToCache = [
   '/css/main.css',
   {% capture asset_urls %}
@@ -13,8 +13,8 @@ var urlsToCache = [
   {% for post in site.posts %}
   '{{ post.url }}',
   {% endfor %}
+  
   {% for file in site.static_files %}
-
   {% if file.path contains '/images' or file.path contains 'manifest' or file.path contains 'css' %}
   '{{ file.path }}',
   {% endif %}
