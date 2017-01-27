@@ -29,3 +29,7 @@ sass:
 exclude:
     - Gemfile
     - Gemfile.lock
+    - Rakefile
+    - .mdspell
+    - CNAME
+    - README.md
