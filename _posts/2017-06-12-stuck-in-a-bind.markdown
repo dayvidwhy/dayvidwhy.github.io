@@ -44,7 +44,7 @@ startListening();
 
 Here we pass the function `buttonClicked` by name which will get called later when we click on the button.  Note that we dont put `( )` brackets on the end of the event listeners second argument, as we don't want to invoke the function, only pass reference to it. The issue that then arises is when the button is clicked, you will get an error saying `message` is undefined.
 
-This is because of [lexicol scope](https://developer.mozilla.org/en/docs/Web/JavaScript/Closures#Lexical_scoping) in JavaScript and the fact that variables are function scoped. This means that any given function only has access to variables within the function or outside of it's own closure.
+This is because of [lexical scope](https://developer.mozilla.org/en/docs/Web/JavaScript/Closures#Lexical_scoping) in JavaScript and the fact that variables are function scoped. This means that any given function only has access to variables within the function or outside of it's own closure.
 
 # Global Variable
 We could solve this problem by making that variable more 'global' and lift it out of that functions scope
@@ -91,7 +91,7 @@ startListening();
 
 But now we've reintroduced our anonymous function which is what we were hoping to avoid and you'll also notice I needed to pass the button itself down by passing `this`.
 
-## Bring in Bind
+# Bring in Bind
 `.bind` is a javascript directive that lets you manipulate the `this` context within a callback function. It's a method on functions that return a new function that acts a bit differently.
 
 ```javascript
@@ -115,6 +115,6 @@ startListening();
 The issue here is we lose context of the button itself so our class change no longer works. This is fine if you didn't really want to access the button directly, it really just depends on your use case.
 
 # Wrapping up
-You've seen 3 ways of getting our message into the callback function, and which one you use really depends on your use case. 
+You've seen 4 ways of getting our message into the callback function, and which one you use really depends on your use case. 
 
 If you don't need direct access to the button itself in the callback, then binding `this` into something else can be entirely reasonable.

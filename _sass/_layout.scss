@@ -192,12 +192,13 @@
 
 .hero-row-image {
     width: 30%;
+    min-width: 125px;
     display: table-cell;
     vertical-align: middle;
 
     @include media-query($on-palm) {
         display: block;
-        width: 25%;
+        width: 125px;
         margin: auto;
         margin-bottom: 8px;
     }

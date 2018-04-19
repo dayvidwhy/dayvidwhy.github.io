@@ -1,59 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{% for category in page.categories %}{{ category }}, {% endfor %}{{ site.base_keywords }}">
-  <meta name="author" content="{{ site.title }}">
-  <meta name="theme-color" content="{{ site.theme_colour }}">
-  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
-  <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
-  <meta name="twitter:description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
-  <meta name="twitter:image" content="{{ '/images/small.jpg' | prepend: site.baseurl | prepend: site.url }}">
-  <meta name="twitter:site" content="{{ site.twitter_username }}">
-  <meta name="twitter:creator" content="{{ site.twitter_username }}">
-  <title>David Young - {{ page.title }}</title>
-  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-  <link rel="shortcut icon" href="{{ '/images/favicon.ico?' | prepend: site.baseurl }}" type="image/x-icon">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
-  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' }}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{% for category in page.categories %}{{ category }}, {% endfor %}{{ site.base_keywords }}">
+    <meta name="author" content="{{ site.title }}">
+    <meta name="theme-color" content="{{ site.theme_colour }}">
+    <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
+    <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
+    <meta name="twitter:description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
+    <meta name="twitter:image" content="{{ '/images/small.jpg' | prepend: site.baseurl | prepend: site.url }}">
+    <meta name="twitter:site" content="{{ site.twitter_username }}">
+    <meta name="twitter:creator" content="{{ site.twitter_username }}">
+    <title>David Young - {{ page.title }}</title>
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+    <link rel="shortcut icon" href="{{ '/images/favicon.ico?' | prepend: site.baseurl }}" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+    <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' }}">
 </head>
 <body>
-  {% include header.html %}
-  <main class="page-content" aria-label="Content" role="main">
-    <div class="wrapper">
-      <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-        <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta meta-border"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: '%B %-d, %Y' }}</time> by <span itemprop="author">{{ site.title }}</span></p>
-        <div class="post-content" itemprop="articleBody">
-          {{ content }}
+    {% include header.html %}
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    {{ page.title }}
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                        {{ page.date | date: '%B %-d, %Y' }}
+                    </time> by 
+                    <span itemprop="author">
+                        {{ site.title }}
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    {{ content }}
+                </div>
+            </article>
+
+            {% for category in page.categories %}
+            <span class="category-tag" itemprop="keywords">
+                {{ category }}
+            </span>
+            {% endfor %}
+
+            <div class="post-footer-links">
+                {% if page.next != null %}
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="{{ page.next.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.next.title }}</a>
+                </article>
+                {% endif %}
+                {% if page.previous != null %}
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
+                </article>
+                {% endif %}
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
         </div>
-      </article>
-      {% for category in page.categories %}
-      <span class="category-tag" itemprop="keywords">{{ category }}</span>
-      {% endfor %}
-      <div class="post-footer-links">
-        {% if page.next != null %}
-        <article itemscope itemtype="http://schema.org/BlogPosting">
-          <strong>Next: </strong><a href="{{ page.next.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.next.title }}</a>
-        </article>
-        {% endif %}
-        {% if page.previous != null %}
-        <article itemscope itemtype="http://schema.org/BlogPosting">
-          <strong>Previous: </strong><a href="{{ page.previous.url | prepend: site.baseurl }}" itemprop="name headline url">{{ page.previous.title }}</a>
-        </article>
-        {% endif %}
-      </div>
-      <div class="post-tweet">
-        <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | escape }}&amp;text={{ page.title | replace: " ", "+" }}&amp;via={{ site.twitter_username }}" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
-      </div>
-    </div>
-  </main>
-  {% include footer.html %}
+    </main>
+    {% include footer.html %}
 </body>
 </html>

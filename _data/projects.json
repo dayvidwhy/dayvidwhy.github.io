@@ -1,73 +1,128 @@
 [
     {
-        "title" : "J.A. Young & Son",
-        "description" : ["I redesigned an old site from almost 10 years ago to be marketable and useful. I ensured this site would be responsive and easy to use on mobile.",
-        "The development began with the client wanting to be able to display extra stock on hand to customers in a way that was better than simply sending photos over their current e-mail system.",
-        "Building this site from scratch helped extend my understanding of the basic concepts of the web and was my first venture in setting up virtual hosting."],
+        "title": "J.A. Young & Son",
+        "description": [
+            "I redesigned an old site from almost 10 years ago to be marketable and useful. I ensured this site would be responsive and easy to use on mobile.",
+            "The development began with the client wanting to be able to display extra stock on hand to customers in a way that was better than simply sending photos over their current e-mail system.",
+            "Building this site from scratch helped extend my understanding of the basic concepts of the web and was my first venture in setting up virtual hosting."
+        ],
         "link": "https://jayoung.com.au",
-        "developer" : "Web Developer",
-        "meta" : "Website Redevelopment",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "PHP", "MySQL", "Apache", "VPS"]
+        "developer": "Web Developer",
+        "meta": "Website Redevelopment",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "JS",
+            "PHP",
+            "MySQL",
+            "Apache",
+            "VPS"
+        ]
     },
     {
         "title" : "daygrid.css",
-        "description" : ["I created a simple responsive template that fitted my style to help me rapidly create new websites. The design options selected on the page hopefully work well together and the media queries are easy to understand.",
-        "This project is far from finished and I enjoy applying new styles or making slight changes in my free time as I continue to improve my own UX abilities."],
+        "description" : [
+            "I created a simple responsive template that fitted my style to help me rapidly create new websites. The design options selected on the page hopefully work well together and the media queries are easy to understand.",
+            "This project is far from finished and I enjoy applying new styles or making slight changes in my free time as I continue to improve my own UX abilities."
+        ],
         "link": "https://dayvidwhy.github.io/daygrid/",
-        "developer" : "Web Designer",
-        "meta" : "Responsive Template",
-        "theme_colour" : "#5577cd",
-        "tech_tags" : ["HTML5", "CSS3", "Design", "Mobile"]
+        "developer": "Web Designer",
+        "meta": "Responsive Template",
+        "theme_colour": "#5577cd",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "Design",
+            "Mobile"
+        ]
     },
     {
         "title": "I'm Feeling Stacky",
-        "description" : ["I built a small Web Application that searches the Stack Exchange API for questions either directly or loosely related to what a user would like to know about.",
-        "I built this application to help demonstrate my understanding of working with API endpoints as this is what is done in the first year course I hoped to tutor."],
-        "link" : "https://dayvidwhy.github.io/feeling-stacky/",
-        "developer" : "Web Developer",
-        "meta" : "Web App Project",
-        "theme_colour" : "#f4a503",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "jQuery", "API"]
+        "description": [
+            "I built a small Web Application that searches the Stack Exchange API for questions either directly or loosely related to what a user would like to know about.",
+            "I built this application to help demonstrate my understanding of working with API endpoints as this is what is done in the first year course I hoped to tutor."
+        ],
+        "link": "https://dayvidwhy.github.io/feeling-stacky/",
+        "developer": "Web Developer",
+        "meta": "Web App Project",
+        "theme_colour": "#f4a503",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "JS",
+            "jQuery",
+            "API"
+        ]
     },
     {
-        "title" : "RedFetch",
-        "description" : ["A small application that streams images off reddit and displays them nicely for viewing. I wanted to gain a larger understanding of new CSS layout and more alternatives to typical jQuery functions.",
-        "The page makes use of some interesting web technologies such as the fetch api, the flexible box layout and function debouncing to ensure a smooth experience for the user."],
-        "link" : "https://dayvidwhy.github.io/redfetch/",
-        "developer" : "Web Developer",
-        "meta" : "Web App Project",
-        "theme_colour" : "#c0392b",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "API"]
+        "title": "RedFetch",
+        "description": [
+            "A small application that streams images off reddit and displays them nicely for viewing. I wanted to gain a larger understanding of new CSS layout and more alternatives to typical jQuery functions.",
+            "The page makes use of some interesting web technologies such as the fetch api, the flexible box layout and function debouncing to ensure a smooth experience for the user."
+        ],
+        "link": "https://dayvidwhy.github.io/redfetch/",
+        "developer": "Web Developer",
+        "meta": "Web App Project",
+        "theme_colour": "#c0392b",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "JS",
+            "API"
+        ]
     },
     {
         "title" : "Local To Do",
-        "description" : ["I created this page to experiment with storage methods provided by the browser and how I could provide an experience that could keep track of something without using a database.",
-        "I made use of the local storage in the browser to keep track of a list of things that need to be done with hopes of making the application offline first in the future."],
-        "link" : "https://dayvidwhy.github.io/local-to-do/",
-        "developer" : "Web Developer",
-        "meta" : "Web App Project",
-        "theme_colour" : "#303030",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "LocalStorage"]
+        "description": [
+            "I created this page to experiment with storage methods provided by the browser and how I could provide an experience that could keep track of something without using a database.",
+            "I made use of the local storage in the browser to keep track of a list of things that need to be done with hopes of making the application offline first in the future."
+        ],
+        "link": "https://dayvidwhy.github.io/local-to-do/",
+        "developer": "Web Developer",
+        "meta": "Web App Project",
+        "theme_colour": "#303030",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "JS",
+            "LocalStorage"
+        ]
     },
     {
-        "title" : "Catitude",
-        "description" : ["One of the first websites I built when I started at University revolved around understanding user requirements and constructing pages that fitted those needs.",
-        "Pages added value to the customers fictional business based on predefined needs and each page reflects these. We were able to interact with a fictional client over a message board and obtain requirements.",
-        "Please note that the project is hosted on Heroku and might take a moment to spin back up."],
-        "link" : "https://catitude.herokuapp.com/",
-        "developer" : "Student Developer",
-        "meta" : "First Year Website",
-        "theme_colour" : "#c50",
-        "tech_tags" : ["HTML5", "CSS3", "jQuery", "PHP"]
+        "title": "Catitude",
+        "description": [
+            "One of the first websites I built when I started at University revolved around understanding user requirements and constructing pages that fitted those needs.",
+            "Pages added value to the customers fictional business based on predefined needs and each page reflects these. We were able to interact with a fictional client over a message board and obtain requirements.",
+            "Please note that the project is hosted on Heroku and might take a moment to spin back up."
+        ],
+        "link": "https://catitude.herokuapp.com/",
+        "developer": "Student Developer",
+        "meta": "First Year Website",
+        "theme_colour": "#c50",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "jQuery",
+            "PHP"
+        ]
     },
     {
-        "title" : "Url Shortener",
-        "description" : ["A URL shortener written in PHP and MySQL that takes a long link and uses Apache to generate a smaller one.",
-        "I built this to attempt to understand how services like this might work behind the scenes and opted for a sequential base-64 incrementing ID for each short link."],
-        "link" : "https://github.com/dayvidwhy/url-shortener",
-        "developer" : "Web Developer",
-        "meta" : "Web App Project",
-        "theme_colour" : "#2980b9",
-        "tech_tags" : ["HTML5", "CSS3", "JS", "PHP", "MySQL", "Apache"]
+        "title": "Url Shortener",
+        "description": [
+            "A URL shortener written in PHP and MySQL that takes a long link and uses Apache to generate a smaller one.",
+            "I built this to attempt to understand how services like this might work behind the scenes and opted for a sequential base-64 incrementing ID for each short link."
+        ],
+        "link": "https://github.com/dayvidwhy/url-shortener",
+        "developer": "Web Developer",
+        "meta": "Web App Project",
+        "theme_colour": "#2980b9",
+        "tech_tags": [
+            "HTML5",
+            "CSS3",
+            "JS",
+            "PHP",
+            "MySQL",
+            "Apache"
+        ]
     }
 ]

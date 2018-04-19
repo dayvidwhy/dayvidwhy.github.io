@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby RUBY_VERSION
+ruby '2.3.0'
 
 # get latest versions
 require 'json'

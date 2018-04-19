@@ -1,54 +1,64 @@
 <footer class="site-footer" role="contentinfo">
-  <div class="wrapper">
-    <h2 class="footer-heading">{{ site.title }}</h2>
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li><a href="mailto:{{ site.email_address }}" title="Click to get in contact with me.">Email me</a></li>
-          <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}" title="Keep up to date with my posts with this feed.">Feed</a></li>
-        </ul>
-      </div>
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          <li>
-            <a href="https://github.com/{{ site.github_username }}" title="My GitHub account that holds most of my projects that are on display"><span class="username">My Github</span></a>
-          </li>
-          <li>
-            <a href="https://twitter.com/{{ site.twitter_username }}" title="A feed of daily information from myself."><span class="username">@{{ site.twitter_username }}</span></a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer-col footer-col-3">
-        <p>
-            {{ site.short_description }}
-        </p>
-      </div>
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            {{ site.title }}
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:{{ site.email_address }}" title="Click to get in contact with me.">Email me</a></li>
+                    <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/{{ site.github_username }}" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">My Github</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/{{ site.twitter_username }}" title="A feed of daily information from myself.">
+                            <span class="username">@{{ site.twitter_username }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    {{ site.short_description }}
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
+
 <script type="text/javascript">
-  if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js').then(function(registration) {
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }).catch(function(err) {
-              console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-  }
-  var fontLoad = (function(font) {
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://fonts.googleapis.com/css?family=' + font;
-      var anchor = document.head || document.getElementsByTagName('head')[0];
-      anchor.appendChild(link);
-  })('Open+Sans');
-</script>
-<script>
-  (function(d,a,y,o,u,n,g){d['GoogleAnalyticsObject']=u;d[u]=d[u]||function(){
-  (d[u].q=d[u].q||[]).push(arguments)},d[u].l=1*new Date();n=a.createElement(y),
-  g=a.getElementsByTagName(y)[0];n.async=1;n.src=o;g.parentNode.insertBefore(n,g)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-78898363-1', 'auto');
-  ga('send', 'pageview');
+// register our service worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
+
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+
+// ga
+(function(d,a,y,o,u,n,g){d['GoogleAnalyticsObject']=u;d[u]=d[u]||function(){
+(d[u].q=d[u].q||[]).push(arguments)},d[u].l=1*new Date();n=a.createElement(y),
+g=a.getElementsByTagName(y)[0];n.async=1;n.src=o;g.parentNode.insertBefore(n,g)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-78898363-1', 'auto');
+ga('send', 'pageview');
 </script>
