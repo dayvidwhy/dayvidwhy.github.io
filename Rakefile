@@ -33,4 +33,4 @@ task :spellcheck do
     end
 end
 
-task :default => [:htmlproofer]
+task :default => [:htmlproofer, :spellcheck]

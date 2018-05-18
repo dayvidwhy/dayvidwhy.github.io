@@ -15,7 +15,7 @@ I have reached the end of my time at university and while I’ve learned so many
 Courses with a focus on teaching these tools are very important but, for the longest time at university I was wondering how people effectively work together to actually get stuff done.
 
 # Collaborative Process
-I have been learning a lot about how to collaborate effectively through several courses at University. The biggest improvement to my learning was picking up git and getting started with Github. Git is the defacto "let's work together" piece of software that everyone knows and loves, but there are more people need to start using early on.
+I have been learning a lot about how tsado collaborate effectively through several courses at University. The biggest improvement to my learning was picking up git and getting started with Github. Git is the defacto "let's work together" piece of software that everyone knows and loves, but there are more people need to start using early on.
 
 # Using Tools
 I found myself working in a pretty standard manner for each group project in my final year. We would always setup [Slack](http://slack.com), [Trello](http://trello.com) and a [GitHub](https://github.com) repository and use all of these to work together.
@@ -33,7 +33,7 @@ There are a few courses at university that attempt to teach Agile and the concep
 
 An interesting thing that I learned this semester was how effective it is to work in short 'sprints' to complete tasks. Setting short periods of time to achieve goals results in goals that are much more reasonable and more likely to be completed. It also gives you a chance to finish a piece of content and get feedback from your client right away.
 
-This links [back to another post](http://blog.davidyoung.tech/getting-feedback) I made about the importance of feedback. By developing software in this manner you can get this valuable feedback consistently and most effectively communicate your progress to your client.
+This links [back to another post](https://davidyoung.tech/getting-feedback) I made about the importance of feedback. By developing software in this manner you can get this valuable feedback consistently and most effectively communicate your progress to your client.
 
 # Agile for Students
 I was asked by one of my lecturers towards the end of this semester for feedback on the use of agile for students doing their final build course. While I feel that setting goals for students to achieve is very useful, there is always the risk that students won’t take the process seriously enough.
