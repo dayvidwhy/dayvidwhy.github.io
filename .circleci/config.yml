@@ -5,4 +5,5 @@ jobs:
       - image: circleci/ruby:2.4.2-node-browsers
     steps:
       - checkout
+      - run: bundle install
       - run: bundle exec jekyll build
