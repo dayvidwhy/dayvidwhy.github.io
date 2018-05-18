@@ -42,12 +42,12 @@ function buttonClicked(event) {
 startListening();
 ```
 
-Here we pass the function `buttonClicked` by name which will get called later when we click on the button.  Note that we dont put `( )` brackets on the end of the event listeners second argument, as we don't want to invoke the function, only pass reference to it. The issue that then arises is when the button is clicked, you will get an error saying `message` is undefined.
+Here we pass the function `buttonClicked` by name which will get called later when we click on the button.  Note that we do not put `( )` brackets on the end of the event listeners second argument, as we don't want to invoke the function, only pass reference to it. The issue that then arises is when the button is clicked, you will get an error saying `message` is undefined.
 
 This is because of [lexical scope](https://developer.mozilla.org/en/docs/Web/JavaScript/Closures#Lexical_scoping) in JavaScript and the fact that variables are function scoped. This means that any given function only has access to variables within the function or outside of it's own closure.
 
 # Global Variable
-We could solve this problem by making that variable more 'global' and lift it out of that functions scope
+We could solve this problem by making that variable more global and lift it out of that functions scope
 
 ```javascript
 // global variable

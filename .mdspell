@@ -15,9 +15,12 @@ ignored %w{
   dev
   UQ
   ubuntu
+  CDN
   HTMLCollection
   ajax
   modernizr
   rescope
   NodeLists
+  html
+  UI
 }

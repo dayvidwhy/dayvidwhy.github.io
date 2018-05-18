@@ -16,10 +16,10 @@ If there's one thing that really accelerated my understanding of, and ability to
 
 I had noticed a lot of students would suggest the use of [bootstrap](https://getbootstrap.com/) right away for building pages, only to come to a halt later when some of the classes they used were not working the way they hoped. Often I would ask why they thought this class behaved this way and what CSS rules does it actually apply and they mostly weren't sure. 
 
-I still use frameworks from time to time but I always investigate the behaviour of pre-defined classes myself before using them and I even built my [own grid](https://dayvidwhy.github.io/daygrid/) to ensure I understood the concepts. Don't always just assume you know how some piece of CSS works, try out its various attributes or value ranges.
+I still use frameworks from time to time but I always investigate the behaviour of predefined classes myself before using them and I even built my [own grid](https://dayvidwhy.github.io/daygrid/) to ensure I understood the concepts. Don't always just assume you know how some piece of CSS works, try out its various attributes or value ranges.
 
 # Learning Semantics
-The [semantic web](https://www.w3.org/standards/semanticweb/) is a standard that allows the web to start making a lot more 'sense'. A lot of the data we put into pages has meaning beyond just the text we show. We can give our data more meaning quite easily with the proper syntax. 
+The [semantic web](https://www.w3.org/standards/semanticweb/) is a standard that allows the web to start making a lot more sense. A lot of the data we put into pages has meaning beyond just the text we show. We can give our data more meaning quite easily with the proper syntax. 
 
 The latest thing I've become a fan of is the `itemscope` syntax. You can make links to blog posts much more meaningful like so. Here's a blog link from my [portfolio](https://davidyoung.tech) site.
 
@@ -101,7 +101,7 @@ Things that usually interest me are:
 * How did they set the background colour of this element, does it cascade down from a higher class for some reason?
 * What's in the `<head>` tag? Which usually leads onto the next point.
 * What framework, if any, are they using?
-* How are they loading their CSS, in a blob or throughout the HTML? Sharding CSS has become the cool new thing lately.
+* How are they loading their CSS, in a blob or throughout the HTML? Breaking up CSS has become the cool new thing lately.
 * Are they using a web-font and how are they loading it? Are they using [modernizr](https://modernizr.com/) or lazy loading it?
 
 Because it's pretty interesting to see how some people make their pages, and sometimes they leave small comment messages for you to see.

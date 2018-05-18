@@ -10,7 +10,7 @@ Scope in JavaScript is one of its more peculiar features that tends to trip up d
 # Strange syntax
 To be fair, this syntax does come across as strange, and even when I first saw it, I wasn't quite sure how it was solving the problem.
 
-Let's consider the contrived example below where we have an array of elements, and for some reason we are going to make a get request to the index page a number of times asynchronously, and within each loop print the `i`th member of the array from within the callback function. That looks like the following.
+Let's consider the contrived example below where we have an array of elements, and for some reason we are going to make a get request to the index page a number of times asynchronously, and within each loop print the `i`-th member of the array from within the callback function. That looks like the following.
 
 ```javascript
 var items = ['cat', 'dog', 'cow', 'rabbit'];
@@ -56,7 +56,7 @@ $.get('index.html', function(data) {
 });
 ```
 
-The humble `$.get` function provided by jQuery takes two parameters, the url to request, and the callback function. So we need to pass in something as the second parameter that returns the type of function it expects, and also copies in our index `i`.
+The humble `$.get` function provided by jQuery takes two parameters, the URL to request, and the callback function. So we need to pass in something as the second parameter that returns the type of function it expects, and also copies in our index `i`.
 
 We can't simply do something like pass in the index, such as `function(data, i)`. That doesn't work so we need to look at our solution that uses the closure to rescope the variable. Here's the request making use of the closure again, but I'm going to remove the outer request and focus on the closure.
 

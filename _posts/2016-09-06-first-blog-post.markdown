@@ -7,7 +7,7 @@ permalink: first-blog-post
 ---
 It seems apt to describe interesting things I've found myself getting up to while learning to code and I would like to share some of said things, most likely to affirm my own understanding, but also because why not.
 
-I've been studying programming for 4 years now after having started early on with the python course CSSE1001 at UQ. Coding wasn't really something I found myself being interested in from a younger age, although I did enjoy messing with config files, I wasn't exactly writing full programs in any well defined language.
+I've been studying programming for 4 years now after having started early on with the python course CSSE1001 at UQ. Coding wasn't really something I found myself being interested in from a younger age, although I did enjoy messing with configuration files, I wasn't exactly writing full programs in any well defined language.
 
 I originally decided to study Civil Engineering fresh out of high school and did enjoy my time studying it. I do wish I had become more involved with programming from an earlier point than at the end of that degree. I remember playing around with Ubuntu on old computers we had at home and thoroughly impressed myself when I managed to turn one into a file server.
 

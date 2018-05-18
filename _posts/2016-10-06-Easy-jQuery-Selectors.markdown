@@ -19,7 +19,7 @@ I've been tutoring this past semester at UQ and have come across a few students 
 
 I'll go into how jQuery deals with API requests in a little bit but first I want to suggest some positives for using jQuery before a lot of plain JavaScript.
 
-JavaScript has a range of selectors that fascilitate grabbing elements on the page and then doing things to them, as follows.
+JavaScript has a range of selectors that facilitate grabbing elements on the page and then doing things to them, as follows.
 
 ```js
 var x = document.getElementsByClassName("class");
@@ -64,7 +64,7 @@ So we have a few concepts here that need to be understood well before that line 
 $(".nav-links").css("color", "red");
 ```
 
-I can see that for all things with the class `.nav-links` I am changing their 'color' to red.
+I can see that for all things with the class `.nav-links` I am changing their color to red.
 
 # Making API Requests
 Making use of API's in plain JavaScript just isn't fun as well, and trying to diagnose an issue in the depths of this code.
@@ -90,7 +90,7 @@ $.getJSON("link_to_amaze.json", function(data) {
 
 This is just too easy for first year students to get their heads around and start making meaningful web applications that plug in external information sources.
 
-Also specifying the `&callback=?` in the URL we pass to `$.getJSON` seemlessly deals with `JSONP` requests and student's don't have to spend time figuring out how to load JSON as the source of a script tag.
+Also specifying the `&callback=?` in the URL we pass to `$.getJSON` seamlessly deals with `JSONP` requests and student's don't have to spend time figuring out how to load JSON as the source of a script tag.
 
 # Finally
 jQuery has its weak points and has become less popular, but its [developer API](http://api.jquery.com/) is the easiest thing to read and introduce student's to. I have found myself, more than a few times, sitting with students while we explore it together. In conclusion, I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.
