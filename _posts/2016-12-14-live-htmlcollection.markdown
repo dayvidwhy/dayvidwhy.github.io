@@ -28,7 +28,7 @@ Seems good right? If we want an ID based element we use this `querySelector` met
 
 I figured I was set and continued upon my efforts, until I encountered something interesting. I had discovered that `DOM` elements contain a list of classes they currently have, a fancy new feature that has great support, and figured what an excellent way to toggle the visibility than to add and remove a `show` class from this set.
 
-![Error from indexOf](images/htmlcollection/error.png "Error from indexOf")
+![Error from indexOf](images/htmlcollection-error.png "Error from indexOf")
 
 But it's an array? Arrays have an `indexOf` function? This is when I started thinking I'd lost my touch a bit, but after a quick search around I discovered the culprit was that fact that this is _not_ an array, but a [DOMTokenList](https://developer.mozilla.org/en/docs/Web/API/DOMTokenList). 
 
