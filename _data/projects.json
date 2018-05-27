@@ -107,12 +107,12 @@
         ]
     },
     {
-        "title": "Url Shortener",
+        "title": "Shortest",
         "description": [
-            "A URL shortener written in PHP and MySQL that takes a long link and uses Apache to generate a smaller one.",
+            "A URL shortener that takes a long link and generates a smaller one, most of the time.",
             "I built this to attempt to understand how services like this might work behind the scenes and opted for a sequential base-64 incrementing ID for each short link."
         ],
-        "link": "https://github.com/dayvidwhy/url-shortener",
+        "link": "https://shortest.glitch.me/",
         "developer": "Web Developer",
         "meta": "Web App Project",
         "theme_colour": "#2980b9",
@@ -120,9 +120,8 @@
             "HTML5",
             "CSS3",
             "JS",
-            "PHP",
-            "MySQL",
-            "Apache"
+            "node",
+            "sqlite3"
         ]
     }
 ]
