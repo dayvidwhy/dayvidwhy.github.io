@@ -17,6 +17,8 @@ env:
 sudo: false # route your build to the container-based infrastructure for a faster build
 
 after_success:
+  - chmod +x discord.sh
   - ./discord.sh success $WEBHOOK_URL
 after_failure:
+  - chmod +x discord.sh
   - ./discord.sh failure $WEBHOOK_URL
