@@ -36,7 +36,7 @@ function startListening() {
 
 function buttonClicked(event) {
     console.log(message); // undefined error
-    this.className += 'clicked-style';
+    this.className += ' clicked-style';
 }
 
 startListening();
@@ -60,7 +60,7 @@ function startListening() {
 
 function buttonClicked(event) {
     console.log(message); // no problem
-    this.className += 'clicked-style';
+    this.className += ' clicked-style';
 }
 
 startListening();
@@ -83,7 +83,7 @@ function startListening() {
 
 function buttonClicked(event, button, message) {
     console.log(message); // works!
-    button.className += 'clicked-style';
+    button.className += ' clicked-style';
 }
 
 startListening();
@@ -106,7 +106,7 @@ function startListening() {
 function buttonClicked(event) {
     // this is an object now, not the button itself
     console.log(this.innerMessage); // works!
-    this.className += 'clicked-style'; // doesn't work :(
+    this.className += ' clicked-style'; // doesn't work :(
 }
 
 startListening();
