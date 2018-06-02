@@ -1,6 +1,8 @@
 {
   "short_name": "David Young",
   "name": "David Young - Brisbane Web Developer",
+  "theme_color": "#57bc90",
+  "background_color": "#57bc90",
   "icons": [
     {
       "src": "/images/launcher-icon.png",
