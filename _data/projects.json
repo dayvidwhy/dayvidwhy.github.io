@@ -40,7 +40,8 @@
         "title": "I'm Feeling Stacky",
         "description": [
             "I built a small Web Application that searches the Stack Exchange API for questions either directly or loosely related to what a user would like to know about.",
-            "I built this application to help demonstrate my understanding of working with API endpoints as this is what is done in the first year course I hoped to tutor."
+            "I built this application to help demonstrate my understanding of working with API endpoints as this is what is done in the first year course I hoped to tutor.",
+            "This application has since been rebuilt using vue.js and vuex state management."
         ],
         "link": "https://dayvidwhy.github.io/feeling-stacky/",
         "developer": "Web Developer",
@@ -50,7 +51,7 @@
             "HTML5",
             "CSS3",
             "JS",
-            "jQuery",
+            "Vue",
             "API"
         ]
     },
