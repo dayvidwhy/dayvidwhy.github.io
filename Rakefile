@@ -25,12 +25,4 @@ task :htmlproofer => :rebuild do
     ).run
 end
 
-# spelling in our posts
-task :spellcheck do
-    Dir.foreach('./_posts') do |item|
-        next if item == '.' or item == '..'
-        system "mdspell ./_posts/#{item} -c .mdspell"
-    end
-end
-
-task :default => [:htmlproofer, :spellcheck]
+task :default => [:htmlproofer]
