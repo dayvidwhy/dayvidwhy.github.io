@@ -1,6 +1,6 @@
 <img style="display: inline-block" src="./images/small.jpg" data-canonical-src="./images/small.jpg" width="150" />
 
-[![Build Status](https://travis-ci.org/dayvidwhy/blog.svg?branch=develop)](https://travis-ci.org/dayvidwhy/blog)
+[![Build Status](https://travis-ci.org/dayvidwhy/dayvidwhy.github.io.svg?branch=master)](https://travis-ci.org/dayvidwhy/dayvidwhy.github.io)
 
 # [davidyoung.tech](http://davidyoung.tech)
 My personal blog powered by Jekyll.
