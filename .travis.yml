@@ -8,7 +8,7 @@ script:
 
 branches:
   only:
-  - develop
+  - master
 
 env:
   global:
