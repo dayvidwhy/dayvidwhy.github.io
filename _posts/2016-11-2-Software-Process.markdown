@@ -20,7 +20,7 @@ I have been learning a lot about how to collaborate effectively through several 
 # Using Tools
 I found myself working in a pretty standard manner for each group project in my final year. We would always setup [Slack](http://slack.com), [Trello](http://trello.com) and a [GitHub](https://github.com) repository and use all of these to work together.
 
-Trello really is invaluable for working together. Github [recently introduced](https://github.blog/2016-10-27-introducing-projects-for-organizations/) their own project slash Trello board like tracking system and it's amazing. Trello works in a similar way where you can create small tickets that you assign to people, similar to github issues. Being able to look over these tickets is great for tracking your team.
+Trello really is invaluable for working together. Github recently introduced their own project slash Trello board like tracking system and it's amazing. Trello works in a similar way where you can create small tickets that you assign to people, similar to github issues. Being able to look over these tickets is great for tracking your team.
 
 Slack has also been vastly important although the uptake from team members has sometimes been a struggle..
 
