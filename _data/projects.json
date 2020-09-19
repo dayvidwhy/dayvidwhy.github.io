@@ -1,25 +1,5 @@
 [
     {
-        "title": "J.A. Young & Son",
-        "description": [
-            "I redesigned an old site from almost 10 years ago to be marketable and useful. I ensured this site would be responsive and easy to use on mobile.",
-            "The development began with the client wanting to be able to display extra stock on hand to customers in a way that was better than simply sending photos over their current e-mail system.",
-            "Building this site from scratch helped extend my understanding of the basic concepts of the web and was my first venture in setting up virtual hosting."
-        ],
-        "link": "https://jayoung.com.au",
-        "developer": "Web Developer",
-        "meta": "Website Redevelopment",
-        "tech_tags": [
-            "HTML5",
-            "CSS3",
-            "JS",
-            "PHP",
-            "MySQL",
-            "Apache",
-            "VPS"
-        ]
-    },
-    {
         "title" : "daygrid.css",
         "description" : [
             "I created a simple responsive template that fitted my style to help me rapidly create new websites. The design options selected on the page hopefully work well together and the media queries are easy to understand.",
