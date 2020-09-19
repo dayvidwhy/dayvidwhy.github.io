@@ -2,7 +2,7 @@
 layout: null
 ---
 var SITE_NAME = 'davids-site'
-var CACHE_NAME = SITE_NAME + '-7';
+var CACHE_NAME = SITE_NAME + '-8';
 var urlsToCache = [
   '/css/main.css',
   {% capture asset_urls %}
