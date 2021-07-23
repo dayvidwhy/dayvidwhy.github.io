@@ -86,23 +86,5 @@
             "JS",
             "LocalStorage"
         ]
-    },
-    {
-        "title": "Catitude",
-        "description": [
-            "One of the first websites I built when I started at University revolved around understanding user requirements and constructing pages that fitted those needs.",
-            "Pages added value to the customers fictional business based on predefined needs and each page reflects these. We were able to interact with a fictional client over a message board and obtain requirements.",
-            "Please note that the project is hosted on Heroku and might take a moment to spin back up."
-        ],
-        "link": "https://catitude.glitch.me/",
-        "developer": "Student Developer",
-        "meta": "First Year Website",
-        "theme_colour": "#c50",
-        "tech_tags": [
-            "HTML5",
-            "CSS3",
-            "jQuery",
-            "PHP"
-        ]
     }
 ]
