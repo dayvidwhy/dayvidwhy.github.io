@@ -2,8 +2,8 @@ future: true
 
 # core settings
 title: David Young
-email: me@davidyoung.tech
-email_address: me@davidyoung.tech
+email: hello@davidyoung.tech
+email_address: hello@davidyoung.tech
 
 # bio's
 description: > # this means to ignore newlines until "baseurl:"
