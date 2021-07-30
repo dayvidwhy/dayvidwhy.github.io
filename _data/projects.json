@@ -10,10 +10,7 @@
         "meta": "Web App Project",
         "theme_colour": "#f4a503",
         "tech_tags": [
-            "HTML5",
-            "CSS3",
-            "JS",
-            "jQuery",
+            "Vue",
             "API"
         ]
     },
@@ -28,12 +25,9 @@
         "meta": "Web App Project",
         "theme_colour": "#2980b9",
         "tech_tags": [
-            "HTML5",
-            "CSS3",
-            "JS",
-            "PHP",
-            "MySQL",
-            "Apache"
+            "React",
+            "Express",
+            "SQLite3"
         ]
     },
     {
