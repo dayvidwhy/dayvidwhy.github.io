@@ -25,7 +25,7 @@ github_username:  dayvidwhy
 markdown: kramdown
 sass:
   style: compressed
-include: ['_pages']
+include: ['_pages', '_sass']
 exclude:
     - Gemfile
     - Gemfile.lock
