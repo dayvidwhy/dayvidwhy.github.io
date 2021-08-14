@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="{% for category in page.categories %}{{ category }}, {% endfor %}{{ site.base_keywords }}">
-    <meta name="author" content="{{ site.title }}">
-    <meta name="theme-color" content="{{ site.theme_colour }}">
-    <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}">
-    <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
+    {% include meta.html %}
+    
     <meta name="twitter:description" content="{{ page.excerpt | strip_html | normalize_whitespace }}">
-    <meta name="twitter:image" content="{{ '/images/small.jpg' | prepend: site.baseurl | prepend: site.url }}">
-    <meta name="twitter:site" content="{{ site.twitter_username }}">
-    <meta name="twitter:creator" content="{{ site.twitter_username }}">
-    <title>David Young - {{ page.title }}</title>
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-    <link rel="shortcut icon" href="{{ '/images/favicon.ico?' | prepend: site.baseurl }}" type="image/x-icon">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
     <link rel="canonical" href="{{ page.url | prepend: site.url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url | append: site.baseurl | append: '/feed.xml' }}">
+    <title>David Young - {{ page.title }}</title>
 </head>
 <body>
     {% include header.html %}
