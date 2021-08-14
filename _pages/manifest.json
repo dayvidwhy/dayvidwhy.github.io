@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: manifest.json
+---
 {
   "short_name": "David Young",
   "name": "David Young - Brisbane Web Developer",

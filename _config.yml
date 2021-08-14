@@ -25,7 +25,7 @@ github_username:  dayvidwhy
 markdown: kramdown
 sass:
   style: compressed
-
+include: ['_pages']
 exclude:
     - Gemfile
     - Gemfile.lock
@@ -33,3 +33,4 @@ exclude:
     - .mdspell
     - CNAME
     - README.md
+    - TROUBLESHOOTING.md
