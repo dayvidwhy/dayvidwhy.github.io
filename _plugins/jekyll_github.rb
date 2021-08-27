@@ -8,7 +8,7 @@ module Jekyll_GitHub
 
         def generate(site)
             user = 'dayvidwhy'
-            client = Octokit::Client.new(:access_token => '')
+            client = Octokit::Client.new()
             repos = client.repos user
             projects = Array.new
             repos.each do |repo|
