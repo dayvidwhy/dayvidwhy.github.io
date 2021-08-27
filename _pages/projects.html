@@ -9,7 +9,7 @@ permalink: projects
         {% for project in site.data.projects %}
         <div class="post-list-content">
             <h2>
-                <a class="post-link" style="color: {{ project.theme_colour }}" href="{{ project.link }}" target="_blank">{{ project.title | escape }}</a>
+                <a class="post-link" href="{{ project.link }}" target="_blank">{{ project.title | escape }}</a>
             </h2>
             <span class="post-meta">{{ project.developer }} - {{ project.meta }}</span>
             {% for desc in project.description %}
