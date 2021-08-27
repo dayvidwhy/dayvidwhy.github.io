@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
-
 require 'html-proofer'
 
 # delete and rebuild the site
 task :rebuild do
-    system "rm -rf _site"
+    system "rm -rf ./_site"
     system "bundle exec jekyll build"
 end
 

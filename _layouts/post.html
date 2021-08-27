@@ -21,6 +21,10 @@
                     <span itemprop="author">
                         {{ site.title }}
                     </span>
+                    -
+                    <span itemprop="author">
+                        {{ content | time_to_read }}
+                    </span>
                 </p>
                 <div class="post-content" itemprop="articleBody">
                     {{ content }}
