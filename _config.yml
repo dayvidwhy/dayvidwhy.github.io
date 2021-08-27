@@ -36,6 +36,5 @@ exclude:
     - vendor/ruby/
     - Rakefile
     - .mdspell
-    - CNAME
     - README.md
     - TROUBLESHOOTING.md
