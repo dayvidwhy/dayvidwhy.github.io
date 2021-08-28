@@ -25,7 +25,7 @@ bundle exec rake
 ```
 
 ## Troubleshooting
-If something went wrong or the `serve` or `build` command failed initially checking the error message can be helpful but there are some genreal steps to follow to make sure the environment is setup correctly.
+If something went wrong or the `serve` or `build` command failed initially checking the error message can be helpful but there are some genreal steps to follow to make sure the environment is setup correctly. I currently use ruby `2.7.4` so installing `ruby@2.7` with homebrew is my preference. The project will also run with ruby `3.0.2` as of currently checking if you prefer that.
 
 Check your ruby installation path.
 
@@ -36,27 +36,22 @@ which ruby
 Pointing at the system one?
 
 ```bash
-brew install ruby
+brew install ruby@2.7
 ```
 
 You should be able to see that ruby is pointing to the installed one.
 
 ```bash
-which ruby
-/usr/local/opt/ruby/bin/ruby # local/opt is brew
+which ruby gem
+/usr/local/opt/ruby@2.7/bin/ruby
+/usr/local/opt/ruby@2.7/bin/gem
 ```
 
-Check ruby gems.
-```bash
-which gem
-/usr/local/opt/ruby/bin/gem
-```
-
-What version of ruby were we using?
+Confirm the version of ruby
 ```bash
 ruby -v
+ruby 2.7.4
 ```
-
 
 We use bundler to make sure we use gems that go with this project.
 ```bash
@@ -64,12 +59,10 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Can't call `jekyll` binary? Add to `.bash_profile`
+You may need these added to your `.bash_profile` or other file run when you open a terminal.
 ```bash
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-# This is dependant on homebrew install ruby 2.6
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+export PATH="/usr/local/opt/ruby@2.7/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
 ```
