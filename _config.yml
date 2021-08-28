@@ -25,16 +25,7 @@ github_username:  dayvidwhy
 markdown: kramdown
 sass:
   style: compressed
-include: ['_pages', '_sass']
+include: ['_pages']
 exclude:
-    - Gemfile
-    - Gemfile.lock
-    - node_modules
-    - vendor/bundle/
-    - vendor/cache/
-    - vendor/gems/
-    - vendor/ruby/
     - Rakefile
-    - .mdspell
     - README.md
-    - TROUBLESHOOTING.md
