@@ -6,27 +6,27 @@
         <div class="footer-col-wrapper">
             <div class="footer-col footer-col-1">
                 <ul class="contact-list">
-                    <li><a href="mailto:{{ site.email_address }}" title="Click to get in contact with me.">Email me</a></li>
+                    <li><a href="mailto:{{ site.email }}" title="Click to get in contact with me.">Email me</a></li>
                     <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}" title="Keep up to date with my posts with this feed.">Feed</a></li>
                 </ul>
             </div>
             <div class="footer-col footer-col-2">
                 <ul class="social-media-list">
                     <li>
-                        <a href="https://github.com/{{ site.github_username }}" title="My GitHub account that holds most of my projects that are on display">
+                        <a href="https://github.com/{{ site.github }}" title="My GitHub account that holds most of my projects that are on display">
                             <span class="username">My Github</span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/{{ site.twitter_username }}" title="A feed of daily information from myself.">
-                            <span class="username">@{{ site.twitter_username }}</span>
+                        <a href="https://twitter.com/{{ site.twitter }}" title="A feed of daily information from myself.">
+                            <span class="username">@{{ site.twitter }}</span>
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="footer-col footer-col-3">
                 <p>
-                    {{ site.short_description }}
+                    {{ site.description }}
                 </p>
             </div>
         </div>

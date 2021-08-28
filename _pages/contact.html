@@ -57,7 +57,7 @@ function formSubmit(event) {
 
     if (vName && vEmail) {
         $.ajax({
-            url: 'https://formspree.io/hello@davidyoung.tech',
+            url: 'https://formspree.io/{{ site.email }}',
             method: 'POST',
             data: {
                 name: fName.val(),
