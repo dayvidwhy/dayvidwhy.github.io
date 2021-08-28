@@ -112,7 +112,6 @@ PLATFORMS
 DEPENDENCIES
   html-proofer
   jekyll (~> 4.2)
-  kramdown-parser-gfm
   octokit (~> 4.0)
 
 BUNDLED WITH
