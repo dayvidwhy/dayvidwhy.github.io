@@ -13,9 +13,9 @@ I have since built a few projects and constantly find myself reading blogs or wa
 # Languages
 
 Some of the programming languages I speak are listed below.
-* HTML5
-* CSS3
-* JavaScript/ES6+
+* JavaScript
+* CSS
+* HTML
 * PHP
 * Python
 * Java
