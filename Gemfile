@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
 gem "jekyll"
-gem "github-pages"
+gem "kramdown-parser-gfm"
 gem "html-proofer"
 gem "octokit", "~> 4.0"
