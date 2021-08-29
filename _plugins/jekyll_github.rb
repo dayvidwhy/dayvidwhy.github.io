@@ -21,7 +21,7 @@ module Jekyll_GitHub
                 rescue
                     project['link'] = repo.html_url
                 end
-                tags = client.topics repo.full_name
+                tags = client.topics(repo.full_name, {:accept => Octokit::Preview::PREVIEW_TYPES[:topics]})
                 project['tech_tags'] = tags.names
                 project['developer'] = 'Web Developer'
                 project['meta'] = "Application Project"
