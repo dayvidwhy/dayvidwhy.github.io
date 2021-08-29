@@ -9,8 +9,6 @@ A few people have asked me recently how I've managed to make heads or tails of t
 
 I also feel like I can weigh in on this topic after tutoring this past semester and can suggest a few things that would increase anyone's ability to make effective websites.
 
-Disclaimer: Some of these things are very obvious to the experienced web developer.
-
 # Build a Page from Scratch
 If there's one thing that really accelerated my understanding of, and ability to write for the web, was doing everything from scratch at least a few times. I reached a point where I became frustrated with how many different frameworks there were and the number of CSS templates out there were immense.
 
@@ -99,7 +97,7 @@ Things that usually interest me are:
 
 * Did they use a grid or are they using flexbox?
 * How did they set the background colour of this element, does it cascade down from a higher class for some reason?
-* What's in the `<head>` tag? Which usually leads onto the next point.
+* What is in the `<head>` tag? Which usually leads onto the next point.
 * What framework, if any, are they using?
 * How are they loading their CSS, in a blob or throughout the HTML? Breaking up CSS has become the cool new thing lately.
 * Are they using a web-font and how are they loading it? Are they using [modernizr](https://modernizr.com/) or lazy loading it?

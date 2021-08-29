@@ -14,7 +14,7 @@ permalink: "/"
         </div>
     </div>
     <div class="post-list">
-        {% for post in site.posts %}
+        {% for post in site.posts limit:4 %}
         <article class="post-list-content" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
             <h2 itemprop="name">
                 <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title | escape }}</a>
@@ -24,5 +24,8 @@ permalink: "/"
             <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">Read More...</a>
         </article>
     {% endfor %}
+    <p>
+        You can find more posts <a class="post-link" href="{{ '/posts'  | prepend: site.baseurl }}" target="_blank">here</a>.
+    </p>
     </div>
 </div>

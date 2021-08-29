@@ -116,7 +116,7 @@ This meant I was dealing with [NodeLists](https://developer.mozilla.org/en/docs/
 # Types of collections in JavaScript
 You are probably now wondering how many collections there are, and if you use jQuery a lot like me, how have you avoided using them for so long? The interesting thing is, and I never thought about it this way, is that all selections of elements are collections. 
 
-Even jQuery wraps the elements it selects in a special [jQuery object](https://learn.jquery.com/using-jquery-core/jquery-object/) with your favourite methods like `.text()` and `.click()` giving you access to jQuerys black box of functionality.
+Even jQuery wraps the elements it selects in a special [jQuery object](https://learn.jquery.com/using-jquery-core/jquery-object/) with your favourite methods like `.text()` and `.click()` giving you access to jQuerys magical box of functionality.
 
 If anything, creating this application made me question more of the inner workings of jQuery and I am now more aware of the type of collection I'm dealing with and the attached methods after using any sort of selector.
 
