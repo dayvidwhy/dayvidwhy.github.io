@@ -11,7 +11,6 @@ permalink: projects
             <h2>
                 <a class="post-link" href="{{ project.link }}" target="_blank">{{ project.title | escape }}</a>
             </h2>
-            <span class="post-meta">{{ project.developer }} - {{ project.meta }}</span>
             {% for desc in project.description %}
             <p>
                 {{ desc }}
