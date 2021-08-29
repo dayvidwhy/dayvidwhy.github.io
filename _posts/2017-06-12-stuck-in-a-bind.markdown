@@ -114,6 +114,13 @@ startListening();
 
 The issue here is we lose context of the button itself so our class change no longer works. This is fine if you didn't really want to access the button directly, it really just depends on your use case.
 
+For some more examples see this pen.
+<iframe height="300" style="width: 100%;" scrolling="no" title="Passing parameters to event handlers" src="https://codepen.io/dayvidwhy/embed/rKVaYy?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/dayvidwhy/pen/rKVaYy">
+  Passing parameters to event handlers</a> by David Young (<a href="https://codepen.io/dayvidwhy">@dayvidwhy</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 # Wrapping up
 You've seen 4 ways of getting our message into the callback function, and which one you use really depends on your use case. 
 
