@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'html-proofer'
+require "html-proofer"
 
 # delete and rebuild the site
 task :rebuild do
@@ -10,7 +10,7 @@ end
 # do all of our links work
 task :htmlproofer => :rebuild do
     ignored = [
-        '#'
+        "#"
     ]
     HTMLProofer.check_directory(
         "./_site", 

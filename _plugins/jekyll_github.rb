@@ -1,5 +1,4 @@
 require "octokit"
-require "json"
 
 =begin
     Add information about your GitHub repository to the jekyll
