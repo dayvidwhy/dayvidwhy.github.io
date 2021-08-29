@@ -278,7 +278,6 @@
         .post-link {
             display: block;
             font-size: 30px;
-            transition: all 0.3s ease-in-out;
             &:hover {
                 text-decoration: none;
             }
@@ -361,10 +360,8 @@ input[type=submit] {
     border: none;
     cursor: pointer;
     background-color: $light-grey;
-    -webkit-transition: all 0.1s ease-in-out;
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
-    transition: all 0.1s ease-in-out;
     &:hover {
         background-color: $light-green;
         color: $white;
