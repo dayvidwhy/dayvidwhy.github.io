@@ -4,6 +4,8 @@ baseurl: "" # subpath, eg /blog
 sass:
   style: compressed
 strict_front_matter: true
+plugins:
+  - jekyll-feed
 
 # global config
 include: ['_pages']
