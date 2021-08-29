@@ -4,6 +4,22 @@ require "json"
 =begin
     Add information about your GitHub repository to the jekyll
     site object for use when templating pages.
+
+    Final output looks like:
+        site.data.projects = [
+            {
+                title,
+                description,
+                link,
+                tech_tags
+            }
+        ]
+    
+    Using liquid you can loop over and use those variables:
+        {% for project in site.data.projects %}
+            ...
+        {% endfor %}
+
 =end
 module Jekyll_GitHub
     class Generator < Jekyll::Generator
