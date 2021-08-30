@@ -8,17 +8,13 @@ permalink: easy-jquery-selectors
 The popular web plugin [jQuery](https://jquery.com/) is currently in its third version and is still going strong on the internet. Lately it has become less popular as the web platform catches up and DOM altering methods become more standard across browsers, but some parts of it are still very useful to the novice web developer.
 
 # jQuery
-Probably the biggest point you get from a few students that have done some website development before is that jQuery is bad, [and it does have its problems](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007) with performance. Many of its functions have big performance hits to do simple things, but it is still a very convenient library to use.
+Probably the biggest point I have seen from people that have done some website development before is that jQuery is not helpful, [and it does have its problems](https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007) with performance. Many of its functions have big performance hits to do simple things, but it is still a very convenient library to use.
 
 jQuery is well known for being old and clunky with its a large library weighing in at 28kB for the second flavour, and it takes a phones browser about 500ms on average to parse all of the code. Not the greatest.
 
 What you might not have realised is that jQuery actually offer a [section on their website](https://learn.jquery.com/performance/) about getting the most out of the library. The biggest one is probably actually reading the jQuery source and not treating it like a magical box. I watched a [video](https://www.youtube.com/watch?v=i_qE1iAmjFg) by Paul Irish where he actually goes through the code seeing what can be learned. It is about an older version, but the idea is still relevant.
 
 # Plain JavaScript
-I've been tutoring this past semester at UQ and have come across a few students that have declared war against jQuery. Our main point of pushing jQuery first is usually because we have a high reliance on using an external API in the course, plugging into [trove](http://trove.nla.gov.au/) to display the data in an interesting way.
-
-I'll go into how jQuery deals with API requests in a little bit but first I want to suggest some positives for using jQuery before a lot of plain JavaScript.
-
 JavaScript has a range of selectors that facilitate grabbing elements on the page and then doing things to them, as follows.
 
 ```js
@@ -58,7 +54,7 @@ for (var i = 0; i < x.length; i++) {
 }
 ```
 
-So we have a few concepts here that need to be understood well before that line in the middle makes sense. First students need to understand array indexes, and that DOM objects, surprisingly, actually are objects. Accessing the style element of a DOM object seems obvious when you're more experienced but I suggest that early on he similar jQuery version is much clearer.
+So we have a few concepts here that need to be understood well before that line in the middle makes sense. We need to understand array indexes, and that DOM objects, surprisingly, actually are objects. Accessing the style element of a DOM object seems obvious when you're more experienced but I suggest that early on he similar jQuery version is much clearer.
 
 ```js
 $(".nav-links").css("color", "red");
@@ -88,9 +84,9 @@ $.getJSON("link_to_amaze.json", function(data) {
 });
 ```
 
-This is just too easy for first year students to get their heads around and start making meaningful web applications that plug in external information sources.
+This is a lot easier to get our heads around and start making meaningful web applications that plug in external information sources.
 
-Also specifying the `&callback=?` in the URL we pass to `$.getJSON` seamlessly deals with `JSONP` requests and student's don't have to spend time figuring out how to load JSON as the source of a script tag.
+Also specifying the `&callback=?` in the URL we pass to `$.getJSON` seamlessly deals with `JSONP` requests and we don't have to spend time figuring out how to load JSON as the source of a script tag.
 
 # Finally
-jQuery has its weak points and has become less popular, but its [developer API](http://api.jquery.com/) is the easiest thing to read and introduce student's to. I have found myself, more than a few times, sitting with students while we explore it together. In conclusion, I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.
+jQuery has its weak points and has become less popular, but its [developer API](http://api.jquery.com/) is very available if you want to read further. I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.

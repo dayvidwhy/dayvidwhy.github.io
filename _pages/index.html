@@ -14,7 +14,7 @@ permalink: "/"
         </div>
     </div>
     <div class="post-list">
-        {% for post in site.posts limit:4 %}
+        {% for post in site.posts limit:5 %}
         <article class="post-list-content" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
             <h2 itemprop="name">
                 <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title | escape }}</a>

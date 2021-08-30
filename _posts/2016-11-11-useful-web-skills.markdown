@@ -7,12 +7,12 @@ permalink: useful-web-skills
 ---
 A few people have asked me recently how I've managed to make heads or tails of the current state of the web, and how do you get to a point where this weird online world of development doesn't freak you out too much. Well quite a lot of it still confuses me, but it's definitely become easier. 
 
-I also feel like I can weigh in on this topic after tutoring this past semester and can suggest a few things that would increase anyone's ability to make effective websites.
+I also feel like I can weigh in on this topic after teaching this past semester and can suggest a few things that would increase anyone's ability to make effective websites.
 
 # Build a Page from Scratch
 If there's one thing that really accelerated my understanding of, and ability to write for the web, was doing everything from scratch at least a few times. I reached a point where I became frustrated with how many different frameworks there were and the number of CSS templates out there were immense.
 
-I had noticed a lot of students would suggest the use of [bootstrap](https://getbootstrap.com/) right away for building pages, only to come to a halt later when some of the classes they used were not working the way they hoped. Often I would ask why they thought this class behaved this way and what CSS rules does it actually apply and they mostly weren't sure. 
+I had noticed a lot of developers out there would suggest the use of [bootstrap](https://getbootstrap.com/) right away for building pages, only to come to a halt later when some of the classes they used were not working the way they hoped. Often I would ask why they thought this class behaved this way and what CSS rules does it actually apply and they mostly weren't sure. 
 
 I still use frameworks from time to time but I always investigate the behaviour of predefined classes myself before using them and I even built my [own grid](https://dayvidwhy.github.io/daygrid/) to ensure I understood the concepts. Don't always just assume you know how some piece of CSS works, try out its various attributes or value ranges.
 
@@ -30,7 +30,7 @@ The latest thing I've become a fan of is the `itemscope` syntax. You can make li
             </a>
         </h3>
         <p itemprop="description">
-            Something I’ve been struggling to understand is why some students dislike courses that attempt to teach the so...
+            Some description...
         </p>
         <a itemprop="url" href="http://blog.davidyoung.tech/software-process" class="blog-link">
             Read more..
