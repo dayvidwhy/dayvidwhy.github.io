@@ -34,38 +34,9 @@ The if statement won't resolve to true and we're doing a logical `&&` where the 
 # How Vue knows what is accessed in computed properties
 An [interesting response](https://forum.vuejs.org/t/how-do-computed-properties-know-how-to-change/24140/6) to similar question posted online and made a large amount of sense. Vue wraps properties with its `getter` and `setter` functions, so if you try accessing our values in the above examples computed property, Vue notices they're being accessed, and adds them to its internal system as dependents of the total count.
 
-Since the short circuit logical comparison means the second value will not be considered at all it starts making sense why the behaviour is how it is in the abobe example.
+Since the short circuit logical comparison means the second value will not be considered at all it starts making sense why the behaviour is how it is in the above example.
 
-# Breaking down the flow
-In the example above we are using a Vue watcher to watch `totalCount`, which is a computed result of `countLeft && countRight`. Initially `coundLeft` is 0, and `countRight` is 1, so as we can expect, clicking on the right count initially does not cause any change in the total count.
-
-```js
-// leftCount && rightCount
-0 && 1 // 0
-// then when we increment leftCount
-1 && 1 // 1
-// result changes, watcher notices
-```
-
-Once we click on the left count, the computed property runs again, and this time since the left count is a truthy value, the right count is collected as a dependency. Furthermore, clicking the right count further increments the total. But then you will notice that the left count increments stop increasing the total.
-
-At this point clicking on the left count increments its count, but you have to click on the right count to get the total to update each time. Clicking the left count still triggers the computed to rerun as you would expect, but the watcher does not run unless the right count changes.
-
-```js
-// leftCount && rightCount
-// further incrementing the leftCount
-1 && 1 // 1
-2 && 1 // 1
-3 && 1 // 1
-// result does not change, watcher does not notice
-
-3 && 2 // 2
-// but incrementing the right count, value changes, watcher notices
-```
-
-The count updates when incrementing the right count due to the nature of the watcher observing the logical comparison of both counts. Since it is doing `countLeft && countRight`, the result once `countLeft` is not 0, will be `countRight`. When two numbers are compared the right hand number is the result of the comparison.
-
-# Furhter thoughts
+# Further thoughts
 This example is solved by simply changing the computed `totalCount` to be the sum of both counts, over the logical `&&`.
 
 ```js
