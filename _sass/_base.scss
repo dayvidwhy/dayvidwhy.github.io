@@ -12,7 +12,7 @@ dl, dd, ol, ul, figure {
  * Set the background colour for scrolling too far on chrome.
  */
 html {
-    background-color: $light-grey;
+    background-color: $background-secondary;
 }
 
 /**
@@ -27,8 +27,8 @@ main {
  */
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $base-text-color;
-    background-color: $background-color;
+    color: $text-main;
+    background-color: $background-main;
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -90,15 +90,15 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: $light-green;
+    color: $theme-main;
     text-decoration: none;
 
     &:visited {
-        color: $light-green;
+        color: $theme-main;
     }
 
     &:hover {
-        color: $text-color !important;
+        color: $text-secondary !important;
         text-decoration: underline;
     }
 }
@@ -107,8 +107,8 @@ a {
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
+    color: $borders;
+    border-left: 4px solid $borders-light;
     padding-left: $spacing-unit / 2;
     font-size: 18px;
     letter-spacing: -1px;
@@ -125,7 +125,7 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
+    border: 1px solid $borders-light;
     border-radius: 3px;
     background-color: rgb(244, 242, 240);
 }
@@ -182,6 +182,6 @@ pre {
     vertical-align: middle;
 
     path {
-        fill: $grey;
+        fill: $text-secondary;
     }
 }

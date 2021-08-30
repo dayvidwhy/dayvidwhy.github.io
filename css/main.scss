@@ -2,31 +2,31 @@
 ---
 @charset "utf-8";
 
-// Our variables
+// typography
 $base-font-family:      "Open Sans", sans-serif;
 $base-font-size:        16px;
 $base-font-weight:      400;
 $small-font-size:       $base-font-size * 0.875;
 $base-line-height:      1.6;
 $base-post-font-size:   1.1em;
+$text-main:             #111;
+$text-secondary:        #515151;
+$text-light:            lighten($text-secondary, 50%);
 
+// spacing
 $spacing-unit:          30px;
 $px-spacing-unit:       8px;
 
-$base-text-color:       #111;
-$background-color:      #fff;
-$white:                 #fff;
-$light-green:           #57bc90;
-$dark-green:            #2ecc71;
-$dark-red:              #c0392b;
-$light-grey:            #F4F2F0;
-$grey:                  #515151;
-$text-color:            #515151;
-$grey-color:            #828282;
-$grey-color-light:      lighten($grey-color, 40%);
-$grey-color-dark:       darken($grey-color, 25%);
+// theme
+$theme-main:            #3945CA;
+$theme-dark:            darken($theme-main, 25%);
+$theme-error:           #c0392b;
+$background-main:       #ffffff;
+$background-secondary:  #F4F2F0;
+$borders:               #828282;
+$borders-light:         lighten($borders, 40%);
 
-// Width of the content area
+// width of the content area
 $content-width:         740px;
 $on-palm:               600px;
 $on-laptop:             740px;
