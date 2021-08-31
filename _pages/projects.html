@@ -2,29 +2,25 @@
 layout: default
 permalink: projects
 ---
-<div class="default">
-    <h1>Projects</h1>
-    <p>A small selection of the things I have created over the last few years. You'll find many more of them over at my <a href="https://github.com/dayvidwhy" target="_blank">Github</a> account page. Most are graciously hosted on Github Pages.</p>
-    <div class="post-list">
-        {% for project in site.data.projects %}
-        <div class="post-list-content">
-            <h2>
-                <a class="post-link" href="{{ project.link }}" target="_blank">{{ project.title | escape }}</a>
-            </h2>
-            {% for desc in project.description %}
-            <p>
-                {{ desc }}
-            </p>
-            {% endfor %}
-            <a href="{{ project.link }}" target="_blank">Visit Project</a>
-            <div class="category-tag-list">
-                {% for tag in project.tech_tags %}
-                <span class="category-tag">
-                    {{ tag }}
-                </span>
-                {% endfor %}
-            </div>
-        </div>
+<h1>Projects</h1>
+<p>A small selection of the things I have created over the last few years. You'll find many more of them over at my <a href="https://github.com/dayvidwhy" target="_blank">Github</a> account page. Most are graciously hosted on Github Pages.</p>
+{% for project in site.data.projects %}
+<div class="post-list-content">
+    <h2>
+        <a class="post-link" href="{{ project.link }}" target="_blank">{{ project.title | escape }}</a>
+    </h2>
+    {% for desc in project.description %}
+    <p>
+        {{ desc }}
+    </p>
+    {% endfor %}
+    <a href="{{ project.link }}" target="_blank">Visit Project</a>
+    <div class="category-tag-list">
+        {% for tag in project.tech_tags %}
+        <span class="category-tag">
+            {{ tag }}
+        </span>
         {% endfor %}
     </div>
 </div>
+{% endfor %}
