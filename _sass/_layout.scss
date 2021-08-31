@@ -51,7 +51,7 @@
         top: 17px;
         right: $spacing-unit / 2;
         background-color: $background-secondary;
-        border: 1px solid $text-secondary;
+        border: 1px solid $borders-light;
         border-radius: 5px;
         text-align: right;
         @include media-query($on-palm) {
