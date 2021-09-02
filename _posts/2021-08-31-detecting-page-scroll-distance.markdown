@@ -44,8 +44,4 @@ function testHeight() {
 # Example including debounce
 In the following codepen I have produced an example and the `scroller` object is a module that could be included in any webpage. When the bottom of the page has been reached, an event is triggered.
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="Scroll to page end detection with debounce" src="https://codepen.io/dayvidwhy/embed/oNWPYMM?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/dayvidwhy/pen/oNWPYMM">
-  Scroll to page end detection with debounce</a> by David Young (<a href="https://codepen.io/dayvidwhy">@dayvidwhy</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+{{ "oNWPYMM" | embed_codepen }}
