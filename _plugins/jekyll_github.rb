@@ -27,22 +27,39 @@ module Jekyll_GitHub
 
         # main entry point
         def generate(site)
-            # storage for our projects
-            @projects = Array.new
-
             # instantiates our octokit helper
             @client = Octokit::Client.new()
+
+            # storage for our projects
+            projects = Array.new
 
             # grab our list of repositories
             repos = fetchRepositories(site.config["github"])
 
             # for each repo fetch details
             repos.each do |repo|
-                @projects.push(fetchRepositoryDetails(repo))
+                projects.push(fetchRepositoryDetails(repo))
             end
 
+            # convert repo languages into
+            site.data["programming_languages"] = aggregateLanguages(projects)
+
             # store project data against the jekyll site object
-            site.data["projects"] = @projects
+            site.data["projects"] = projects
+        end
+
+        # receives list of projects, each has 'languages' key
+        # languages are name => bytecount pairs
+        def aggregateLanguages (projects)
+            allLanguages = Array.new
+
+            projects.each do |project|
+                project['languages'].each do |language|
+                    allLanguages.push(language[0])
+                end
+            end
+
+            allLanguages.uniq
         end
 
         # gets repositories for a specific user
@@ -68,6 +85,14 @@ module Jekyll_GitHub
 
             # description of the repo, includes emojis in response
             project["description"] = repo.description
+
+            allLanguages = Array.new
+            begin
+                project["languages"] = @client.languages(repo.full_name)
+            rescue
+                # do nothing
+                project["languages"] = nil
+            end
 
             # try fetching an active github pages url for the repo
             begin

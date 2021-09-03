@@ -11,12 +11,8 @@ I have since built a few projects and constantly find myself reading blogs or wa
 
 # Languages
 Some of the programming languages I speak are listed below.
-* JavaScript
-* CSS
-* HTML
-* PHP
-* Python
-* Java
-* C
+{% for language in site.data.programming_languages %}
+* {{ language }}
+{% endfor %}
 
 I also enjoy using frameworks such as [Jekyll](https://jekyllrb.com/) which I used to build this website!
