@@ -25,46 +25,68 @@ module Jekyll_GitHub
         safe true
         priority :highest
 
+        # main entry point
         def generate(site)
-            projects = Array.new
-            client = Octokit::Client.new()
-            
-            # try fetching the repositories
-            begin
-                repos = client.repos(site.config["github"])
-            rescue
-                site.data["projects"] = projects
-                return
-            end
+            # storage for our projects
+            @projects = Array.new
 
-            # for each repo fetch information
+            # instantiates our octokit helper
+            @client = Octokit::Client.new()
+
+            # grab our list of repositories
+            repos = fetchRepositories(site.config["github"])
+
+            # for each repo fetch details
             repos.each do |repo|
-                project = Hash.new
-                project["title"] = repo.name
-                project["description"] = repo.description
-
-                # try fetching an active pages url
-                begin
-                    pages_info = client.pages(repo.full_name)
-                    project["link"] = pages_info.html_url
-                rescue
-                    project["link"] = repo.html_url
-                end
-
-                # try fetching topics about a repo
-                begin
-                    tags = client.topics(repo.full_name, {:accept => Octokit::Preview::PREVIEW_TYPES[:topics]})
-                    project["tech_tags"] = tags.names
-                rescue
-                    project["tech_tags"] = Array.new
-                end
-
-                # add the project to our list
-                projects.push(project)
+                @projects.push(fetchRepositoryDetails(repo))
             end
 
             # store project data against the jekyll site object
-            site.data["projects"] = projects
+            site.data["projects"] = @projects
+        end
+
+        # gets repositories for a specific user
+        def fetchRepositories (user)
+            begin
+                # try fetching the repositories
+                repos = @client.repos(user)
+            rescue
+                # if the fetch failed just set an empty array
+                repos = Array.new
+            end
+
+            # return our set of repositories
+            repos
+        end
+
+        # returns a Hash of information for a repo
+        def fetchRepositoryDetails (repo)
+            project = Hash.new
+
+            # title of the repository
+            project["title"] = repo.name
+
+            # description of the repo, includes emojis in response
+            project["description"] = repo.description
+
+            # try fetching an active github pages url for the repo
+            begin
+                pages_info = @client.pages(repo.full_name)
+                project["link"] = pages_info.html_url
+            rescue
+                # fall back to the url of the repository
+                project["link"] = repo.html_url
+            end
+
+            # try fetching topics about a repo
+            begin
+                # the topics endpoint requires a certain header to suppress a warning
+                tags = @client.topics(repo.full_name, {:accept => Octokit::Preview::PREVIEW_TYPES[:topics]})
+                project["tech_tags"] = tags.names
+            rescue
+                project["tech_tags"] = Array.new
+            end
+            project
         end
     end
 end
