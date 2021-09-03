@@ -18,12 +18,13 @@ permalink: sw.js
 {% endfor %}
 {% endcapture %}
 
-var SITE_NAME = 'davids-site'
-var CACHE_NAME = SITE_NAME + '-9';
+var SITE_NAME = '{{ site.url }}-site'
+var CACHE_NAME = SITE_NAME + '-{{ site.time | date_to_xmlschema }}';
 var urlsToCache = [
+  '/manifest.json',
+  '/js/validate.js',
   '/css/main.css',
   {{ asset_urls | normalize_whitespace }}
-  'https://fonts.googleapis.com/css?family=Open+Sans' // cache the redirect served
 ];
 
 // Perform install steps
@@ -54,7 +55,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     var requestUrl = new URL(event.request.url);
     // special case for caching font
-    if (requestUrl.host === 'fonts.gstatic.com') {
+    if (requestUrl.host === 'fonts.googleapis.com' || requestUrl.host === 'fonts.gstatic.com') {
         event.respondWith(
             caches.open(CACHE_NAME)
             .then(function(cache) {
