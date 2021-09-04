@@ -28,7 +28,7 @@ module Jekyll_GitHub
         # main entry point
         def generate(site)
             # instantiates our octokit helper
-            @client = Octokit::Client.new()
+            @client = Octokit::Client.new(:access_token => ENV["INPUT_TOKEN"])
 
             # storage for our projects
             projects = Array.new
