@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Jekyll Service Worker"
+title:  "Serving Jekyll Sites Offline"
 date:   2021-09-04 12:00:00 +1000
-categories: jekyll serviceworker liquid
-permalink: jekyll-service-worker
+categories: jekyll service-worker liquid
+permalink: serving-jekyll-sites-offline
 ---
-Back in 2017 when I was originally putting this new blog together with Jekyll I made a point of integrating a service worker with the build process. Generating the required urls to cache using liquid tags and embedding these within the URL's to be cached on service worker activation can be included.
+When I put this new blog together with Jekyll I added a service worker to the build process, generating the required URL's to cache using liquids templating language. I was then able to include those generated links in my service workers code to save me needing to manaully update the list over time.
 
-# Caching built pages from jekyll
+# Creating a list of pages in the Jekyll site
 In a [previous post](/simple-service-worker-setup) I show a simple service worker setup where some URL's are specified for caching. When building the site with Jekyll, it is good to not have to keep a list of every page up to date in the service workers set of routes to cache, so we can instead use liquid within our service workers file to generate the routes we need to cache at build time.
 
 ```js{% raw %}
@@ -39,13 +39,13 @@ var urlsToCache = [
 
 The above script tracks pages which are our main routes like `/` and `/contact`. It also tracks each post like the one you are reading right now and adds it to the list. Finally it also adds static files, like images and other Jekyll pages without front matter that are not processed.
 
-The setup also uses `{% raw %}{{ site.time | date_to_xmlschema }}{% endraw %}` to keep our cache name unique each time we rebuild the site.
+The setup also uses `{% raw %}{{ site.time | date_to_xmlschema }}{% endraw %}` as part of the caching key, to keep our cache name unique each time we rebuild the site, so when publishing the old cache is removed and replaced with a new list of resources.
 
 ```js
 var CACHE_NAME = SITE_NAME + '-{% raw %}{{ site.time | date_to_xmlschema }}{% endraw %}';
 ```
 
-Currently some static resources need to be added manually with the above setup, so a few resources are included in the list already.
+Some static resources had to be added manually with the above setup, so a few resources were included in the list already.
 
 ```js
 var urlsToCache = [
@@ -71,3 +71,6 @@ self.addEventListener('install', function(event) {
 ```
 
 The install step inserts these resources into the browsers cache and subsequent loads of these resources intercepted by the service worker will use the cached asset over reaching out to the network, so the site will start working offline.
+
+# Wrapping up
+This is just a short demonstration of how you can make use of the liquid templating made available to build out the resources to cache dynamically for a Jekyll site. As more posts get added to the blog they'll automatically become part of the cached list of assets without manual work keeping the service worker up to date.
