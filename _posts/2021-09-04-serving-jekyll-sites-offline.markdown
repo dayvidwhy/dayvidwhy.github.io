@@ -10,8 +10,11 @@ When I put this new blog together with Jekyll I added a service worker to the bu
 # Creating a list of pages in the Jekyll site
 In a [previous post](/simple-service-worker-setup) I show a simple service worker setup where some URL's are specified for caching. When building the site with Jekyll, it is good to not have to keep a list of every page up to date in the service workers set of routes to cache, so we can instead use liquid within our service workers file to generate the routes we need to cache at build time.
 
+The following captures a set of resources into a variable called `asset_urls` for inserting into the routes we want to cache JavaScript variable later.
+
 ```js{% raw %}
 {% capture asset_urls %}
+
 {% for page in site.html_pages %}
 '{{ page.url | remove: '.html' }}',
 {% endfor %}
@@ -25,33 +28,33 @@ In a [previous post](/simple-service-worker-setup) I show a simple service worke
 '{{ file.path }}',
 {% endif %}
 {% endfor %}
-{% endcapture %}
 
-var SITE_NAME = '{{ site.url }}-site'
-var CACHE_NAME = SITE_NAME + '-{{ site.time | date_to_xmlschema }}';
-var urlsToCache = [
-  '/manifest.json',
-  '/js/validate.js',
-  '/css/main.css',
-  {{ asset_urls | normalize_whitespace }}
-];{% endraw %}
+{% endcapture %}{% endraw %}
 ```
 
-The above script tracks pages which are our main routes like `/` and `/contact`. It also tracks each post like the one you are reading right now and adds it to the list. Finally it also adds static files, like images and other Jekyll pages without front matter that are not processed.
-
-The setup also uses `{% raw %}{{ site.time | date_to_xmlschema }}{% endraw %}` as part of the caching key, to keep our cache name unique each time we rebuild the site, so when publishing the old cache is removed and replaced with a new list of resources.
+The above script tracks pages which are our main routes like `/` and `/contact`. It also tracks each post like the one you are reading right now and adds it to the list. Finally it also adds static files, like images and other Jekyll pages without front matter that are not processed. We can then push this as mentioned into a list of routes we want to cache with the service worker.
 
 ```js
-var CACHE_NAME = SITE_NAME + '-{% raw %}{{ site.time | date_to_xmlschema }}{% endraw %}';
+var urlsToCache = [
+  {% raw %}{{ asset_urls | normalize_whitespace }}{% endraw %}
+];
+```
+
+We can also leverage some more liquid templating to help update our service worker each time we rebuild the site. We can use the available liquid tags `{% raw %}{{ site.time | date_to_xmlschema }}{% endraw %}` as part of the caching key, to keep our cache name unique each time we rebuild the site, so when publishing the old cache is removed and replaced with the new list of resources.
+
+```js
+var CACHE_NAME = "{% raw %}{{ site.url }}-site-{{ site.time | date_to_xmlschema }}{% endraw %}';
 ```
 
 Some static resources had to be added manually with the above setup, so a few resources were included in the list already.
 
 ```js
 var urlsToCache = [
-  '/manifest.json',     // manually added
-  '/js/validate.js',    // manually added
-  '/css/main.css',      // manually added
+  {% raw %}{{ asset_urls | normalize_whitespace }}{% endraw %},
+  '/manifest.json',   // manually added
+  '/js/validate.js',  // manually added
+  '/css/main.css'     // manually added
+];
 ```
 
 # Installing the generated routes
