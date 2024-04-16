@@ -20,8 +20,8 @@ open_url: true
 # custom properties
 title: David Young
 email: hello@davidyoung.tech
-description: "David Young is a Web Developer based in Brisbane, Australia with a keen interest in Website Development and Design."
-base_keywords: "web, developer, blog, web developer, brisbane, australia, david, young, david young"
+description: "David Young is a Web Developer with a keen interest in Website Development and Design."
+base_keywords: "web, developer, blog, web developer, david, young, david young"
 url: "https://davidyoung.tech"
 theme_colour: "#F4F2F0"
 twitter: dayvidwhy
