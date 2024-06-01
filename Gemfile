@@ -7,3 +7,4 @@ gem 'jekyll-sitemap'
 gem "html-proofer"
 gem "rake"
 gem "webrick", "~> 1.7"
+gem "dotenv", "~> 2.7"
