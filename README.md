@@ -8,8 +8,24 @@ bundle install
 bundle exec jekyll serve
 ```
 
+## Alternative start using containers
+```bash
+# within the project directory
+docker-compose up --build
+docker exec -it blog bash
+```
+
+Project will be available from `http://localhost:4000`.
+
+For an optimized development experience, attach VSCode to the running blog-app container:
+
+1. Use the command palette (Ctrl+Shift+P or Cmd+Shift+P on Mac) and select: `>Dev Containers: Attach to Running Container...`
+2. Choose /blog from the list.
+
 ## Goals
-Make use of the Jekyll blog engine, get my feet wet with ruby and make use of liquid templating. Jekyll is a static site generator that produces plain html from several template pages that can be deployed to most hosting providers since it is just HTML, CSS and JavaScript
+Make use of the Jekyll blog engine, get my feet wet with ruby and make use of liquid templating. 
+
+Jekyll is a static site generator that produces plain html from several template pages that can be deployed to most hosting providers since it is just HTML, CSS and JavaScript
 
 ## Technologies
 * Ruby
@@ -25,7 +41,9 @@ bundle exec rake
 ```
 
 ## Troubleshooting
-If something went wrong or the `serve` or `build` command failed initially checking the error message can be helpful but there are some genreal steps to follow to make sure the environment is setup correctly. I currently use ruby `2.7.4` so installing `ruby@2.7` with homebrew is my preference. The project will also run with ruby `3.0.2` as of currently checking if you prefer that.
+If something went wrong, or the `serve` or `build` command failed initially checking the error message can be helpful, but there are some genreal steps to follow to make sure the environment is setup correctly. 
+
+I currently use ruby `2.7.4` so installing `ruby@2.7` with homebrew is my preference.
 
 Check your ruby installation path.
 
@@ -66,3 +84,5 @@ export LDFLAGS="-L/usr/local/opt/ruby@2.7/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby@2.7/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby@2.7/lib/pkgconfig"
 ```
+
+Alternatively I suggest leveraging the docker container provided with Ruby@2.7.
