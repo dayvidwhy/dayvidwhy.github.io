@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngjavascript, bind, this, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/stuck-in-a-bind">
+<meta name="twitter:title" content="Stuck In A Bind - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="In JavaScript it can be advantageous to override the default this context when dealing with function callbacks where you want to abstract these out into their own named functions. Using a plain .bind on the end of your function can be one way of dealing with this.">
+    <link rel="canonical" href="https://davidyoung.tech/stuck-in-a-bind">
+    <title>David Young - Stuck In A Bind</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Stuck In A Bind
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2017-06-12T01:53:28+00:00" itemprop="datePublished">
+                        June 12, 2017
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 5  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>In JavaScript it can be advantageous to override the default <code class="language-plaintext highlighter-rouge">this</code> context when dealing with function callbacks where you want to abstract these out into their own named functions. Using a plain <code class="language-plaintext highlighter-rouge">.bind</code> on the end of your function can be one way of dealing with this.</p>
+
+<p>Let us consider the following event handler which prints a message and adds a class. We’re going to alter this code a few times to illustrate how else we could write it, and the pros and cons of each.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">startListening</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Print out this message!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1"> clicked-style</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">startListening</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Here we are calling a simple function <code class="language-plaintext highlighter-rouge">startListening</code> that will listen for a click on our button, print out our message and add some class that indicates to the user they clicked our button. In the callback function for a click event listener, <code class="language-plaintext highlighter-rouge">this</code> is the button itself, so we can directly alter it’s <code class="language-plaintext highlighter-rouge">className</code> attribute.</p>
+
+<h1 id="named-functions">Named Functions</h1>
+<p>As your code grows in size it can be useful to abstract out anonymous functions and give them names to better separate your logic. The above could be rewritten as.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">startListening</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Print out this message!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">buttonClicked</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">buttonClicked</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span> <span class="c1">// undefined error</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">clicked-style</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">startListening</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Here we pass the function <code class="language-plaintext highlighter-rouge">buttonClicked</code> by name which will get called later when we click on the button.  Note that we do not put <code class="language-plaintext highlighter-rouge">( )</code> brackets on the end of the event listeners second argument, as we don’t want to invoke the function, only pass reference to it. The issue that then arises is when the button is clicked, you will get an error saying <code class="language-plaintext highlighter-rouge">message</code> is undefined.</p>
+
+<p>This is because of <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Closures#Lexical_scoping">lexical scope</a> in JavaScript and the fact that variables are function scoped. This means that any given function only has access to variables within the function or outside of it’s own closure.</p>
+
+<h1 id="global-variable">Global Variable</h1>
+<p>We could solve this problem by making that variable more global and lift it out of that functions scope</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// global variable</span>
+<span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Print out this message!</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">startListening</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">buttonClicked</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">buttonClicked</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span> <span class="c1">// no problem</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">clicked-style</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">startListening</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>But now we are leaking variables and the entire document would have access to this variable which we might not want.</p>
+
+<h1 id="wrapping-the-function">Wrapping the Function</h1>
+<p>To get this <code class="language-plaintext highlighter-rouge">message</code> variable into out extra function we could wrap an anonymous function around it and make our button clicked function take an extra argument.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">startListening</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Print out this message!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// take a couple of extra argument here</span>
+        <span class="nx">buttonClicked</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">buttonClicked</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">button</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span> <span class="c1">// works!</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">clicked-style</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">startListening</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>But now we’ve reintroduced our anonymous function which is what we were hoping to avoid and you’ll also notice I needed to pass the button itself down by passing <code class="language-plaintext highlighter-rouge">this</code>.</p>
+
+<h1 id="bring-in-bind">Bring in Bind</h1>
+<p><code class="language-plaintext highlighter-rouge">.bind</code> is a javascript directive that lets you manipulate the <code class="language-plaintext highlighter-rouge">this</code> context within a callback function. It’s a method on functions that return a new function that acts a bit differently.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">startListening</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Print out this message!</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">buttonClicked</span><span class="p">.</span><span class="nx">bind</span><span class="p">({</span>
+        <span class="na">innerMessage</span><span class="p">:</span> <span class="nx">message</span>
+    <span class="p">}));</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">buttonClicked</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// this is an object now, not the button itself</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">innerMessage</span><span class="p">);</span> <span class="c1">// works!</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">clicked-style</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// doesn't work :(</span>
+<span class="p">}</span>
+
+<span class="nx">startListening</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>The issue here is we lose context of the button itself so our class change no longer works. This is fine if you didn’t really want to access the button directly, it really just depends on your use case.</p>
+
+<p>For some more examples see this pen.</p>
+
+<iframe height="400" style="width: 100%;" scrolling="no" src="https://codepen.io/dayvidwhy/embed/rKVaYy?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"> <a href="https://codepen.io/dayvidwhy/pen/rKVaYy">See the Pen</a> by David Young (<a href="https://codepen.io/dayvidwhy">@dayvidwhy</a>) on <a href="https://codepen.io">CodePen</a>. </iframe>
+
+<h1 id="wrapping-up">Wrapping up</h1>
+<p>You’ve seen 4 ways of getting our message into the callback function, and which one you use really depends on your use case.</p>
+
+<p>If you don’t need direct access to the button itself in the callback, then binding <code class="language-plaintext highlighter-rouge">this</code> into something else can be entirely reasonable.</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                javascript
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                bind
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                this
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/detecting-page-scroll-distance" itemprop="name headline url">Detecting Page Scroll Distance</a>
+                </article>
+                
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="/simple-service-worker-setup" itemprop="name headline url">Simple Service Worker Setup</a>
+                </article>
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/stuck-in-a-bind&amp;text=Stuck+In+A+Bind&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>

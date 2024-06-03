@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngblog, closures, ajax, javascript, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/loops-closures-and-ajax">
+<meta name="twitter:title" content="Loops, Closures and Ajax - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="Scope in JavaScript is one of its more peculiar features that tends to trip up developers as they get started with the language. One issue that came up again and again while I was teaching last semester was the issue of performing asynchronous callbacks in loops, and why things were acting funny.">
+    <link rel="canonical" href="https://davidyoung.tech/loops-closures-and-ajax">
+    <title>David Young - Loops, Closures and Ajax</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Loops, Closures and Ajax
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2016-12-30T05:21:00+00:00" itemprop="datePublished">
+                        December 30, 2016
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 7  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>Scope in JavaScript is one of its more peculiar features that tends to trip up developers as they get started with the language. One issue that came up again and again while I was teaching last semester was the issue of performing asynchronous callbacks in loops, and why things were acting funny.</p>
+
+<h1 id="strange-syntax">Strange syntax</h1>
+<p>To be fair, this syntax does come across as strange, and even when I first saw it, I wasn’t quite sure how it was solving the problem.</p>
+
+<p>Let’s consider the contrived example below where we have an array of elements, and for some reason we are going to make a get request to the index page a number of times asynchronously, and within each loop print the <code class="language-plaintext highlighter-rouge">i</code>-th member of the array from within the callback function. That looks like the following.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">cat</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dog</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rabbit</span><span class="dl">'</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="c1">// What is i?</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Would you believe that the above example prints out <code class="language-plaintext highlighter-rouge">undefined</code> four times? Why does it not print out each element of the array as we go through the loop?</p>
+
+<h1 id="how-javascript-is-asynchronous">How JavaScript is asynchronous</h1>
+<p>The issue lies with the fact that we are performing an <code class="language-plaintext highlighter-rouge">XHR</code> request, which we’ve abstracted away from ourselves by using jQuery’s <code class="language-plaintext highlighter-rouge">$.get</code>. These requests, if they return, won’t execute their function callbacks until the callstack is empty, after our loop is well and truly <em>over</em>.</p>
+
+<p>One thing that needs to be understood is that an <code class="language-plaintext highlighter-rouge">XHR</code> or <code class="language-plaintext highlighter-rouge">$.get</code> request is asynchronous, and most people get that. But what can be confusing is the way the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop">event loop</a> works and how javascript somehow magically managed to do something asynchronously, when it’s supposedly a single threaded language.</p>
+
+<p>Essentially once the callstack has cleared, that being our loop has ended and fired off all of the requests, our value of <code class="language-plaintext highlighter-rouge">i</code> is actually 4. We go through the loop performing 4 asynchronous requests, and then once <code class="language-plaintext highlighter-rouge">i</code> becomes 4 we exit the loop.</p>
+
+<p>Once the stack is cleared, finished requests are given a chance to execute their callback functions. Since our loop is long finished, <code class="language-plaintext highlighter-rouge">i</code> is happily holding the value <code class="language-plaintext highlighter-rouge">4</code> meaning we are trying to look up <code class="language-plaintext highlighter-rouge">items[4]</code>, which is obviously undefined.</p>
+
+<h1 id="solving-the-problem">Solving the problem</h1>
+<p>There is a well-defined solution to the problem, although performing it can be utterly confusing and to be honest, I have to write out my closures carefully. As we make each <code class="language-plaintext highlighter-rouge">$.get</code> request in the loop, we need to <em>rescope</em> <code class="language-plaintext highlighter-rouge">i</code>, so that when our request returns, <code class="language-plaintext highlighter-rouge">i</code> is what we expect it to be. We sort of make a copy of it, making sure it remains at the correct value for each request.</p>
+
+<p>Closures are an interesting way of forcing variables to take on new scope and ensuring that in the context of your callback function, they are what you expect them to be. The example below correctly prints out each element of the array.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">cat</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dog</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rabbit</span><span class="dl">'</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">})(</span><span class="nx">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This prints out each animal, in an undefined order, because the requests could come back in any order, but alas it prints them all. The key different is how we wrote our callback function. Here’s the original <code class="language-plaintext highlighter-rouge">$.get</code> request again.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The humble <code class="language-plaintext highlighter-rouge">$.get</code> function provided by jQuery takes two parameters, the URL to request, and the callback function. So we need to pass in something as the second parameter that returns the type of function it expects, and also copies in our index <code class="language-plaintext highlighter-rouge">i</code>.</p>
+
+<p>We can’t simply do something like pass in the index, such as <code class="language-plaintext highlighter-rouge">function(data, i)</code>. That doesn’t work so we need to look at our solution that uses the closure to rescope the variable. Here’s the request making use of the closure again, but I’m going to remove the outer request and focus on the closure.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// what $.get wants</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">})(</span><span class="nx">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The first thing that looks strange is probably that fact that we start with a <code class="language-plaintext highlighter-rouge">(</code> and appear to be wrapping our function in another closing bracket. We then immediately have <code class="language-plaintext highlighter-rouge">(i)</code> at the end and this supposedly returns the inner function we want.</p>
+
+<p>This is a self-calling function, that after defined, since we have the <code class="language-plaintext highlighter-rouge">(i)</code> at the end, calls itself with those parameters. This creates new scope for the variable <code class="language-plaintext highlighter-rouge">i</code> and we are able to use it as we expect. We can even call the inner value something else for clarity such as.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">otherI</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">otherI</span><span class="p">]);</span> <span class="c1">// use the scoped index</span>
+    <span class="p">}</span>
+<span class="p">})(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// pass in the current value of i in the loop</span>
+</code></pre></div></div>
+
+<p>By passing in our value <code class="language-plaintext highlighter-rouge">i</code>, the insides of the braces, our <em>closure</em> has new scope on the variable and the array is accessed as you expect.</p>
+
+<h1 id="is-there-another-way">Is there another way</h1>
+<p>This can take time to understand and at first can be very frustrating. This is different to how other languages behave and led to the proposal for a type of variable with block scope. If we change the index to use the <code class="language-plaintext highlighter-rouge">let</code> identifier, we can use our original logic.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">cat</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dog</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rabbit</span><span class="dl">'</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// using let</span>
+    <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="c1">// works</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The above code prints out each element of the array, like our closure solution did. You can check out the <a href="http://caniuse.com/#search=let">current support</a> and it’s all quite green, but still in production you need to accept that some people are on older versions of IE or on Opera Mini.</p>
+
+<h1 id="finally">Finally</h1>
+<p>Closures are a complicated part of the language, but if you come to understand their function you can make powerful use of them to ensure pieces of code do not interfere with each other.</p>
+
+<p>Hopefully this brief look into their function makes it easier to understand why your piece of code did not work the way you hoped at first. Maybe you’ll use a closure, or start using <code class="language-plaintext highlighter-rouge">let</code>. Either way you’ve tapped into a cool part of the language that I’ll probably write more about in the future.</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                blog
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                closures
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                ajax
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                javascript
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/simple-service-worker-setup" itemprop="name headline url">Simple Service Worker Setup</a>
+                </article>
+                
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="/live-htmlcollection" itemprop="name headline url">Live HTMLCollection</a>
+                </article>
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/loops-closures-and-ajax&amp;text=Loops,+Closures+and+Ajax&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>

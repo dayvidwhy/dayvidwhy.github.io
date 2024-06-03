@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngblog, html, live, jQuery, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/live-htmlcollection">
+<meta name="twitter:title" content="Live HTMLCollection - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="For most of the time I’ve been writing JavaScript I’ve had jQuery there to hold me up, providing an assortment of helper functions and methods that I think make life easier. I mean I’m fairly sure they’re supposed to, that’s what it says in their documentation. I realised I had never really tried to make a proper web application without it, so decided it was about time to do so.">
+    <link rel="canonical" href="https://davidyoung.tech/live-htmlcollection">
+    <title>David Young - Live HTMLCollection</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Live HTMLCollection
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2016-12-14T02:00:15+00:00" itemprop="datePublished">
+                        December 14, 2016
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 8  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>For most of the time I’ve been writing JavaScript I’ve had jQuery there to hold me up, providing an assortment of helper functions and methods that I <em>think</em> make life easier. I mean I’m fairly sure they’re supposed to, that’s what it says in their documentation. I realised I had never really tried to make a proper web application without it, so decided it was about <a href="https://dayvidwhy.github.io/local-to-do/">time to do so</a>.</p>
+
+<h1 id="where-are-you-jquery">Where are you jQuery?</h1>
+<p>I decided that a to-do type application that made use of local storage to remember tasks would be a good starting point, it would let me play with a web API and do some UI state management that’s incredibly easy to do in jQuery.</p>
+
+<p>A lot of what this blog post wants to address comes from me trying to be somewhat clever. I have become incredibly used to the typical jQuery style selectors like <code class="language-plaintext highlighter-rouge">$(".class")</code> and figured how hard could that be to reproduce in a simple function. Behold.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">#</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">.</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">element</span><span class="p">.</span><span class="nx">length</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Seems good right? If we want an ID based element we use this <code class="language-plaintext highlighter-rouge">querySelector</code> method, or for a class we make use of <code class="language-plaintext highlighter-rouge">getElementsByClassName</code> to return some sort of collection of all elements with that class.</p>
+
+<p>I figured I was set and continued upon my efforts, until I encountered something interesting. I had discovered that <code class="language-plaintext highlighter-rouge">DOM</code> elements contain a list of classes they currently have, a fancy new feature that has great support, and figured what an excellent way to toggle the visibility than to add and remove a <code class="language-plaintext highlighter-rouge">show</code> class from this set.</p>
+
+<p><img src="images/htmlcollection-error.png" alt="Error from indexOf" title="Error from indexOf" /></p>
+
+<p>But it’s an array? Arrays have an <code class="language-plaintext highlighter-rouge">indexOf</code> function? This is when I started thinking I’d lost my touch a bit, but after a quick search around I discovered the culprit was that fact that this is <em>not</em> an array, but a <a href="https://developer.mozilla.org/en/docs/Web/API/DOMTokenList">DOMTokenList</a>.</p>
+
+<p>There are some specific methods here for class management, which jQuery handles really well for us with their <code class="language-plaintext highlighter-rouge">.addClass</code> and <code class="language-plaintext highlighter-rouge">.removeClass</code> methods, that have fairly strict browser requirements. I started using <code class="language-plaintext highlighter-rouge">.add</code> and <code class="language-plaintext highlighter-rouge">.remove</code> and everything worked as expected avoiding <code class="language-plaintext highlighter-rouge">.replace</code> since chrome does not support it.</p>
+
+<h1 id="collections-from-selections">Collections from selections</h1>
+<p>My efforts picked up again after this, having felt as if I learned something, so I pressed on. The next issue I encountered was an oddly shrinking array. Having become very used to how jQuery style selectors work, I selected the elements I wanted to hide, those being the ones currently shown, and use <code class="language-plaintext highlighter-rouge">.hide()</code> on them. Image the following scenario.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"show"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Content<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"show"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Content<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hide"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Content<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>I have a couple of div elements currently showing that I would like to hide, so I attempted the following.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">shown</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.show</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// getElementsByClassName</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">shown</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">);</span>
+    <span class="nx">shown</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">shown</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is where things became interesting. I was looping over this array of 2 elements, removing their <code class="language-plaintext highlighter-rouge">show</code> class and then adding a <code class="language-plaintext highlighter-rouge">hide</code> class to their class lists, but only one element was ever toggling, the second one.</p>
+
+<p>The thing happening here is that <code class="language-plaintext highlighter-rouge">document.getElementsByClassName</code> returns an <code class="language-plaintext highlighter-rouge">HTMLCollection</code>. An <a href="https://developer.mozilla.org/en/docs/Web/API/HTMLCollection">HTMLCollection</a> is a <em>live</em> collection that is <em>updated</em> when the DOM updates.</p>
+
+<p>So what was happening there was as I removed the <code class="language-plaintext highlighter-rouge">show</code> class from the first element, the <code class="language-plaintext highlighter-rouge">shown</code> set of elements suddenly lost a member and went down to a length of 1. Now <code class="language-plaintext highlighter-rouge">shown[i]</code>, or <code class="language-plaintext highlighter-rouge">shown[0]</code> was in fact the <em>second</em> element I had selected since the first one had disappeared from under me. I then exit the array <em>early</em>. That’s confusing, so here’s a code snippet explaining the steps.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">shown</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.show</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// getElementsByClassName</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">)</span> <span class="c1">// [0-div1, 1-div2], 0- meaning 0th index</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 2</span>
+
+<span class="c1">// do for loop part</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">shown</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">);</span>
+<span class="c1">// i starts at 0</span>
+<span class="nx">shown</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// remove class from 0th element</span>
+
+<span class="cm">/* Live updating happens and our shown variable changes */</span>
+
+<span class="nx">shown</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// adds the hide class to the second div</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">);</span> <span class="c1">// [1-div2] // our live collection is now one member shorter</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shown</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="c1">// i becomes 1 at end of loop</span>
+<span class="c1">// check for loop</span>
+<span class="c1">// exit loop since (i &lt; shown.length) becomes (1 &lt; 1)</span>
+</code></pre></div></div>
+
+<p>This can be fairly easily remedied by doing the operations in reverse and even using a while loop, I just found it profoundly odd that a live updating collection of elements is something that people would want. Here’s a way you could do it, using the fact that the length updates when a class is removed.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">shown</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.show</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// getElementsByClassName</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">shown</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// eventually the collection will empty</span>
+    <span class="nx">shown</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// do this first so it's not removed</span>
+    <span class="nx">shown</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// change and remove from collection</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>I ended up revising my original function to leverage the better version of the query selector, <code class="language-plaintext highlighter-rouge">querySelectorAll</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">#</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">element</span><span class="p">.</span><span class="nx">length</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="c1">// fallback that should work for most</span>
+    <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This meant I was dealing with <a href="https://developer.mozilla.org/en/docs/Web/API/NodeList">NodeLists</a> instead of the collections and the original logic worked fine, it was just interesting to see how different collections behave in the browser.</p>
+
+<h1 id="types-of-collections-in-javascript">Types of collections in JavaScript</h1>
+<p>You are probably now wondering how many collections there are, and if you use jQuery a lot like me, how have you avoided using them for so long? The interesting thing is, and I never thought about it this way, is that all selections of elements are collections.</p>
+
+<p>Even jQuery wraps the elements it selects in a special <a href="https://learn.jquery.com/using-jquery-core/jquery-object/">jQuery object</a> with your favourite methods like <code class="language-plaintext highlighter-rouge">.text()</code> and <code class="language-plaintext highlighter-rouge">.click()</code> giving you access to jQuerys magical box of functionality.</p>
+
+<p>If anything, creating this application made me question more of the inner workings of jQuery and I am now more aware of the type of collection I’m dealing with and the attached methods after using any sort of selector.</p>
+
+<h1 id="finally">Finally</h1>
+<p>This held me up a bit yesterday and I felt as if jQuery has slightly altered my understanding of how selectors work, but it was definitely a useful learning experience and I intend to keep attempting to implement more applications without jQuery. The main takeaway being, if it looks like an array in the console, it might not have the method you’re expecting, so double check!</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                blog
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                html
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                live
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                jQuery
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/loops-closures-and-ajax" itemprop="name headline url">Loops, Closures and Ajax</a>
+                </article>
+                
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="/useful-web-skills" itemprop="name headline url">Useful Web Skills</a>
+                </article>
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/live-htmlcollection&amp;text=Live+HTMLCollection&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>

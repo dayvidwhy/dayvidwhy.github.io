@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngblog, jQuery, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/easy-jquery-selectors">
+<meta name="twitter:title" content="Easy jQuery Selectors - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="The popular web plugin jQuery is currently in its third version and is still going strong on the internet. Lately it has become less popular as the web platform catches up and DOM altering methods become more standard across browsers, but some parts of it are still very useful to the novice web developer.">
+    <link rel="canonical" href="https://davidyoung.tech/easy-jquery-selectors">
+    <title>David Young - Easy jQuery Selectors</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Easy jQuery Selectors
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2016-10-06T05:26:00+00:00" itemprop="datePublished">
+                        October 6, 2016
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 5  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>The popular web plugin <a href="https://jquery.com/">jQuery</a> is currently in its third version and is still going strong on the internet. Lately it has become less popular as the web platform catches up and DOM altering methods become more standard across browsers, but some parts of it are still very useful to the novice web developer.</p>
+
+<h1 id="jquery">jQuery</h1>
+<p>Probably the biggest point I have seen from people that have done some website development before is that jQuery is not helpful, <a href="https://github.com/jquery/jquery.com/issues/88#issuecomment-72400007">and it does have its problems</a> with performance. Many of its functions have big performance hits to do simple things, but it is still a very convenient library to use.</p>
+
+<p>jQuery is well known for being old and clunky with its a large library weighing in at 28kB for the second flavour, and it takes a phones browser about 500ms on average to parse all of the code. Not the greatest.</p>
+
+<p>What you might not have realised is that jQuery actually offer a <a href="https://learn.jquery.com/performance/">section on their website</a> about getting the most out of the library. The biggest one is probably actually reading the jQuery source and not treating it like a magical box. I watched a <a href="https://www.youtube.com/watch?v=i_qE1iAmjFg">video</a> by Paul Irish where he actually goes through the code seeing what can be learned. It is about an older version, but the idea is still relevant.</p>
+
+<h1 id="plain-javascript">Plain JavaScript</h1>
+<p>JavaScript has a range of selectors that facilitate grabbing elements on the page and then doing things to them, as follows.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">class</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByID</span><span class="p">(</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">div input</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// all inputs inside a div</span>
+</code></pre></div></div>
+
+<p>Now while <code class="language-plaintext highlighter-rouge">querySelector</code> is very easy to use and it’s brother, <code class="language-plaintext highlighter-rouge">querySelectorAll</code> covers a range of bases with complex selectors, jQuery style selectors are still substantially easier to understand.</p>
+
+<p>We can use fully fledged CSS selectors to grab elements even using pseudo selectors like <code class="language-plaintext highlighter-rouge">:first-child</code> and <code class="language-plaintext highlighter-rouge">:not</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.cool-class</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#that-id</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">image</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.sections .headings:not(:first-child)</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Probably the most interesting part is how we use the same selection statement, <code class="language-plaintext highlighter-rouge">$('thing')</code> and we can clearly see whether we are selecting an <code class="language-plaintext highlighter-rouge">#id</code> or a <code class="language-plaintext highlighter-rouge">.class</code> thanks to the inclusion of a <code class="language-plaintext highlighter-rouge">.</code> or <code class="language-plaintext highlighter-rouge">#</code>. Of note as well is how easy it is to then iterate over these elements using <code class="language-plaintext highlighter-rouge">$.each()</code> by simply providing a callback function.</p>
+
+<h1 id="iterating-over-class-selections">Iterating Over Class Selections</h1>
+<p>One thing that bothers me about <code class="language-plaintext highlighter-rouge">getElementByClassName</code> is how it returns an array and I need to loop over this to do something to each element.</p>
+
+<p>For instance if we grabbed a bunch of navigation elements.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav-links</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>To change them all to red we need to do something like this.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So we have a few concepts here that need to be understood well before that line in the middle makes sense. We need to understand array indexes, and that DOM objects, surprisingly, actually are objects. Accessing the style element of a DOM object seems obvious when you’re more experienced but I suggest that early on he similar jQuery version is much clearer.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.nav-links</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>I can see that for all things with the class <code class="language-plaintext highlighter-rouge">.nav-links</code> I am changing their color to red.</p>
+
+<h1 id="making-api-requests">Making API Requests</h1>
+<p>Making use of API’s in plain JavaScript just isn’t fun as well, and trying to diagnose an issue in the depths of this code.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//do stuff with this.response</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">link_to_amaze.json</span><span class="dl">"</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>This isn’t making anyone happy. The new <a href="https://developer.mozilla.org/en/docs/Web/API/Fetch_API">fetch</a> API does start making this easier however the old jQuery;</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">link_to_amaze.json</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="c1">//print the data</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This is a lot easier to get our heads around and start making meaningful web applications that plug in external information sources.</p>
+
+<p>Also specifying the <code class="language-plaintext highlighter-rouge">&amp;callback=?</code> in the URL we pass to <code class="language-plaintext highlighter-rouge">$.getJSON</code> seamlessly deals with <code class="language-plaintext highlighter-rouge">JSONP</code> requests and we don’t have to spend time figuring out how to load JSON as the source of a script tag.</p>
+
+<h1 id="finally">Finally</h1>
+<p>jQuery has its weak points and has become less popular, but its <a href="http://api.jquery.com/">developer API</a> is very available if you want to read further. I would highly recommend learning jQuery as an extension of their general JavaScript knowledge.</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                blog
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                jQuery
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/software-process" itemprop="name headline url">Software Process</a>
+                </article>
+                
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/easy-jquery-selectors&amp;text=Easy+jQuery+Selectors&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>

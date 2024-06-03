@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngjekyll, service-worker, liquid, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/serving-jekyll-sites-offline">
+<meta name="twitter:title" content="Serving Jekyll Sites Offline - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="When I put this new blog together with Jekyll I added a service worker to the build process, generating the required URL’s to cache using liquids templating language. I was then able to include those generated links in my service workers code to save me needing to manaully update the list over time.">
+    <link rel="canonical" href="https://davidyoung.tech/serving-jekyll-sites-offline">
+    <title>David Young - Serving Jekyll Sites Offline</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Serving Jekyll Sites Offline
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2021-09-04T02:00:00+00:00" itemprop="datePublished">
+                        September 4, 2021
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 4  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>When I put this new blog together with Jekyll I added a service worker to the build process, generating the required URL’s to cache using liquids templating language. I was then able to include those generated links in my service workers code to save me needing to manaully update the list over time.</p>
+
+<h1 id="creating-a-list-of-pages-in-the-jekyll-site">Creating a list of pages in the Jekyll site</h1>
+<p>In a <a href="/simple-service-worker-setup">previous post</a> I show a simple service worker setup where some URL’s are specified for caching. When building the site with Jekyll, it is good to not have to keep a list of every page up to date in the service workers set of routes to cache, so we can instead use liquid within our service workers file to generate the routes we need to cache at build time.</p>
+
+<p>The following captures a set of resources into a variable called <code class="language-plaintext highlighter-rouge">asset_urls</code> for inserting into the routes we want to cache JavaScript variable later.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="o">%</span> <span class="nx">capture</span> <span class="nx">asset_urls</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">page</span> <span class="k">in</span> <span class="nx">site</span><span class="p">.</span><span class="nx">html_pages</span> <span class="o">%</span><span class="p">}</span>
+<span class="dl">'</span><span class="s1">{{ page.url | remove: </span><span class="dl">'</span><span class="p">.</span><span class="nx">html</span><span class="dl">'</span><span class="s1"> }}</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">post</span> <span class="k">in</span> <span class="nx">site</span><span class="p">.</span><span class="nx">posts</span> <span class="o">%</span><span class="p">}</span>
+<span class="dl">'</span><span class="s1">{{ post.url }}</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">file</span> <span class="k">in</span> <span class="nx">site</span><span class="p">.</span><span class="nx">static_files</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">file</span><span class="p">.</span><span class="nx">path</span> <span class="nx">contains</span> <span class="dl">'</span><span class="s1">/images</span><span class="dl">'</span> <span class="nx">or</span> <span class="nx">file</span><span class="p">.</span><span class="nx">path</span> <span class="nx">contains</span> <span class="dl">'</span><span class="s1">manifest</span><span class="dl">'</span> <span class="nx">or</span> <span class="nx">file</span><span class="p">.</span><span class="nx">path</span> <span class="nx">contains</span> <span class="dl">'</span><span class="s1">css</span><span class="dl">'</span> <span class="o">%</span><span class="p">}</span>
+<span class="dl">'</span><span class="s1">{{ file.path }}</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="nx">endcapture</span> <span class="o">%</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>The above script tracks pages which are our main routes like <code class="language-plaintext highlighter-rouge">/</code> and <code class="language-plaintext highlighter-rouge">/contact</code>. It also tracks each post like the one you are reading right now and adds it to the list. Finally it also adds static files, like images and other Jekyll pages without front matter that are not processed. We can then push this as mentioned into a list of routes we want to cache with the service worker.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">urlsToCache</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{{</span> <span class="nx">asset_urls</span> <span class="o">|</span> <span class="nx">normalize_whitespace</span> <span class="p">}}</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>We can also leverage some more liquid templating to help update our service worker each time we rebuild the site. We can use the available liquid tags <code class="language-plaintext highlighter-rouge">{{ site.time | date_to_xmlschema }}</code> as part of the caching key, to keep our cache name unique each time we rebuild the site, so when publishing the old cache is removed and replaced with the new list of resources.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">{{ site.url }}-site-{{ site.time | date_to_xmlschema }}';
+</span></code></pre></div></div>
+
+<p>Some static resources had to be added manually with the above setup, so a few resources were included in the list already.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">urlsToCache</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{{</span> <span class="nx">asset_urls</span> <span class="o">|</span> <span class="nx">normalize_whitespace</span> <span class="p">}},</span>
+  <span class="dl">'</span><span class="s1">/manifest.json</span><span class="dl">'</span><span class="p">,</span>   <span class="c1">// manually added</span>
+  <span class="dl">'</span><span class="s1">/js/validate.js</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// manually added</span>
+  <span class="dl">'</span><span class="s1">/css/main.css</span><span class="dl">'</span>     <span class="c1">// manually added</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<h1 id="installing-the-generated-routes">Installing the generated routes</h1>
+<p>These routes are injected inside the declared variable <code class="language-plaintext highlighter-rouge">urlsToCache</code> and then when we go to cache these URL’s with a service worker we pass these <code class="language-plaintext highlighter-rouge">urlsToCache</code> to the <code class="language-plaintext highlighter-rouge">install</code> step and they are added to our cache.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Perform install steps</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">install</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+        <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">urlsToCache</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nx">skipWaiting</span><span class="p">());</span>
+        <span class="p">})</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The install step inserts these resources into the browsers cache and subsequent loads of these resources intercepted by the service worker will use the cached asset over reaching out to the network, so the site will start working offline.</p>
+
+<h1 id="wrapping-up">Wrapping up</h1>
+<p>This is just a short demonstration of how you can make use of the liquid templating made available to build out the resources to cache dynamically for a Jekyll site. As more posts get added to the blog they’ll automatically become part of the cached list of assets without manual work keeping the service worker up to date.</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                jekyll
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                service-worker
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                liquid
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/caching-dynamic-resources-with-service-workers" itemprop="name headline url">Caching Dynamic Resources With Service Workers</a>
+                </article>
+                
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="/detecting-page-scroll-distance" itemprop="name headline url">Detecting Page Scroll Distance</a>
+                </article>
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/serving-jekyll-sites-offline&amp;text=Serving+Jekyll+Sites+Offline&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngblog, service worker, progressive, easy, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/simple-service-worker-setup">
+<meta name="twitter:title" content="Simple Service Worker Setup - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="If you’ve been paying attention to new technologies on the web one thing you have not missed is Service Workers. They’re a new take on the idea of progressive enhancement and I think they’re going to stick around for a while yet.">
+    <link rel="canonical" href="https://davidyoung.tech/simple-service-worker-setup">
+    <title>David Young - Simple Service Worker Setup</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Simple Service Worker Setup
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2017-01-09T00:20:00+00:00" itemprop="datePublished">
+                        January 9, 2017
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 5  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>If you’ve been paying attention to new technologies on the web one thing you have not missed is <a href="https://developer.mozilla.org/en/docs/Web/API/Service_Worker_API">Service Workers</a>. They’re a new take on the idea of <em>progressive enhancement</em> and I think they’re going to stick around for a while yet.</p>
+
+<h1 id="workers-on-the-page">Workers on the page</h1>
+<p>The idea of a <a href="http://www.w3schools.com/html/html5_webworkers.asp">web worker</a> is not new, and is currently used to help move large amounts of computation off the main thread. People tend to use them when they want to do large calculations in the background without affecting render performance.</p>
+
+<p>Web workers are just JavaScript as well which makes them very easy to understand and start using. If you have not looked into the idea of a promise in the browser I would suggest <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">this</a> resource from Mozilla.</p>
+
+<h1 id="simple-service-worker">Simple service worker</h1>
+<p>Here’s a really simple service worker that will work on any page if you add the basic assets in the array that gets cached. You also need to add the install script to the webpage that gets served to your users on their initial visit.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// index.html - install the service worker</span>
+<span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">/sw.js</span><span class="dl">'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">registration</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">ServiceWorker registration successful with scope: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">registration</span><span class="p">.</span><span class="nx">scope</span><span class="p">);</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">ServiceWorker registration failed: </span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This checks to see if the browser supports the API and then installs the service worker from <code class="language-plaintext highlighter-rouge">/sw.js</code>. It also removes the old cache if you bump up the version number ensuring your users download new assets if you want to make an update.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// sw.js</span>
+<span class="kd">var</span> <span class="nx">SITE_NAME</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">your-site</span><span class="dl">'</span>
+<span class="kd">var</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="nx">SITE_NAME</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">urlsToCache</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/index.html</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/css/style.css</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/js/main.js</span><span class="dl">'</span>
+<span class="p">];</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">install</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Perform install steps</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">urlsToCache</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nx">skipWaiting</span><span class="p">());</span>
+      <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">activate</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">keys</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cacheNames</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+        <span class="nx">cacheNames</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">CACHE_NAME</span> <span class="o">!==</span> <span class="nx">cacheName</span> 
+                <span class="o">&amp;&amp;</span> <span class="nx">cacheName</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">SITE_NAME</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+      <span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">fetch</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This will install a service worker that serves up your <code class="language-plaintext highlighter-rouge">index.html</code> and main CSS and JavaScript assets. Next time you load the page it will appear offline. The key events are installing the cache, an activate event that clears the old cache, and a fetch event that interrupts network requests.</p>
+
+<h1 id="updating-the-worker">Updating the worker</h1>
+<p>You will find yourself wanting to update assets at some point and might be frustrated when your service worker refuses to download the new version of things. It is possible to do a background fetch for new resources and replace that item in the cache, but there is a simpler way.</p>
+
+<p>You can just bump up the version of the <code class="language-plaintext highlighter-rouge">sw.js</code> at the top such as:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">SITE_NAME</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">your-site</span><span class="dl">'</span>
+<span class="kd">var</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="nx">SITE_NAME</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-1</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Becomes;</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">SITE_NAME</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">your-site</span><span class="dl">'</span>
+<span class="kd">var</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="nx">SITE_NAME</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-2</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>This works because when the browser checks the <code class="language-plaintext highlighter-rouge">sw.js</code> file and whether it should install the new version, it checks to see if they are byte equivalent. Changing a number will prompt a reinstall.</p>
+
+<h1 id="finally">Finally</h1>
+<p>This technology is really new, and there’s a <a href="https://github.com/GoogleChrome/sw-toolbox">bunch of tools</a> made by google that substantially extend the functionality by adding offline support for messaging and even google analytics. You can also add support for caching fonts based on the response from google and even CDN based resources.</p>
+
+<p>The point of this post is to show that it’s <em>very</em> easy to add a simple service worker to your site. Hopefully in the future all sites will have some sort of offline ability, and with phones having more and more storage space, it wouldn’t be unreasonable for you to cache your most visited sites to have an uninterrupted experience on the web.</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                blog
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                service worker
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                progressive
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                easy
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/stuck-in-a-bind" itemprop="name headline url">Stuck In A Bind</a>
+                </article>
+                
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="/loops-closures-and-ajax" itemprop="name headline url">Loops, Closures and Ajax</a>
+                </article>
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/simple-service-worker-setup&amp;text=Simple+Service+Worker+Setup&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>

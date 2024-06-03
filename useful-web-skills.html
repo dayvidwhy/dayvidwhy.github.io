@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<meta name="description" content="David Young is a developer with a keen interest in web development and design.">
+<meta name="keywords" content="developer, engineer, blog, david, young, david youngblog, web, semantics, ">
+<meta name="author" content="David Young">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://davidyoung.tech/useful-web-skills">
+<meta name="twitter:title" content="Useful Web Skills - David Young">
+<meta name="twitter:image" content="https://davidyoung.tech/images/small.jpg">
+<meta name="twitter:site" content="dayvidwhy">
+<meta name="twitter:creator" content="dayvidwhy">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/images/favicon.ico?" type="image/x-icon">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="alternate" type="application/rss+xml" title="David Young" href="https://davidyoung.tech/feed.xml">
+
+    <meta name="twitter:description" content="A few people have asked me recently how I’ve managed to make heads or tails of the current state of the web, and how do you get to a point where this weird online world of development doesn’t freak you out too much. Well quite a lot of it still confuses me, but it’s definitely become easier.">
+    <link rel="canonical" href="https://davidyoung.tech/useful-web-skills">
+    <title>David Young - Useful Web Skills</title>
+</head>
+<body>
+    <header class="site-header" role="banner">
+    <div class="wrapper">
+        <a class="site-title" href="/">David Young</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#FFF" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                        <path fill="#FFF" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                        <path fill="#FFF" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    <a class="page-link" href="/posts">Posts</a>
+                    <a class="page-link" href="/projects">Projects</a>
+                    <a class="page-link" href="/about">About</a>
+                    <a class="page-link" href="/contact">Contact</a>
+                </div>
+            </nav>
+    </div>
+</header>
+    <main class="page-content" aria-label="Content" role="main">
+        <div class="wrapper">
+            <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                <h1 class="post-title" itemprop="name headline">
+                    Useful Web Skills
+                </h1>
+                <p class="post-meta meta-border">
+                    <time datetime="2016-11-11T04:20:00+00:00" itemprop="datePublished">
+                        November 11, 2016
+                    </time> by 
+                    <span itemprop="author">
+                        David Young
+                    </span>
+                    -
+                    <span itemprop="author">
+                        about 6  minutes
+                    </span>
+                </p>
+                <div class="post-content" itemprop="articleBody">
+                    <p>A few people have asked me recently how I’ve managed to make heads or tails of the current state of the web, and how do you get to a point where this weird online world of development doesn’t freak you out too much. Well quite a lot of it still confuses me, but it’s definitely become easier.</p>
+
+<p>I also feel like I can weigh in on this topic after teaching this past semester and can suggest a few things that would increase anyone’s ability to make effective websites.</p>
+
+<h1 id="build-a-page-from-scratch">Build a Page from Scratch</h1>
+<p>If there’s one thing that really accelerated my understanding of, and ability to write for the web, was doing everything from scratch at least a few times. I reached a point where I became frustrated with how many different frameworks there were and the number of CSS templates out there were immense.</p>
+
+<p>I had noticed a lot of developers out there would suggest the use of <a href="https://getbootstrap.com/">bootstrap</a> right away for building pages, only to come to a halt later when some of the classes they used were not working the way they hoped. Often I would ask why they thought this class behaved this way and what CSS rules does it actually apply and they mostly weren’t sure.</p>
+
+<p>I still use frameworks from time to time but I always investigate the behaviour of predefined classes myself before using them and I even built my <a href="https://dayvidwhy.github.io/daygrid/">own grid</a> to ensure I understood the concepts. Don’t always just assume you know how some piece of CSS works, try out its various attributes or value ranges.</p>
+
+<h1 id="learning-semantics">Learning Semantics</h1>
+<p>The <a href="https://www.w3.org/standards/semanticweb/">semantic web</a> is a standard that allows the web to start making a lot more sense. A lot of the data we put into pages has meaning beyond just the text we show. We can give our data more meaning quite easily with the proper syntax.</p>
+
+<p>The latest thing I’ve become a fan of is the <code class="language-plaintext highlighter-rouge">itemscope</code> syntax. You can make links to blog posts much more meaningful like so. Here’s a blog link from my <a href="https://davidyoung.tech">portfolio</a> site.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span> <span class="na">itemscope=</span><span class="s">""</span> <span class="na">itemtype=</span><span class="s">"http://schema.org/Blog"</span> <span class="na">id=</span><span class="s">"blog"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;article</span> <span class="na">role=</span><span class="s">"article"</span> <span class="na">itemtype=</span><span class="s">"http://schema.org/BlogPosting"</span> <span class="na">itemscope=</span><span class="s">"itemscope"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3</span> <span class="na">itemprop=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://blog.davidyoung.tech/software-process"</span> <span class="na">itemprop=</span><span class="s">"url"</span><span class="nt">&gt;</span>
+                Software Process
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">itemprop=</span><span class="s">"description"</span><span class="nt">&gt;</span>
+            Some description...
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">itemprop=</span><span class="s">"url"</span> <span class="na">href=</span><span class="s">"http://blog.davidyoung.tech/software-process"</span> <span class="na">class=</span><span class="s">"blog-link"</span><span class="nt">&gt;</span>
+            Read more..
+        <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>This rich semantic mark-up shows that this piece of code actually represents a blog post, and can actually communicate what parts reflect the name, or the description of it. We can specify the <code class="language-plaintext highlighter-rouge">itemscope</code> and tell the web <em>what</em> this thing is, and then say what each part represents. So the web knows that this is a blog post, and that it has a name, a description and a link to it for reading.</p>
+
+<h1 id="accessibility-with-semantics">Accessibility with Semantics</h1>
+<p>I recently jumped on the band wagon for making sure my site is readable to everyone. In my opinion every site needs to be a place that doesn’t restrict who can view the content. Semantic tags with implied aria roles help here and the following mark-up demonstrates a common structure you should be adopting for your pages.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Great semantics! --&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>A title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+        Header stuff, like your nav-bar, or top banner.
+    <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;main&gt;</span>
+        Main content that you want readers to look at.
+    <span class="nt">&lt;/main&gt;</span>
+    <span class="nt">&lt;footer&gt;</span>
+        The thing at the bottom of the page.
+    <span class="nt">&lt;/footer&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>This is much better for screen readers given the good use of semantic tags breaking up the page into three clear body parts, the header, main and the footer. This is vastly better than the following.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Not so great semantics --&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>A Title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"cool-top-banner"</span><span class="nt">&gt;</span>
+        Header stuff, like your nav-bar, or top banner.
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main-stuff"</span><span class="nt">&gt;</span>
+        Main content that you want readers to look at.
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer-bit"</span><span class="nt">&gt;</span>
+        The thing at the bottom of the page.
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Mostly because the first one is more readable, but also because of the implied aria labels. The <code class="language-plaintext highlighter-rouge">&lt;header&gt;</code> tag has an implicit <code class="language-plaintext highlighter-rouge">role=banner</code> associated with it. It’s possible to give this back with aria labels but why not just use the proper mark-up in the first place?</p>
+
+<p>If you have not done much with aria labels before I highly recommend reading <a href="https://www.w3.org/TR/wai-aria/">the spec</a> on the matter.</p>
+
+<h1 id="inspect-everything">Inspect Everything</h1>
+<p>One of the best things you can do while learning is to inspect almost every page you come across. Look inside the head tag, look at the properties they gave their <code class="language-plaintext highlighter-rouge">&lt;p&gt;</code> tags and look at what classes they used and why. Look at how they lay out their content.</p>
+
+<p>Things that usually interest me are:</p>
+
+<ul>
+  <li>Did they use a grid or are they using flexbox?</li>
+  <li>How did they set the background colour of this element, does it cascade down from a higher class for some reason?</li>
+  <li>What is in the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> tag? Which usually leads onto the next point.</li>
+  <li>What framework, if any, are they using?</li>
+  <li>How are they loading their CSS, in a blob or throughout the HTML? Breaking up CSS has become the cool new thing lately.</li>
+  <li>Are they using a web-font and how are they loading it? Are they using <a href="https://modernizr.com/">modernizr</a> or lazy loading it?</li>
+</ul>
+
+<p>Because it’s pretty interesting to see how some people make their pages, and sometimes they leave small comment messages for you to see.</p>
+
+<h1 id="development-tools">Development Tools</h1>
+<p>Learning to use the dev tools provided in Chrome and Firefox will increase your productivity ten-fold. Lately I’ve become a fan of just jamming around in the elements tab manually adjusting some HTML and CSS making the page look the way I want live instead of going back to my editor.</p>
+
+<p>You can try out new ideas fairly rapidly without making huge changes to your code this way. Sure you can make a commit, make some changes and refresh the page to see what it looks like, I just find it very cool that I can change CSS instantly in the browser on the fly.</p>
+
+<p>This is really helpful early on as well for understand what each CSS rule does since you can flick them on and off easily with the checkboxes. Lately I’ve become a bit obsessed with the chrome dev tools, mainly because of the timeline feature.</p>
+
+<h1 id="finally">Finally</h1>
+<p>These are just some of the things I wish my teachers had pushed on me a bit more when I was first learning the hypertext mark-up language and I can assure anyone that if you want to get better at making stuff on the web awesome, you need to understand these things.</p>
+
+                </div>
+            </article>
+
+            
+            <span class="category-tag" itemprop="keywords">
+                blog
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                web
+            </span>
+            
+            <span class="category-tag" itemprop="keywords">
+                semantics
+            </span>
+            
+
+            <div class="post-footer-links">
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Next: </strong>
+                    <a href="/live-htmlcollection" itemprop="name headline url">Live HTMLCollection</a>
+                </article>
+                
+                
+                <article itemscope itemtype="http://schema.org/BlogPosting">
+                    <strong>Previous: </strong>
+                    <a href="/software-process" itemprop="name headline url">Software Process</a>
+                </article>
+                
+            </div>
+            <div class="post-tweet">
+                <a class="post-tweet-link" target="_blank" href="http://twitter.com/intent/tweet?url=https://davidyoung.tech/useful-web-skills&amp;text=Useful+Web+Skills&amp;via=dayvidwhy" title="Click to share this via the Twitter website.">Share this post on Twitter</a>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+    <div class="wrapper">
+        <h2 class="footer-heading">
+            David Young
+        </h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li><a href="mailto:hello@davidyoung.tech" title="Click to get in contact with me.">Mail</a></li>
+                    <li><a href="/feed.xml" title="Keep up to date with my posts with this feed.">Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li>
+                        <a href="https://github.com/dayvidwhy" title="My GitHub account that holds most of my projects that are on display">
+                            <span class="username">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dayvidwhy" title="A feed of daily information from myself.">
+                            <span class="username">@dayvidwhy</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col footer-col-3">
+                <p>
+                    David Young is a developer with a keen interest in web development and design.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// lazy load our font
+(function(font) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + font;
+    var anchor = document.head || document.getElementsByTagName('head')[0];
+    anchor.appendChild(link);
+})('Open+Sans');
+</script>
+</body>
+</html>
