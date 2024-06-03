@@ -88,7 +88,7 @@ This is much better for screen readers given the good use of semantic tags break
 
 Mostly because the first one is more readable, but also because of the implied aria labels. The `<header>` tag has an implicit `role=banner` associated with it. It's possible to give this back with aria labels but why not just use the proper mark-up in the first place? 
 
-If you have not done much with aria labels before I highly recommend reading [the spec](https://www.w3.org/TR/wai-aria/) or [looking at Mozilla's guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) on the matter.
+If you have not done much with aria labels before I highly recommend reading [the spec](https://www.w3.org/TR/wai-aria/) on the matter.
 
 # Inspect Everything
 One of the best things you can do while learning is to inspect almost every page you come across. Look inside the head tag, look at the properties they gave their `<p>` tags and look at what classes they used and why. Look at how they lay out their content. 

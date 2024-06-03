@@ -27,7 +27,7 @@ There are a few courses at university that attempt to teach Agile and the concep
 
 An interesting thing that I learned this semester was how effective it is to work in short sprints to complete tasks. Setting short periods of time to achieve goals results in goals that are much more reasonable and more likely to be completed. It also gives you a chance to finish a piece of content and get feedback from your client right away.
 
-This links [back to another post](https://davidyoung.tech/getting-feedback) I made about the importance of feedback. By developing software in this manner you can get this valuable feedback consistently and most effectively communicate your progress to your client.
+By developing software in this manner you can get this valuable feedback consistently and most effectively communicate your progress to your client.
 
 # Agile feedback
 I was asked by one of my lecturers towards the end of this semester for feedback on the use of agile for in courses. While I feel that setting goals for to achieve agile usage is very useful, there is always the risk that it won’t be taken seriously enough.
